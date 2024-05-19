@@ -1,7 +1,12 @@
+import MainFooterContent from "./MainFooterContent"
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <footer id="footer">
+      <div className="container">
+        <MainFooterContent/>
+      </div>      
+    </footer>
   )
 }
 

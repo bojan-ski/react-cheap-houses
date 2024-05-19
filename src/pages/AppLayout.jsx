@@ -13,7 +13,6 @@ const AppLayout = () => {
 
             <main>
                 {isPageLoading ? <Loading /> : <Outlet />}
-                {/* <Outlet /> */}
             </main>
 
             <Footer />
