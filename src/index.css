@@ -45,7 +45,7 @@ main{
 /* FOOTER */
 #footer{
   background: #1C1C1E;
-  padding: 100px 0 43px;
+  padding-top: 100px;
 }
 
 /* MainFooterContent */
@@ -138,4 +138,11 @@ main{
 #footer .footer-links .footer-social-links .footer-social-link a:hover{
   background-color: rgb(226, 151, 31);
   transition: all 0.3s ease;
+}
+
+#footer .rights-footer a{
+  color: rgb(255, 169, 32);
+}
+#footer .rights-footer a:hover{
+  color: rgb(226, 151, 31);
 }
