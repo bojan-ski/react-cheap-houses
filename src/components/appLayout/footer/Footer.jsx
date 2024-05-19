@@ -1,11 +1,11 @@
 import MainFooterContent from "./MainFooterContent"
+import NavAndSocialFooterLinks from "./NavAndSocialFooterLinks"
 
 const Footer = () => {
   return (
     <footer id="footer">
-      <div className="container">
         <MainFooterContent/>
-      </div>      
+        <NavAndSocialFooterLinks/>    
     </footer>
   )
 }
