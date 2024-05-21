@@ -185,7 +185,7 @@ const MainFooterContent = () => {
                                 Ukoliko ste zainteresovani da primate obaveštenja sa Portala "Jeftine Kuće", registrujte se ovde:
                             </p>
                             <form onSubmit={handleNewsletterEmailSummation}>
-                                <input type="email" className="form-control p-2 mb-2" name="email" id="email" placeholder="Vaša adresa elektronske pošte" required/>
+                                <input type="email" className="form-control py-3 mb-2" name="email" id="email" placeholder="Vaša adresa elektronske pošte" required/>
                                 <button type="submit" className="footer-form-btn btn text-white fw-bolder w-100 mb-2">
                                     Prijavite se {'->'}
                                 </button>

@@ -2,7 +2,9 @@
 
 const ContactMap = () => {
   return (
-    <div>ContactMap</div>
+    <div className="bg-danger">
+        ContactMap
+    </div>
   )
 }
 

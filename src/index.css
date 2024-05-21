@@ -142,6 +142,7 @@ main {
   background-color: #fafafa;
 }
 
+/* Contact details component */
 .contact-page .contact-info .box-info .icon-info:after{
   content: "/";
   color: #8E8E93;
@@ -157,6 +158,40 @@ main {
 
 .contact-page .contact-details .contact-image{
   margin-top: -50px;
+}
+
+/* Contact form component */
+.contact-form{
+  background-color: #fff;
+}
+
+.contact-form .form-label,
+.contact-form .form-control,
+.contact-form .form-select,
+.contact-form .heading-section p{
+  font-size: 0.85rem;
+}
+
+.contact-form .form-control:focus,
+.contact-form .form-select:focus{
+  border-color: var(--orange-color);
+  box-shadow: none
+}
+
+.contact-form .contact-form-btn{
+  background-color: var(--orange-color);
+  padding: 12px 25px;
+}
+
+.contact-form .contact-form-btn span::before{
+  content: '|';
+  font-weight: 100;
+  margin: 0 7px;
+  opacity: .7;
+}
+
+.contact-form .contact-form-btn:hover{
+  background-color: var(--dark-orange-color);
 }
 
 /* FOOTER */
@@ -218,6 +253,11 @@ main {
 #footer .main-footer-content .widget-info form input,
 #footer .main-footer-content .widget-info form label {
   font-size: 0.7rem;
+}
+
+#footer .main-footer-content .widget-info form input:focus{
+  border-color: var(--orange-color);
+  box-shadow: none
 }
 
 #footer .main-footer-content .widget-info form .form-check-input {
