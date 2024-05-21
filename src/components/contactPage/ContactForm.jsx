@@ -11,8 +11,8 @@ const ContactForm = () => {
     }
 
     return (
-        <div className="container">
-            <section className="contact-form rounded-4 p-4 mx-5">
+        <div className="container py-3">
+            <section className="contact-form rounded-4 py-5 px-4 mx-lg-5">
                 <div className="heading-section text-center mb-4">
                     <h3 className="fw-bolder">
                         K O N T A K T
@@ -66,7 +66,7 @@ const ContactForm = () => {
                             <textarea rows="5" className="form-control" id="userContactFormMessage" placeholder="tekst vaše poruke..." required />
                         </div>
                     </div>
-                    <button type="submit" className="contact-form-btn btn text-white">
+                    <button type="submit" className="contact-form-btn btn text-white d-flex align-items-center">
                         <FaRegPaperPlane />
                         <span className="fw-bold">
                             Pošaljite zahtev
