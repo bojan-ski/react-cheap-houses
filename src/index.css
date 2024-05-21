@@ -8,6 +8,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 /* GENERAL */
+
+:root{
+  --orange-color: rgb(255, 169, 32);
+  --dark-orange-color:rgb(226, 151, 31);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -30,6 +36,10 @@ a {
 
 p {
   font-family: "Mulish", sans-serif;
+}
+
+.text-orange{
+  color: var(--orange-color);
 }
 
 /* LOADER - LOADING */
@@ -125,6 +135,28 @@ p {
 /* MAIN */
 main {
   flex: 1;
+}
+
+/* CONTRACT */
+.contact-page{
+  background-color: #fafafa;
+}
+
+.contact-page .contact-info .box-info .icon-info:after{
+  content: "/";
+  color: #8E8E93;
+  font-weight: 100;
+  margin-left: 20px;
+  font-size: 50px;
+}
+
+.contact-page .contact-info .box-info .content-details .contact-phone-number h3:hover,
+.contact-page .contact-info .box-info .content-details .contact-email-address p:hover{
+  color: var(--dark-orange-color);
+}
+
+.contact-page .contact-details .contact-image{
+  margin-top: -50px;
 }
 
 /* FOOTER */

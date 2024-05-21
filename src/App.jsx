@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AppLayout from "./pages/AppLayout"
 import Dashboard from "./pages/Dashboard"
 import Offers from "./pages/Offers"
+import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
 const router = createBrowserRouter([
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: 'oglasi',
         element: <Offers />
+      },
+      {
+        path: 'blog',
+        element: <Blog />
       },
       {
         path: 'kontakt',
