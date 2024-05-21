@@ -3,12 +3,16 @@ import appNavigationLinks from "../../utils/appNavigationLinks"
 import headerLogo from '../../assets/header-assets/jeftine_kuce_logo_text_header.png'
 // import registrationModalImg from '../../assets/header-assets/jeftine_kuce_register_bg.jpg'
 // import logInModalImg from '../../assets/header-assets/jeftine_kuce_login_bg.jpg'
+
+// React Icons
 import { IoReorderThreeOutline } from "react-icons/io5"
 import { BsHouseHeart } from "react-icons/bs"
 import { BiSolidUserCheck } from "react-icons/bi"
 
+// Modals
 import LogIn from "../../modals/LogIn"
 import SignUp from "../../modals/SignUp"
+import ForgotPassword from "../../modals/ForgotPassword"
 
 
 const Navbar = () => {
@@ -24,7 +28,7 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* toggle container */}
+            {/* navbar (collapse) container */}
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav w-50 mx-auto justify-content-around">
                 {appNavigationLinks.map(link => {
@@ -77,6 +81,9 @@ const Navbar = () => {
 
       {/* log in modal */}
       <LogIn />
+
+      {/* forgot password modal */}
+      <ForgotPassword />
     </>
   )
 }

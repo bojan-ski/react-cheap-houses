@@ -1,6 +1,13 @@
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
 
 const SignUp = () => {
+    const handleRegistrationSubmit = e => {
+        e.preventDefault()
+        console.log(e);
+        console.log(e.target);
+        console.log(e.target.elements);
+    }
+
     return (
         <div className="modal fade" id="signUpModal" tabIndex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg">
@@ -17,15 +24,15 @@ const SignUp = () => {
                         <div className="col-12 col-xl-7 p-4">
                             {/* modal-header */}
                             <div className="modal-header border-0">
-                                <h2 className="modal-title fw-bolder" id="signUpModalLabel">
+                                <h2 className="modal-title fw-bolder">
                                     Registracija
                                 </h2>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
                             </div>
 
                             {/* modal-body */}
                             <div className="modal-body">
-                                <form>
+                                <form onSubmit={handleRegistrationSubmit}>
                                     <div className="mb-3">
                                         <label htmlFor="userRegistrationName" className="col-form-label fw-bolder mb-1">
                                             Korisničko ime
