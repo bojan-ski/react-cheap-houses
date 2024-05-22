@@ -5,11 +5,11 @@ import { GiRotaryPhone } from 'react-icons/gi'
 const ContactDetails = () => {
     return (
         <div className="container">
-            <section className="contact-details mt-5 pt-5 border-top">
+            <section className="contact-details pt-5">
                 <div className="row">
 
                     {/* row item 1 */}
-                    <div className="col-12 col-lg-6">
+                    <div className="col-12 col-lg-5">
                         {/* heading-section */}
                         <div className="heading-section mb-5">
                             <h1 className="fw-bold mb-3">
@@ -78,7 +78,7 @@ const ContactDetails = () => {
                     </div>
 
                     {/* row item 2 */}
-                    <div className="col-6 d-none d-lg-block">
+                    <div className="col-7 d-none d-lg-block text-center">
                         <div className="contact-image">
                             <img src={contactImg} alt="contact-img" className='img-fluid' />
                         </div>

@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const ContactMap = () => {
   return (
-    <section class="contact-map d-none d-md-block">
+    <section className="contact-map d-none d-md-block">
       <MapContainer center={[44.62036774911955, 21.18423890709805]} zoom={13} scrollWheelZoom={true}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -12,6 +12,7 @@
 :root{
   --orange-color: rgb(255, 169, 32);
   --dark-orange-color:rgb(226, 151, 31);
+  --dark-color: rgb(18, 10, 33);
 }
 
 * {
@@ -28,6 +29,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
 }
 
 a {
@@ -48,6 +50,11 @@ p {
 }
 
 /* HEADER */
+
+#header{
+  background-color: #fff;
+}
+
 #header .navbar .navbar-brand img{
   width: 197px;
   height: 48px;
@@ -136,12 +143,28 @@ p {
 main {
   flex: 1;
 }
-
-/* CONTRACT */
-.contact-page{
-  background-color: #fafafa;
+ 
+/* PAGE URL - component */
+.page-url{
+  font-size: 0.75rem;
 }
 
+.page-url .home-link{
+  color: var(--orange-color);
+}
+
+.page-url .home-link:hover{
+  color: var(--dark-orange-color);
+}
+
+.page-url .home-link:after{
+  content: '>';
+  color: var(--dark-color);
+  margin: 0 12px;
+  font-weight: 500;
+}
+
+/* CONTRACT PAGE */
 /* Contact details component */
 .contact-page .contact-info .box-info .icon-info:after{
   content: "/";
