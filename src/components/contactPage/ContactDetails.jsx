@@ -4,8 +4,8 @@ import { GiRotaryPhone } from 'react-icons/gi'
 
 const ContactDetails = () => {
     return (
-        <div className="container">
-            <section className="contact-details pt-5">
+        <section className="contact-details pt-5">
+            <div className="container">
                 <div className="row">
 
                     {/* row item 1 */}
@@ -84,8 +84,8 @@ const ContactDetails = () => {
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     )
 }
 

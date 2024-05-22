@@ -9,9 +9,9 @@
 
 /* GENERAL */
 
-:root{
+:root {
   --orange-color: rgb(255, 169, 32);
-  --dark-orange-color:rgb(226, 151, 31);
+  --dark-orange-color: rgb(226, 151, 31);
   --dark-color: rgb(18, 10, 33);
 }
 
@@ -40,7 +40,7 @@ p {
   font-family: "Mulish", sans-serif;
 }
 
-.text-orange{
+.text-orange {
   color: var(--orange-color);
 }
 
@@ -49,13 +49,12 @@ p {
   height: 100vh;
 }
 
-/* HEADER */
-
-#header{
+/* ---------- HEADER ---------- */
+#header {
   background-color: #fff;
 }
 
-#header .navbar .navbar-brand img{
+#header .navbar .navbar-brand img {
   width: 197px;
   height: 48px;
 }
@@ -64,127 +63,195 @@ p {
   color: rgb(255, 169, 32);
 }
 
-#header .navbar .navbar-nav .nav-item a{
-  color: #120A21;
+#header .navbar .navbar-nav .nav-item a {
+  color: #120a21;
 }
 
 #header .navbar .navbar-nav .nav-item a:hover,
-#header .navbar .navbar-nav .nav-item a.active{
+#header .navbar .navbar-nav .nav-item a.active {
   color: rgb(255, 169, 32);
   transition: all 0.3s ease;
 }
 
 /* #header .navbar .btn-container .btn{ */
-#header .navbar .btn-container .display-signUp-modal, 
-#header .navbar .btn-container .display-logIn-modal{
+#header .navbar .btn-container .display-signUp-modal,
+#header .navbar .btn-container .display-logIn-modal {
   font-weight: 500;
   font-size: 0.85rem;
 }
 
-#header .navbar .btn-container .display-signUp-modal:hover, 
-#header .navbar .btn-container .display-logIn-modal:hover{
-  color: rgb(226, 151, 31); 
+#header .navbar .btn-container .display-signUp-modal:hover,
+#header .navbar .btn-container .display-logIn-modal:hover {
+  color: rgb(226, 151, 31);
   transition: all 0.3s ease;
 }
 
-#header .navbar .home-btn{
+#header .navbar .home-btn {
   background-color: rgb(255, 169, 32);
   padding: 15px 18px;
   border-radius: 10px;
 }
 
-#header .navbar .home-btn:hover{
-  background-color: rgb(226, 151, 31); 
+#header .navbar .home-btn:hover {
+  background-color: rgb(226, 151, 31);
   transition: all 0.3s ease;
 }
 
 /* Registration Modal */
 #signUpModal,
-#logInModal{
+#logInModal {
   font-size: 0.88rem;
 }
 
 #signUpModal .modal-content .form-control,
-#logInModal .modal-content .form-control{
+#logInModal .modal-content .form-control {
   padding: 12px 14px;
 }
 
 #signUpModal .modal-content .registration-btn,
 #logInModal .modal-content .log-in-btn,
-#forgotPasswordModal .modal-content .forgot-password-btn{
+#forgotPasswordModal .modal-content .forgot-password-btn {
   background-color: rgb(255, 169, 32);
 }
 
 #signUpModal .modal-content .registration-btn:hover,
 #logInModal .modal-content .log-in-btn:hover,
-#forgotPasswordModal .modal-content .forgot-password-btn:hover{
-  background-color: rgb(226, 151, 31); 
+#forgotPasswordModal .modal-content .forgot-password-btn:hover {
+  background-color: rgb(226, 151, 31);
   transition: all 0.3s ease;
 }
 
 #signUpModal .modal-content .modal-footer .btn,
-#logInModal .modal-content .modal-footer .btn{
+#logInModal .modal-content .modal-footer .btn {
   font-size: 14px;
   color: rgb(255, 169, 32);
 }
 
-#logInModal .modal-content .forgot-password-container .btn{
+#logInModal .modal-content .forgot-password-container .btn {
   font-size: 14px;
 }
 
 #signUpModal .modal-content .modal-footer .btn:hover,
 #logInModal .modal-content .modal-footer .btn:hover,
-#logInModal .modal-content .forgot-password-container .btn:hover{
-  color: rgb(226, 151, 31); 
+#logInModal .modal-content .forgot-password-container .btn:hover {
+  color: rgb(226, 151, 31);
   transition: all 0.3s ease;
 }
 
-/* MAIN */
+/* ---------- MAIN ---------- */
 main {
   flex: 1;
 }
- 
-/* PAGE URL - component */
-.page-url{
+
+/* PageLocation Component */
+.page-location {
   font-size: 0.75rem;
 }
 
-.page-url .home-link{
+.page-location .home-link {
   color: var(--orange-color);
 }
 
-.page-url .home-link:hover{
+.page-location .home-link:hover {
   color: var(--dark-orange-color);
 }
 
-.page-url .home-link:after{
-  content: '>';
+.page-location .home-link:after {
+  content: ">";
   color: var(--dark-color);
   margin: 0 12px;
   font-weight: 500;
 }
 
+/* DASHBOARD PAGE */
+/* ExpertAdvices component */
+.expert-advice .box-content {
+  font-size: 0.85rem;
+  border-radius: 5px;
+}
+
+.expert-advice .box-content .box-image-content{
+  border-radius: 10px;
+}
+
+.expert-advice .box-content .box-image-content a img {
+  width: 100%;
+  transition: all 0.7s linear;
+}
+
+.expert-advice .box-content a img:hover {
+  transform: scale(1.2);
+}
+
+.expert-advice .box-content .box-image-content .box-image-text {
+  background-color: #fff;
+  bottom: 10px;
+  left: 50%;
+  width: 152px;
+  height: 32px;
+  border-radius: 6px;
+  transform: translateX(-50%);
+}
+
+.expert-advice .box-content .box-image-content .box-image-text span,
+.expert-advice .box-content .box-link a {
+  color: var(--orange-color);
+}
+
+.expert-advice .box-content .box-link a:hover svg {
+  animation: link-hover .4s ease;
+}
+
+@keyframes link-hover {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  49% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* CONTRACT PAGE */
-/* Contact details component */
-.contact-page .contact-info .box-info .icon-info:after{
+/* ContactDetails component */
+.contact-page .contact-info .box-info .icon-info:after {
   content: "/";
-  color: #8E8E93;
+  color: #8e8e93;
   font-weight: 100;
   margin-left: 20px;
   font-size: 50px;
 }
 
-.contact-page .contact-info .box-info .content-details .contact-phone-number h3:hover,
-.contact-page .contact-info .box-info .content-details .contact-email-address p:hover{
+.contact-page
+  .contact-info
+  .box-info
+  .content-details
+  .contact-phone-number
+  h3:hover,
+.contact-page
+  .contact-info
+  .box-info
+  .content-details
+  .contact-email-address
+  p:hover {
   color: var(--dark-orange-color);
 }
 
-.contact-page .contact-details .contact-image{
+.contact-page .contact-details .contact-image {
   margin-top: -50px;
 }
 
 /* Contact map component */
-.leaflet-container{
+.leaflet-container {
   height: 60vh;
 }
 
@@ -193,47 +260,47 @@ main {
 }
 
 /* Contact form component */
-.contact-form{
+.form-area {
   background-color: #fff;
   box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
 }
 
-.contact-form .form-label,
-.contact-form .form-control,
-.contact-form .form-select,
-.contact-form .heading-section p{
+.form-area .form-label,
+.form-area .form-control,
+.form-area .form-select,
+.form-area .heading-section p {
   font-size: 0.85rem;
 }
 
-.contact-form .form-control:focus,
-.contact-form .form-select:focus{
+.form-area .form-control:focus,
+.form-area .form-select:focus {
   border-color: var(--orange-color);
-  box-shadow: none
+  box-shadow: none;
 }
 
-.contact-form .contact-form-btn{
+.form-area .contact-form-btn {
   background-color: var(--orange-color);
   padding: 12px 25px;
 }
 
-.contact-form .contact-form-btn span::before{
-  content: '|';
+.form-area .contact-form-btn span::before {
+  content: "|";
   font-weight: 100;
   margin: 0 7px;
-  opacity: .7;
+  opacity: 0.7;
 }
 
-.contact-form .contact-form-btn:hover{
+.form-area .contact-form-btn:hover {
   background-color: var(--dark-orange-color);
 }
 
-/* FOOTER */
+/* ---------- FOOTER ---------- */
 #footer {
   background: #1c1c1e;
   padding-top: 100px;
 }
 
-/* MainFooterContent */
+/* MainFooterContent component */
 #footer .main-footer-content .group-icon .box-icons {
   background-color: rgb(255, 245, 224);
   padding: 30px 31px 45px;
@@ -288,9 +355,9 @@ main {
   font-size: 0.7rem;
 }
 
-#footer .main-footer-content .widget-info form input:focus{
+#footer .main-footer-content .widget-info form input:focus {
   border-color: var(--orange-color);
-  box-shadow: none
+  box-shadow: none;
 }
 
 #footer .main-footer-content .widget-info form .form-check-input {
@@ -312,7 +379,7 @@ main {
   background-color: rgb(226, 151, 31);
 }
 
-/* NavAndSocialFooterLinks */
+/* NavAndSocialFooterLinks component */
 #footer .footer-links {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
