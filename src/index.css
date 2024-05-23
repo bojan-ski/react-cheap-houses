@@ -40,8 +40,13 @@ p {
   font-family: "Mulish", sans-serif;
 }
 
-.text-orange {
+.text-orange,
+.text-orange-hover {
   color: var(--orange-color);
+}
+
+.text-orange-hover:hover{
+  color: var(--dark-orange-color);
 }
 
 /* LOADER - LOADING */
@@ -219,6 +224,20 @@ main {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/* Testimonials component */
+.testimonials{
+  background-color: #fff;
+}
+
+.swiper-content .swiper-content-testimonial{
+  padding: 30px;
+  box-shadow: .0px 4px 26px 0px rgba(66, 71, 76, 0.07);
+}
+
+.swiper-content .swiper-content-author p{
+  font-size: 0.88rem;
 }
 
 /* CONTRACT PAGE */

@@ -5,7 +5,7 @@ import ExpertAdviceCard from "./ExpertAdviceCard"
 
 const ExpertAdvices = () => {
   return (
-    <section className="expert-advice my-5">
+    <section className="expert-advice py-5">
       <div className="container">
         <div className="section-header text-center mb-5">
           <h2 className="fs-1 fw-bold">

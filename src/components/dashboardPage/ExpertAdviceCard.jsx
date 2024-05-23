@@ -5,7 +5,7 @@ const ExpertAdviceCard = ({ cardImg, cardMonth }) => {
     // console.log(cardImg, cardMonth);
 
     return (
-        <div className="col-12 col-lg-4">
+        <div className="col-12 col-lg-4 mb-4 mb-lg-0">
             <div className="box-content">
                 
                 {/* image */}
