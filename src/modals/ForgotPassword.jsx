@@ -47,7 +47,7 @@ const ForgotPassword = () => {
                                         <input type="email" className="form-control" id="userEmail" placeholder="vaše email adresa" required />
                                     </div>
                                     <button type="submit" className="forgot-password-btn btn fw-bolder text-white py-3 w-100 rounded-4">
-                                        Šifra
+                                        Nova Šifra
                                     </button>
                                 </form>
                             </div>

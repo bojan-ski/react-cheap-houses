@@ -1,12 +1,33 @@
+import { useState } from 'react'
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
 
 const SignUp = () => {
+    const [userRegistrationCredentials, setUserRegistrationCredentials] = useState({
+        userRegistrationName: '',
+        userRegistrationEmail: '',
+        userRegistrationPassword: ''
+    })
+
     const handleRegistrationSubmit = e => {
         e.preventDefault()
-        console.log(e);
-        console.log(e.target);
-        console.log(e.target.elements);
+
+        if(e.target.elements[2].value !== e.target.elements[3].value){
+            alert('both password need to match')
+        }else{
+            setUserRegistrationCredentials({
+                userRegistrationName: e.target.elements[0].value.trim(),
+                userRegistrationEmail: e.target.elements[1].value,
+                userRegistrationPassword: e.target.elements[2].value
+            })
+
+            e.target.elements[0].value = ''
+            e.target.elements[1].value = ''
+            e.target.elements[2].value = ''
+            e.target.elements[3].value = ''
+        }
     }
+    // console.log(userRegistrationCredentials);
+
 
     return (
         <div className="modal fade" id="signUpModal" tabIndex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">

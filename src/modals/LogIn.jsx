@@ -1,12 +1,25 @@
+import { useState } from 'react'
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 
 const LogIn = () => {
+    const [userLogInCredentials, setUserLogInCredentials] = useState({
+        userLogInEmail: '',
+        userLogInPassword: ''
+    })
+
     const handleLogInSubmit = e => {
         e.preventDefault()
-        console.log(e);
-        console.log(e.target);
-        console.log(e.target.elements);
+
+        setUserLogInCredentials({
+            userRegistrationName: e.target.elements[0].value,
+            userRegistrationEmail: e.target.elements[1].value,
+        })      
+
+        e.target.elements[0].value = ''
+        e.target.elements[1].value = ''
     }
+
+    // console.log(userLogInCredentials);
 
 
     return (
