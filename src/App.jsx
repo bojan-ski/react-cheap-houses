@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AppLayout from "./pages/AppLayout"
 import Dashboard from "./pages/Dashboard"
 import Offers from "./pages/Offers"
+import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: 'oglasi',
         element: <Offers />
+      },
+      {
+        path: 'moj-nalog',
+        element: <Profile />
       },
       {
         path: 'blog',
