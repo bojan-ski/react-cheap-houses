@@ -1,33 +1,51 @@
-import { useState } from 'react'
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { db } from '../firebase.config';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-    const [userRegistrationCredentials, setUserRegistrationCredentials] = useState({
-        userRegistrationName: '',
-        userRegistrationEmail: '',
-        userRegistrationPassword: ''
-    })
+    const navigate = useNavigate()
 
-    const handleRegistrationSubmit = e => {
+    const handleRegistrationSubmit = (e) => {
         e.preventDefault()
 
-        if(e.target.elements[2].value !== e.target.elements[3].value){
+        if (e.target.elements[2].value !== e.target.elements[3].value) {
             alert('both password need to match')
-        }else{
-            setUserRegistrationCredentials({
-                userRegistrationName: e.target.elements[0].value.trim(),
-                userRegistrationEmail: e.target.elements[1].value,
-                userRegistrationPassword: e.target.elements[2].value
-            })
+        } else {
+            const enteredUsername = e.target.elements[0].value.trim()
+            const enteredEmail = e.target.elements[1].value.trim()
+            const enteredPassword = e.target.elements[2].value
 
-            e.target.elements[0].value = ''
-            e.target.elements[1].value = ''
-            e.target.elements[2].value = ''
-            e.target.elements[3].value = ''
+            postCredentials(enteredUsername, enteredEmail, enteredPassword)
         }
     }
-    // console.log(userRegistrationCredentials);
 
+    const postCredentials = async (username, email, password) => {
+        try {
+            const auth = getAuth()
+            const userCredentials = await createUserWithEmailAndPassword(auth, email, password)
+
+            const newUser = userCredentials.user
+
+            updateProfile(auth.currentUser, {
+                displayName: username
+            })
+
+            const userCredentialsCopy = {
+                username,
+                email,
+                timestamp: serverTimestamp()
+            }
+
+            await setDoc(doc(db, 'users', newUser.uid), userCredentialsCopy)
+
+            // after the user has created an account, the user is redirected to the Profile page
+            navigate('/moj-nalog')
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <div className="modal fade" id="signUpModal" tabIndex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
@@ -48,7 +66,7 @@ const SignUp = () => {
                                 <h2 className="modal-title fw-bolder">
                                     Registracija
                                 </h2>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                             </div>
 
                             {/* modal-body */}
@@ -68,13 +86,13 @@ const SignUp = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="userRegistrationPassword" className="col-form-label fw-bolder mb-1">
-                                            Lozinka
+                                            Lozinka (min 6 karaktera)
                                         </label>
                                         <input type="password" className="form-control" id="userRegistrationPassword" placeholder="vaše lozinka" required />
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="userConfirmRegistrationPassword" className="col-form-label fw-bolder mb-1">
-                                            Potvrda lozinke
+                                            Potvrda lozinke (min 6 karaktera)
                                         </label>
                                         <input type="password" className="form-control" id="userConfirmRegistrationPassword" placeholder="potvrda vaše lozinke" required />
                                     </div>
@@ -83,7 +101,7 @@ const SignUp = () => {
                                     </button>
                                 </form>
                             </div>
-                            
+
                             {/* modal-footer */}
                             <div className="modal-footer border-0 justify-content-center">
                                 <p>

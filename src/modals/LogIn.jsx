@@ -1,26 +1,33 @@
-import { useState } from 'react'
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
+import { useNavigate } from 'react-router-dom'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const LogIn = () => {
-    const [userLogInCredentials, setUserLogInCredentials] = useState({
-        userLogInEmail: '',
-        userLogInPassword: ''
-    })
+    const navigate = useNavigate()
 
     const handleLogInSubmit = e => {
         e.preventDefault()
 
-        setUserLogInCredentials({
-            userRegistrationName: e.target.elements[0].value,
-            userRegistrationEmail: e.target.elements[1].value,
-        })      
+        const enteredEmail = e.target.elements[0].value.trim()
+        const enteredPassword = e.target.elements[1].value
+
+        logInUser(enteredEmail, enteredPassword)
 
         e.target.elements[0].value = ''
         e.target.elements[1].value = ''
     }
 
-    // console.log(userLogInCredentials);
+    const logInUser = async (enteredEmail, enteredPassword) =>{
+        try {
+            const auth = getAuth()
+            await signInWithEmailAndPassword(auth, enteredEmail, enteredPassword) 
 
+            // after the user has logged in, the user is redirected to the Profile page
+            navigate('/moj-nalog')
+        } catch (error) {
+            console.log(error);            
+        }       
+    }
 
     return (
         <div className="modal fade" id="logInModal" tabIndex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
