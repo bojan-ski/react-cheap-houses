@@ -18,6 +18,10 @@ const SignUp = () => {
             const enteredPassword = e.target.elements[2].value
 
             postCredentials(enteredUsername, enteredEmail, enteredPassword)
+
+            e.target.elements[0].value = ''
+            e.target.elements[1].value = ''
+            e.target.elements[2].value = ''
         }
     }
 

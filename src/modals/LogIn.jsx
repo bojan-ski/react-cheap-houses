@@ -61,7 +61,7 @@ const LogIn = () => {
                                         </label>
                                         <input type="email" className="form-control" id="userLogInEmail" placeholder="vaše email adresa" required />
                                     </div>
-                                    <div className="mb-3">
+                                    <div className="mb-4">
                                         <label htmlFor="userLogInPassword" className="col-form-label fw-bolder mb-1">
                                             Lozinka
                                         </label>

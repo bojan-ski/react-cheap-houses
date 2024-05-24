@@ -111,14 +111,15 @@ p {
   transition: all 0.3s ease;
 }
 
-/* Registration Modal */
+/* Registration Modals - Sing Up, LogIn, Forgot Password */
 #signUpModal,
 #logInModal {
   font-size: 0.88rem;
 }
 
 #signUpModal .modal-content .form-control,
-#logInModal .modal-content .form-control {
+#logInModal .modal-content .form-control,
+#forgotPasswordModal .modal-content .form-control {
   padding: 12px 14px;
 }
 

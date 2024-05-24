@@ -34,7 +34,9 @@ const Profile = () => {
                     <UserNotLoggedIn />
                 ) : (
                     <div>
-                        <h1>Dobrodošli {userData.toUpperCase()}</h1>
+                        <h1 className="text-center fw-bold">
+                            Dobrodošli {userData.toUpperCase()}
+                        </h1>
                         <div>
                             <button className="btn btn-primary my-5" onClick={LogOut}>
                                 Log Out

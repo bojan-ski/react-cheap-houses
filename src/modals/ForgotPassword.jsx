@@ -1,11 +1,32 @@
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 
 const ForgotPassword = () => {
-    const handleNewPasswordSubmit = e =>{
+    const navigate = useNavigate()
+
+    const handleNewPasswordSubmit = (e) =>{
         e.preventDefault()
-        console.log(e);
-        console.log(e.target);
-        console.log(e.target.elements);
+
+        const enteredEmail = e.target.elements[0].value.trim()
+        // const enteredEmail = e.target.elements[1].value
+
+        resetPassword(enteredEmail)
+
+        e.target.elements[0].value = ''
+        // e.target.elements[1].value = ''
+    }
+
+    const resetPassword = async (enteredEmail) => {
+        try {
+            const auth = getAuth()
+            await sendPasswordResetEmail(auth, enteredEmail)
+
+            // after the user has submitted for a new password, the user is redirected to the Profile page
+            navigate('/moj-nalog')
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -34,13 +55,13 @@ const ForgotPassword = () => {
                             <div className="modal-body">
                                 {/* form */}
                                 <form onSubmit={handleNewPasswordSubmit}>
-                                    <div className="mb-3">
+                                    {/* <div className="mb-3">
                                         <label htmlFor="userName" className="col-form-label fw-bolder mb-1">
                                             Korisničko ime
                                         </label>
                                         <input type="text" className="form-control" id="userName" placeholder="vaše korisničko ime" required />
-                                    </div>
-                                    <div className="mb-3">
+                                    </div> */}
+                                    <div className="mb-4">
                                         <label htmlFor="userEmail" className="col-form-label fw-bolder mb-1">
                                             Email adresa (elektronska pošta)
                                         </label>
