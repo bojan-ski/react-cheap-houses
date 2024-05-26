@@ -25,15 +25,40 @@ const CreateNewOffer = ({ userID }) => {
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactPhoneNumber, contactEmailAddress } = formData
 
     const onMutate = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.id]: e.target.value
-        }))
+        //images - files
+        if (e.target.files) {
+            setFormData(prevState => ({
+                ...prevState,
+                propertyImages: e.target.files
+            }))
+        }
+
+        // text or nums
+        if (!e.target.files) {
+            setFormData(prevState => ({
+                ...prevState,
+                [e.target.id]: e.target.value
+            }))
+        }
+
+        // setFormData((prevState) => ({
+        //     ...prevState,
+        //     [e.target.id]: e.target.value
+        // }))
     }
 
     const handleCreateNewOfferSubmit = (e) => {
         e.preventDefault()
 
+        setIsLoading(true)
+        
+        if (propertyImages.length > 6) {
+            setIsLoading(false)
+            console.log('Preko 6 slika');
+            return
+        }
+
+        setIsLoading(false)
         console.log(formData);
     }
 
@@ -80,7 +105,7 @@ const CreateNewOffer = ({ userID }) => {
 
                             {/* property type */}
                             <div className="mb-3">
-                                <label className='form-label'>
+                                <label className='form-label fw-bold'>
                                     Tip nekretnine
                                 </label>
                                 <div className='property-type-btns'>
@@ -134,7 +159,7 @@ const CreateNewOffer = ({ userID }) => {
 
                             {/* property name */}
                             <div className="mb-3">
-                                <label className='form-label'>
+                                <label className='form-label fw-bold'>
                                     Naziv imovine
                                 </label>
                                 <input
@@ -186,7 +211,7 @@ const CreateNewOffer = ({ userID }) => {
 
                             {/* square footage */}
                             <div className="mb-3">
-                                <label className='form-label'>
+                                <label className='form-label fw-bold'>
                                     Prostor
                                 </label>
                                 <input
@@ -204,7 +229,7 @@ const CreateNewOffer = ({ userID }) => {
 
                             {/* property address */}
                             <div className="mb-3">
-                                <label className='form-label'>
+                                <label className='form-label fw-bold'>
                                     Adresa
                                 </label>
                                 <textarea
@@ -254,7 +279,7 @@ const CreateNewOffer = ({ userID }) => {
                             {/* property images */}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
-                                    Slike - do 5 slika
+                                    Slike - do 5 slika, veličine do 2MB
                                 </label>
                                 <input
                                     className='form-control'
@@ -266,6 +291,8 @@ const CreateNewOffer = ({ userID }) => {
                                     multiple
                                 // required
                                 />
+
+	                 
                             </div>
 
                             {/* asking price*/}
@@ -330,6 +357,8 @@ const CreateNewOffer = ({ userID }) => {
                     <button type='submit' className='w-100 btn btn-primary'>
                         Objavi Oglas
                     </button>
+                    {/* <div className="create-new-offer-form-submit-btn text-center">
+                    </div> */}
                 </form>
             </div>
         </section>
