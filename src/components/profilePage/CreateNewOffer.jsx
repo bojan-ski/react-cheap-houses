@@ -1,4 +1,11 @@
 import { useState } from "react"
+// import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// import { v4 as uuidv4 } from 'uuid';
+
+import { db } from '../../firebase.config'
+
+import storeUploadedImage from "../../utils/storeUploadedImage";
+
 import Spinner from "../Spinner"
 import districts from "../../data/districts";
 
@@ -25,7 +32,7 @@ const CreateNewOffer = ({ userID }) => {
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactPhoneNumber, contactEmailAddress } = formData
 
     const onMutate = (e) => {
-        //images - files
+        // images - files
         if (e.target.files) {
             setFormData(prevState => ({
                 ...prevState,
@@ -47,16 +54,61 @@ const CreateNewOffer = ({ userID }) => {
         // }))
     }
 
-    const handleCreateNewOfferSubmit = (e) => {
+    const handleCreateNewOfferSubmit = async (e) => {
         e.preventDefault()
 
         setIsLoading(true)
-        
+
         if (propertyImages.length > 6) {
             setIsLoading(false)
             console.log('Preko 6 slika');
             return
         }
+
+        // store images in firebase
+        // const storeUploadedImage = async (uploadedImage) => {
+        //     return new Promise((resolve, reject) => {
+        //         const storage = getStorage();
+
+        //         const uploadedImageName = `${uploadedImage.name}-${uuidv4()}`;
+
+        //         const storageRef = ref(storage, `images/${uploadedImageName}`);
+
+        //         const uploadTask = uploadBytesResumable(storageRef, uploadedImage);
+
+        //         uploadTask.on('state_changed',
+        //             (snapshot) => {
+        //                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        //                 console.log('Upload is ' + progress + '% done');
+        //                 switch (snapshot.state) {
+        //                     case 'paused':
+        //                         console.log('Upload is paused');
+        //                         break;
+        //                     case 'running':
+        //                         console.log('Upload is running');
+        //                         break;
+        //                 }
+        //             },
+        //             (error) => {
+        //                 reject(error)
+        //             },
+        //             () => {
+        //                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        //                     resolve(downloadURL);
+        //                 });
+        //             }
+        //         );
+        //     })
+        // }
+        
+        const imageUrls = await Promise.all(
+            [...propertyImages].map(uploadedImage => storeUploadedImage(uploadedImage))
+        ).catch(()=>{
+            setIsLoading(false)
+            console.log('greska prilikom upload images');
+            return
+        })
+        console.log(imageUrls);
 
         setIsLoading(false)
         console.log(formData);
@@ -292,7 +344,7 @@ const CreateNewOffer = ({ userID }) => {
                                 // required
                                 />
 
-	                 
+
                             </div>
 
                             {/* asking price*/}
