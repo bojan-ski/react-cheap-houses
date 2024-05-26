@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom"
-import appNavigationLinks from "../../utils/appNavigationLinks"
+import appNavigationLinks from "../../data/appNavigationLinks"
 import headerLogo from '../../assets/header-assets/jeftine_kuce_logo_text_header.png'
 // import registrationModalImg from '../../assets/header-assets/jeftine_kuce_register_bg.jpg'
 // import logInModalImg from '../../assets/header-assets/jeftine_kuce_login_bg.jpg'

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import footerLogo from '../../../assets/footer-assets/jeftine_kuce_logo_text_footer.png'
-import appNavigationLinks from '../../../utils/appNavigationLinks'
+import appNavigationLinks from '../../../data/appNavigationLinks'
 import { FaFacebookF, FaLinkedin } from "react-icons/fa"
 import { BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs"
 
