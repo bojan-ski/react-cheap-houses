@@ -9,12 +9,10 @@ const ForgotPassword = () => {
         e.preventDefault()
 
         const enteredEmail = e.target.elements[0].value.trim()
-        // const enteredEmail = e.target.elements[1].value
 
         resetPassword(enteredEmail)
 
         e.target.elements[0].value = ''
-        // e.target.elements[1].value = ''
     }
 
     const resetPassword = async (enteredEmail) => {
