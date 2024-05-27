@@ -14,7 +14,7 @@ import districts from "../../data/districts";
 const CreateNewOffer = ({ userID }) => {
     // console.log(userID);
     const navigate = useNavigate()
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         userRef: userID,
         offerType: 'prodajem',

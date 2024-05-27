@@ -8,6 +8,9 @@ import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
+// LOADERS
+import { loader as offersLoader } from "./pages/Offers"
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,7 +22,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'oglasi',
-        element: <Offers />
+        element: <Offers />,
+        loader: offersLoader
       },
       {
         path: 'moj-nalog',
