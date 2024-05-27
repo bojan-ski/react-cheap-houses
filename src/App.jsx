@@ -4,12 +4,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import AppLayout from "./pages/AppLayout"
 import Dashboard from "./pages/Dashboard"
 import Offers from "./pages/Offers"
+import SelectedOffer from "./pages/SelectedOffer"
 import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
 // LOADERS
 import { loader as offersLoader } from "./pages/Offers"
+import { loader as selectedOfferLoader } from "./pages/SelectedOffer"
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
         path: 'oglasi',
         element: <Offers />,
         loader: offersLoader
+      },
+      {
+        path: 'oglasi/:id',
+        element: <SelectedOffer />,
+        loader: selectedOfferLoader
       },
       {
         path: 'moj-nalog',

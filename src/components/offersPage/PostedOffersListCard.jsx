@@ -10,11 +10,11 @@ const PostedOffersListCard = ( postedOffer ) => {
                 {offerType}
             </h3>
 
-            <div className="offer-images mb-2">
+            <div className="card-posted-offer-images mb-2">
                 <img src={imageUrls[0]} alt="slike-imovine" className="rounded-4 img-fluid" />
             </div>
 
-            <div className="offer-details mb-2">
+            <div className="card-posted-offer-details mb-2">
                 <h5>
                     {propertyType} - {propertyName}
                 </h5>
@@ -28,7 +28,7 @@ const PostedOffersListCard = ( postedOffer ) => {
                     Cena: {askingPrice} EUR {offerType === 'izdajem' ? 'mesečno' : ''}
                 </h6>
             </div>
-            <div className="offer-property-details border-bottom pb-3 mb-3">
+            <div className="card-posted-offer-property-details border-bottom pb-3 mb-3">
                 <p className="mb-0">
                     Sobe: {numRooms}
                 </p>
@@ -40,7 +40,7 @@ const PostedOffersListCard = ( postedOffer ) => {
                 </p>
             </div>
 
-            <Link to='/' className="btn btn-primary">
+            <Link to={`/oglasi/${postedOffer.id}`} className="btn btn-primary">
                 Detailji
             </Link>
         </div>
