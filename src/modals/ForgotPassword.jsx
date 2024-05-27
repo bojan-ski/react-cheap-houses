@@ -20,6 +20,9 @@ const ForgotPassword = () => {
             const auth = getAuth()
             await sendPasswordResetEmail(auth, enteredEmail)
 
+            // success message
+            console.log('Proverite svoj email radi promere sifre');
+
             // after the user has submitted for a new password, the user is redirected to the Profile page
             navigate('/moj-nalog')
         } catch (error) {

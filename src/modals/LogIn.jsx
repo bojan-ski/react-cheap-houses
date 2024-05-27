@@ -22,6 +22,9 @@ const LogIn = () => {
             const auth = getAuth()
             await signInWithEmailAndPassword(auth, enteredEmail, enteredPassword) 
 
+            // success message
+            console.log('Prijavili ste se');
+
             // after the user has logged in, the user is redirected to the Profile page
             navigate('/moj-nalog')
         } catch (error) {

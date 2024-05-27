@@ -44,6 +44,9 @@ const SignUp = () => {
 
             await setDoc(doc(db, 'users', newUser.uid), userCredentialsCopy)
 
+            // success message
+            console.log('Vas nalog je napravljen');
+
             // after the user has created an account, the user is redirected to the Profile page
             navigate('/moj-nalog')
         } catch (error) {

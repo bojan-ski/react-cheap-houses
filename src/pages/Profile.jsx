@@ -17,10 +17,10 @@ const Profile = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 auth.currentUser ? (
-                        // console.log(auth)
+                    // console.log(auth)
                     setUserData({
-                            userID: user.uid,
-                            userName: user.displayName
+                        userID: user.uid,
+                        userName: user.displayName
                     })
                 ) : (
                     setUserData({
@@ -65,7 +65,7 @@ const Profile = () => {
                 </section>
 
                 {/* new offer component */}
-                {userData.userName && <CreateNewOffer userID={userData.userID}/>}                
+                {userData.userName && <CreateNewOffer userID={userData.userID} />}
             </div>
         </div>
     )

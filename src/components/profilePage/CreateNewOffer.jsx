@@ -1,17 +1,20 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 // import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { v4 as uuidv4 } from 'uuid';
 
-import { db } from '../../firebase.config'
-
 import storeUploadedImage from "../../utils/storeUploadedImage";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from '../../firebase.config'
 
 import Spinner from "../Spinner"
 import districts from "../../data/districts";
 
 const CreateNewOffer = ({ userID }) => {
     // console.log(userID);
-    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState({
         userRef: userID,
         offerType: 'prodajem',
@@ -27,7 +30,7 @@ const CreateNewOffer = ({ userID }) => {
         askingPrice: '',
         contactPhoneNumber: '',
         contactEmailAddress: '',
-    })
+    })  
 
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactPhoneNumber, contactEmailAddress } = formData
 
@@ -47,11 +50,6 @@ const CreateNewOffer = ({ userID }) => {
                 [e.target.id]: e.target.value
             }))
         }
-
-        // setFormData((prevState) => ({
-        //     ...prevState,
-        //     [e.target.id]: e.target.value
-        // }))
     }
 
     const handleCreateNewOfferSubmit = async (e) => {
@@ -108,10 +106,27 @@ const CreateNewOffer = ({ userID }) => {
             console.log('greska prilikom upload images');
             return
         })
-        console.log(imageUrls);
+        // console.log(imageUrls);
 
+        const formDataCopy = {
+            ...formData,
+            imageUrls,
+            timestamp: serverTimestamp()
+        }
+
+        delete formDataCopy.propertyImages
+
+        const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+
+        // console.log(formData);
+        // console.log(formDataCopy);
         setIsLoading(false)
-        console.log(formData);
+
+        // success message
+        console.log('uspesno ste postavili/objavili novi oglas');
+
+        // after the user has posted a new offer, the user is redirected to the Offers page
+        // navigate(`/oglasi/${formDataCopy.offerType}/${docRef.id}`)
     }
 
     if (isLoading) return <Spinner />
@@ -343,8 +358,6 @@ const CreateNewOffer = ({ userID }) => {
                                     multiple
                                 // required
                                 />
-
-
                             </div>
 
                             {/* asking price*/}

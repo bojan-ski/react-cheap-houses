@@ -1,7 +1,10 @@
+import spinner from '../assets/spinner.gif'
 
 const Spinner = () => {
   return (
-    <h1 className="text-center">Spinner...</h1>
+    <div className='spinner d-flex justify-content-center align-items-center mb-5'>
+      <img src={spinner} alt="spinner"/>
+    </div>
   )
 }
 
