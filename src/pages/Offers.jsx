@@ -1,10 +1,9 @@
-// import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import fetchListingsFromFirebase from "../utils/fetchListingsFromFirebase";
-
 // COMPONENTS
 import PageLocation from "../components/PageLocation"
-// import Spinner from "../components/Spinner";
+import PostedOffersList from "../components/offersPage/PostedOffersList";
+import Spinner from "../components/Spinner";
 
 // LOADER
 export const loader = async () => {
@@ -14,23 +13,35 @@ export const loader = async () => {
 }
 
 const Offers = () => {
-  // const [isLoading, setIsLoading] = useState(false);
   const postedOffers = useLoaderData()
   // console.log(postedOffers);
-
-  // useEffect(()=>{
-  //   setIsLoading(!postedOffers ? true : false)
-  // },[postedOffers])
+  // console.log(postedOffers.length);
 
   return (
-    <div className="blog-page">
+    <div className="offers-page">
       {/* page location */}
       <PageLocation />
 
       <div className="container">
-        <h1>Oglasi</h1>
+        {!postedOffers ? (
+          <Spinner />
+        ) : (
+          postedOffers.length == 0 ? <h1>Nema postavljenih oglasa</h1> : (
+            <>
+              <section className="text-center mb-5">
+                <h1 className="fw-bold mb-2">
+                  Oglasi
+                </h1>
+                <h6 className="text-muted fw-bold">
+                  Trenutno imamo {postedOffers.length} oglasa za nekretnine
+                </h6>
+              </section>  
 
-          {/* {isLoading && <Spinner />} */}
+              {/* posted offers - list */}   
+              <PostedOffersList postedOffers={postedOffers} />       
+            </>
+          )
+        )}
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ const PageLocation = () => {
     // console.log(currentPage);
 
     return (
-        <section className="page-location">
+        <div className="page-location">
             <div className="container">
                 <div className="border-bottom py-4 mb-4">
                     <Link to='/' className="home-link fw-bold">
@@ -16,7 +16,7 @@ const PageLocation = () => {
                     </span>
                 </div>
             </div>
-        </section>
+        </div>
     )
 }
 
