@@ -5,11 +5,10 @@ import { MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
 const PostedOffersListViewCard = ( postedOffer ) => {
-
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
 
     return (
-        <div className="list-card-posted-offer-details p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start">
+        <div className="col-12 list-card-posted-offer-details p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start">
             <h4 className="text-orange fw-bold mb-2 mb-md-0">
                 {offerType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
             </h4>
@@ -41,11 +40,11 @@ const PostedOffersListViewCard = ( postedOffer ) => {
               </p>
             </div> */}
             <div className="list-card-posted-offer-info-3 mb-3 mb-md-0">
-                <p className="mb-0">
+                <p className="mb-0 d-flex align-items-center">
                     <MdOutlineBedroomChild className='me-2' />
                     Sobe: {numRooms}
                 </p>
-                <p className="mb-0">
+                <p className="mb-0 d-flex align-items-center">
                     <PiBathtubLight className='me-2' />
                     Kupatila: {numBathrooms}
                 </p>

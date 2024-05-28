@@ -1,6 +1,6 @@
 import { useState } from "react"
 // components
-import PostedOffersGridView from "./PostedOffersListGridView"
+import PostedOffersGridView from "./PostedOffersGridView"
 import PostedOffersListView from "./PostedOffersListView"
 // React Icons
 import { FaListUl } from "react-icons/fa"

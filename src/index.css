@@ -281,7 +281,19 @@ main {
   color: #fff;
 }
 
-/* PostedOffersListCard component */
+/* PostedOffersGridViewCard component */
+.grid-card-posted-offer-details .grid-card-posted-offer-images{
+  height: 400;
+  width: 350;
+  overflow: hidden;
+}
+
+.grid-card-posted-offer-details .grid-card-posted-offer-images img{
+  height: 100%;
+  width: 100%;
+}
+
+/* PostedOffersListViewCard component */
 .list-card-posted-offer-details p{
   font-size: 0.85rem;
 }

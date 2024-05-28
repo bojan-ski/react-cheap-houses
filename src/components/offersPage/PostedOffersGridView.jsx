@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom'
-import PostedOffersListCard from './PostedOffersListCard';
+import PostedOffersGridViewCard from './PostedOffersGridViewCard';
 
 const PostedOffersGridView = () => {
     const postedOffers = useLoaderData()
@@ -7,7 +7,7 @@ const PostedOffersGridView = () => {
     return (
         <div className='row'>
             {postedOffers.map(postedOffer => {
-                return <PostedOffersListCard key={postedOffer.id} {...postedOffer} />
+                return <PostedOffersGridViewCard key={postedOffer.id} {...postedOffer} />
             })}
         </div>
     )
