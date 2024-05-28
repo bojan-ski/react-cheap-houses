@@ -6,7 +6,7 @@ import PostedOffersListView from "./PostedOffersListView"
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
 
-const PostedOffersList = () => {
+const PostedOffersContainer = () => {
     const [layout, setLayout] = useState('grid')
 
     return (
@@ -27,4 +27,4 @@ const PostedOffersList = () => {
     )
 }
 
-export default PostedOffersList
+export default PostedOffersContainer

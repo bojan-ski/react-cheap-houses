@@ -3,6 +3,9 @@ import { Link } from "react-router-dom"
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
+// Swiper
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const PostedOffersGridViewCard = (postedOffer) => {
     // console.log(postedOffer);
@@ -14,8 +17,34 @@ const PostedOffersGridViewCard = (postedOffer) => {
                 {offerType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
             </h4>
 
-            <div className="grid-card-posted-offer-images mb-3">
-                <img src={imageUrls[1]} alt="slike-imovine" className="rounded-4" />
+            <div className="grid-card-posted-offer-images d-flex mb-3">
+                <Swiper
+                    slidesPerView={1}
+                    loop={true}
+                    modules={[Pagination, Navigation]}
+                    // navigation={true}
+                    // pagination={true}
+                    pagination={{
+                        dynamicBullets: true,
+                      }}
+                >
+                    {imageUrls?.map((image, idx) => {
+                        return (
+                            <SwiperSlide key={idx} className="text-center">
+                                <img src={image} alt="slike-imovine" className="rounded-4 img-fluid" />
+                                {/* <div
+                                    style={{
+                                        background: `url(${imageUrls[idx]}) center no-repeat`,
+                                        backgroundSize: 'cover',
+                                        
+                                    }}
+                                    className='grid-card-posted-offer-image rounded-4'
+                                >
+                                </div> */}
+                            </SwiperSlide>
+                        )
+                    })}
+                </Swiper>
             </div>
 
             <h5 className="capitalize">

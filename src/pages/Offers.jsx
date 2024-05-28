@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import fetchListingsFromFirebase from "../utils/fetchListingsFromFirebase";
 // COMPONENTS
 import PageLocation from "../components/PageLocation"
-import PostedOffersList from "../components/offersPage/PostedOffersList";
+import PostedOffersContainer from "../components/offersPage/PostedOffersContainer";
 import Spinner from "../components/Spinner";
 
 // LOADER
@@ -38,7 +38,7 @@ const Offers = () => {
               </section>  
 
               {/* posted offers - list */}   
-              <PostedOffersList />       
+              <PostedOffersContainer />       
             </>
           )
         )}

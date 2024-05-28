@@ -1,7 +1,9 @@
+// data from data folder
 import testimonials from '../../data/testimonials';
+// Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { Autoplay } from "swiper/modules";
+// React icons
 import { TbMessageStar } from 'react-icons/tb';
 
 const Testimonials = () => {

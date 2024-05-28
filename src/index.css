@@ -283,14 +283,34 @@ main {
 
 /* PostedOffersGridViewCard component */
 .grid-card-posted-offer-details .grid-card-posted-offer-images{
-  height: 400;
-  width: 350;
-  overflow: hidden;
+  height: 300px;
 }
 
 .grid-card-posted-offer-details .grid-card-posted-offer-images img{
-  height: 100%;
-  width: 100%;
+  height: 100%; 
+}
+
+/* .grid-card-posted-offer-details .grid-card-posted-offer-images .grid-card-posted-offer-image {
+  position: relative;
+  height: 400px;
+} */
+
+.swiper-pagination{
+  display: none;
+  transform: all 0.5 ease;
+}
+
+.grid-card-posted-offer-details .grid-card-posted-offer-images:hover{
+  opacity: 0.85
+}
+
+.grid-card-posted-offer-details .grid-card-posted-offer-images:hover .swiper-pagination{
+  transform: all 0.5 ease;
+  display: block;
+}
+
+.swiper-pagination-bullet-active{
+ background-color: var(--dark-orange-color) !important;
 }
 
 /* PostedOffersListViewCard component */
