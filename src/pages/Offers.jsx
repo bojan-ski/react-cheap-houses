@@ -33,12 +33,12 @@ const Offers = () => {
                   Oglasi
                 </h1>
                 <h6 className="text-muted fw-bold">
-                  Trenutno imamo {postedOffers.length} oglasa za nekretnine
+                  Trenutno imamo {postedOffers.length} {postedOffers.length == 1 ? "oglas" : 'oglasa'} za nekretnine
                 </h6>
               </section>  
 
               {/* posted offers - list */}   
-              <PostedOffersList postedOffers={postedOffers} />       
+              <PostedOffersList />       
             </>
           )
         )}
