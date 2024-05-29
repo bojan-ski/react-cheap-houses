@@ -4,8 +4,8 @@ import { LiaTapeSolid } from 'react-icons/lia'
 import { MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 // Swiper
-import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
 
 const PostedOffersGridViewCard = (postedOffer) => {
     // console.log(postedOffer);
@@ -22,8 +22,7 @@ const PostedOffersGridViewCard = (postedOffer) => {
                     slidesPerView={1}
                     loop={true}
                     modules={[Pagination, Navigation]}
-                    // navigation={true}
-                    // pagination={true}
+                    navigation={true}
                     pagination={{
                         dynamicBullets: true,
                       }}
@@ -54,10 +53,10 @@ const PostedOffersGridViewCard = (postedOffer) => {
             <div className="grid-card-posted-offer-info row border-bottom pb-3 mb-3">
                 <div className="col-6 col-lg-12 grid-card-posted-offer-info-1">
                     <h6 className="text-muted">
-                        Mesto: <span className="text-dark capitalize">{propertyLocation}</span>
+                        Mesto:<span className="ms-1 text-dark capitalize">{propertyLocation}</span>
                     </h6>
                     <h6 className="text-muted">
-                        Okrug: <span className="text-dark capitalize">{propertyDistrict}</span>
+                        Okrug:<span className="ms-1 text-dark capitalize">{propertyDistrict}</span>
                     </h6>
                     <h6 className="text-orange fw-bold">
                         {askingPrice} EUR {offerType === 'izdajem' ? 'mesečno' : ''}
