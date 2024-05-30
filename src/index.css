@@ -326,6 +326,18 @@ main {
 
 /* PROFILE PAGE */
 /* CreateNewOffer component */
+.create-new-offer{
+  height: 100%;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.create-new-offer.hide{
+  height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
 .form-btn,
 .form-btn-active {
   padding: 5px 10px;

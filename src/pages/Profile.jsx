@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLoaderData, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 // firebase/firestore funcs
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 // utils func
@@ -40,6 +40,7 @@ const Profile = () => {
         userID: '',
         userName: ''
     })
+    const [showPostNewOffer, setShowPostNewOffer] = useState(false)
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -66,6 +67,10 @@ const Profile = () => {
         navigate('/')
     }
 
+    const deletePostedOffer = () => {
+        console.log('delete posted listing');
+    }
+
     return (
         <div className="profile-page">
             {/* page location component */}
@@ -77,11 +82,11 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} />
+                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer}/>
 
                         {/* post new offer component */}
-                        <CreateNewOffer userID={userData.userID} />
-
+                         <CreateNewOffer userID={userData.userID} showPostNewOffer={showPostNewOffer}/>
+                        
                         {/* user posted offers component */}
                         <UserPostedOffersContainer />
                     </>

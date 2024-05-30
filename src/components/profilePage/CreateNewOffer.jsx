@@ -13,7 +13,7 @@ import Spinner from "../Spinner"
 // imported data
 import districts from "../../data/districts";
 
-const CreateNewOffer = ({ userID }) => {
+const CreateNewOffer = ({ userID, showPostNewOffer }) => {
     // console.log(userID);
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
@@ -134,8 +134,8 @@ const CreateNewOffer = ({ userID }) => {
     if (isLoading) return <Spinner />
 
     return (
-        <section className="create-new-offer my-5">
-            <h2 className="text-center fw-bold mb-3">
+        <section className={!showPostNewOffer ? "create-new-offer hide my-5" : "create-new-offer my-5"} >
+            <h2 className="text-center fw-bold mb-4">
                 Postavi novi oglas
             </h2>
 
