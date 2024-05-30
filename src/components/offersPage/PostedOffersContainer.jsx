@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useLoaderData } from 'react-router-dom'
 // components
 import PostedOffersGridView from "./PostedOffersGridView"
 import PostedOffersListView from "./PostedOffersListView"
@@ -7,6 +8,7 @@ import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
 
 const PostedOffersContainer = () => {
+    const postedOffers = useLoaderData()
     const [layout, setLayout] = useState('grid')
 
     return (
@@ -17,12 +19,16 @@ const PostedOffersContainer = () => {
                     <BsGrid3X3Gap size={18} />
                 </button>
                 <button type='button' className="layout-btn btn text-muted" onClick={() => setLayout('list')}>
-                    <FaListUl size={18}  />
+                    <FaListUl size={18} />
                 </button>
             </div>
 
             {/* offers list */}
-            {layout === 'grid' ? <PostedOffersGridView /> : <PostedOffersListView />}
+            {layout === 'grid' ? (
+                <PostedOffersGridView postedOffers={postedOffers} />
+            ) : (
+                <PostedOffersListView postedOffers={postedOffers} />
+            )}
         </section>
     )
 }

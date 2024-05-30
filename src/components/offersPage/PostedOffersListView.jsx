@@ -1,8 +1,9 @@
-import { useLoaderData } from 'react-router-dom'
+// import { useLoaderData } from 'react-router-dom'
 import PostedOffersListViewCard from './PostedOffersListViewCard'
 
-const PostedOffersListView = () => {
-  const postedOffers = useLoaderData()
+const PostedOffersListView = ({ postedOffers }) => {
+  // const postedOffers = useLoaderData()
+  // console.log(postedOffers);
 
   return (
     <div className='row'>

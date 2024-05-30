@@ -10,7 +10,7 @@ const fetchSelectedOfferDetailsFromFirebase = async (id) => {
         return docSnap.data()       
     } catch (error) {
         console.log(error);
-        console.log('can not get selected offer');
+        console.log('can not fetch selected offer data');
     }
 }
 

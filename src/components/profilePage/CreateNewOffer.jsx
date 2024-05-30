@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 // import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // import { v4 as uuidv4 } from 'uuid';
 
-import storeUploadedImage from "../../utils/storeUploadedImage";
+// firebase/firestore funcs
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from '../../firebase.config'
-
+// helper func
+import storeUploadedImage from "../../utils/storeUploadedImage";
+// components
 import Spinner from "../Spinner"
+// imported data
 import districts from "../../data/districts";
 
 const CreateNewOffer = ({ userID }) => {
@@ -126,7 +128,7 @@ const CreateNewOffer = ({ userID }) => {
         console.log('uspesno ste postavili/objavili novi oglas');
 
         // after the user has posted a new offer, the user is redirected to the Offers page
-        // navigate(`/oglasi/${formDataCopy.offerType}/${docRef.id}`)
+        navigate(`/oglasi`)
     }
 
     if (isLoading) return <Spinner />

@@ -1,8 +1,9 @@
-import { useLoaderData } from 'react-router-dom'
+// import { useLoaderData } from 'react-router-dom'
 import PostedOffersGridViewCard from './PostedOffersGridViewCard';
 
-const PostedOffersGridView = () => {
-    const postedOffers = useLoaderData()
+const PostedOffersGridView = ({ postedOffers }) => {
+    // const postedOffers = useLoaderData()
+    // console.log(postedOffers);
 
     return (
         <div className='row'>

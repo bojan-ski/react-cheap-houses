@@ -9,6 +9,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const PostedOffersGridViewCard = (postedOffer) => {
     // console.log(postedOffer);
+
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
 
     return (

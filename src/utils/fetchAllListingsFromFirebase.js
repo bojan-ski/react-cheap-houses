@@ -1,28 +1,28 @@
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase.config";
 
-const fetchListingsFromFirebase = async () => {
+const fetchAllListingsFromFirebase = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, "listings"));
 
-        let listings = []
+        let allPostedListings = []
 
         querySnapshot.forEach((document) => {
             // console.log(document);
             // console.log(document.id);
             // console.log(document.data());
-            return listings.push({
+            return allPostedListings.push({
                 id: document.id,
                 data: document.data()
             })
         })
         // console.log(listings);
 
-        return listings
+        return allPostedListings
     } catch (error) {
         console.log(error)
-        console.log('Could not fetch data')
+        console.log('Could not fetch all listings')
     }
 }
 
-export default fetchListingsFromFirebase
+export default fetchAllListingsFromFirebase

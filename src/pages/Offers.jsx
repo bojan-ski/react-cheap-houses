@@ -1,14 +1,15 @@
 import { useLoaderData } from "react-router-dom";
-import fetchListingsFromFirebase from "../utils/fetchListingsFromFirebase";
-// COMPONENTS
+// utils func
+import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase";
+// components
 import PageLocation from "../components/PageLocation"
+import NoPostedOffersMessage from "../components/offersPage/NoPostedOffersMessage";
 import PostedOffersContainer from "../components/offersPage/PostedOffersContainer";
-import Spinner from "../components/Spinner";
 
 // LOADER
 export const loader = async () => {
-  const postedOffers = await fetchListingsFromFirebase()
-
+  const postedOffers = await fetchAllListingsFromFirebase()
+  // return null
   return postedOffers
 }
 
@@ -23,24 +24,22 @@ const Offers = () => {
       <PageLocation />
 
       <div className="container">
-        {!postedOffers ? (
-          <Spinner />
+        {!postedOffers || postedOffers.length == 0 ? (
+          <NoPostedOffersMessage />
         ) : (
-          postedOffers.length == 0 ? <h1>Nema postavljenih oglasa</h1> : (
-            <>
-              <section className="text-center mb-5">
-                <h1 className="fw-bold mb-2">
-                  Oglasi
-                </h1>
-                <h6 className="text-muted fw-bold">
-                  Trenutno imamo {postedOffers.length} {postedOffers.length == 1 ? "oglas" : 'oglasa'} za nekretnine
-                </h6>
-              </section>  
+          <>
+            <section className="text-center mb-5">
+              <h1 className="fw-bold mb-2">
+                Oglasi
+              </h1>
+              <h6 className="text-muted fw-bold">
+                Trenutno imamo {postedOffers.length} {postedOffers.length == 1 ? "oglas" : 'oglasa'} za nekretnine
+              </h6>
+            </section>
 
-              {/* posted offers - list */}   
-              <PostedOffersContainer />       
-            </>
-          )
+            {/* posted offers - list */}
+            <PostedOffersContainer />
+          </>
         )}
       </div>
     </div>

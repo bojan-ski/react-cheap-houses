@@ -1,23 +1,50 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useLoaderData, useNavigate } from "react-router-dom"
+// firebase/firestore funcs
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+// utils func
+import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase"
+// components
 import PageLocation from "../components/PageLocation"
 import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
+import UserLoggedIn from "../components/profilePage/UserLoggedIn"
 import CreateNewOffer from "../components/profilePage/CreateNewOffer"
+import UserPostedOffersContainer from "../components/profilePage/UserPostedOffersContainer"
+
+// LOADER
+export const loader = async () => {    
+    const userPostedOffers = await fetchUserListingsFromFirebase()
+    
+    return userPostedOffers
+    
+    // const auth = getAuth()
+
+    // if (auth.currentUser) {
+    //     const userPostedOffers = await fetchUserListingsFromFirebase()
+
+    //     console.log(userPostedOffers)
+    //     return { userPostedOffers, auth }
+    // } else {
+    //     console.log('user nije prijavljen');
+    //     return null
+    // }
+}
 
 const Profile = () => {
+    // const { auth } = useLoaderData()
+    // console.log(auth);
+
     const auth = getAuth()
+    const navigate = useNavigate()
     const [userData, setUserData] = useState({
         userID: '',
         userName: ''
     })
-    const navigate = useNavigate()
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 auth.currentUser ? (
-                    // console.log(auth)
                     setUserData({
                         userID: user.uid,
                         userName: user.displayName
@@ -39,33 +66,26 @@ const Profile = () => {
         navigate('/')
     }
 
-    // console.log(userData);
-
     return (
         <div className="profile-page">
             {/* page location component */}
             <PageLocation />
 
             <div className="container">
-                <section className="section-header">
-                    {!userData.userName ? (
-                        <UserNotLoggedIn />
-                    ) : (
-                        <div>
-                            <h1 className="text-center fw-bold">
-                                Dobrodošli {userData.userName.toUpperCase()}
-                            </h1>
-                            <div>
-                                <button className="btn btn-primary my-5" onClick={logOutUser}>
-                                    Log Out
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                </section>
+                {!userData.userName ? (
+                    <UserNotLoggedIn />
+                ) : (
+                    <>
+                        {/* user logged in component */}
+                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} />
 
-                {/* new offer component */}
-                {userData.userName && <CreateNewOffer userID={userData.userID} />}
+                        {/* post new offer component */}
+                        <CreateNewOffer userID={userData.userID} />
+
+                        {/* user posted offers component */}
+                        <UserPostedOffersContainer />
+                    </>
+                )}
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ import { MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 // components
 import ImgsGallery from "../components/selectedOfferPage/ImgsGallery";
-import SelectedImageModal from "../components/selectedOfferPage/SelectedImageModal";
+import SelectedImageModal from "../modals/SelectedImageModal";
 
 export const loader = async ({ params }) => {
     // console.log(params.id);
@@ -97,7 +97,14 @@ const SelectedOffer = () => {
 
                             {/* row item 4 */}
                             <div className="col-12 mb-4">
+                                <h6 className="text-center text-muted mb-3">
+                                    Kliknite na sliku radi bolje preglednosti
+                                </h6>
+
+                                {/* ImgsGallery - component */}
                                 <ImgsGallery imageUrls={imageUrls} setImageSrc={setImageSrc}/>
+
+                                {/* SelectedImageModal - modal */}
                                 <SelectedImageModal imageSrc={imageSrc}/>
                             </div>
                         </div>

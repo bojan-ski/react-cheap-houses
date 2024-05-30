@@ -10,8 +10,9 @@ import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
 // LOADERS
-import { loader as offersLoader } from "./pages/Offers"
+import { loader as allPostedOffersLoader } from "./pages/Offers"
 import { loader as selectedOfferLoader } from "./pages/SelectedOffer"
+import { loader as userPostedOffersLoader } from "./pages/Profile"
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: 'oglasi',
         element: <Offers />,
-        loader: offersLoader
+        loader: allPostedOffersLoader
       },
       {
         path: 'oglasi/:id',
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'moj-nalog',
-        element: <Profile />
+        element: <Profile/>,
+        loader: userPostedOffersLoader
       },
       {
         path: 'blog',
