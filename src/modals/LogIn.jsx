@@ -1,6 +1,8 @@
-import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 import { useNavigate } from 'react-router-dom'
+// firebase/firestore funcs
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+// app asset
+import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 
 const LogIn = () => {
     const navigate = useNavigate()

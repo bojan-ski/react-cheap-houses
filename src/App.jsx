@@ -39,6 +39,11 @@ const router = createBrowserRouter([
         loader: userPostedOffersLoader
       },
       {
+        path: 'moj-nalog/:id',
+        element: <SelectedOffer />,
+        loader: selectedOfferLoader
+      },
+      {
         path: 'blog',
         element: <Blog />
       },

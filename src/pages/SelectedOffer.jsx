@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom"
+import { useLoaderData, useSearchParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 import fetchSelectedOfferDetailsFromFirebase from "../utils/fetchSelectedOfferDetailsFromFirebase";
 // React Icons
@@ -24,13 +24,15 @@ const SelectedOffer = () => {
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedOfferDetails
     const [imageSrc, setImageSrc] = useState('')    
 
+    const urlBackPath = window.location.pathname.split('/').includes('oglasi')
+
     return (
         <>
             <div className="selected-posted-offer-page my-5">
                 <div className="container px-5 rounded-4 border bg-white">
 
                     <section className="d-flex align-items-center justify-content-between my-5">
-                        <Link to='/oglasi' className="btn bg-orange-hover text-white fw-bold px-4">
+                        <Link to={urlBackPath ? '/oglasi' : '/moj-nalog'} className="btn bg-orange-hover text-white fw-bold px-4">
                             Nazad
                         </Link>
                         <h2 className="text-orange fw-bold">

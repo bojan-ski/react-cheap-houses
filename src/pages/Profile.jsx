@@ -12,11 +12,11 @@ import CreateNewOffer from "../components/profilePage/CreateNewOffer"
 import UserPostedOffersContainer from "../components/profilePage/UserPostedOffersContainer"
 
 // LOADER
-export const loader = async () => {    
+export const loader = async () => {
     const userPostedOffers = await fetchUserListingsFromFirebase()
     
     return userPostedOffers
-    
+
     // const auth = getAuth()
 
     // if (auth.currentUser) {
@@ -61,14 +61,12 @@ const Profile = () => {
     }, [userData])
 
     const logOutUser = () => {
-        auth.signOut()
+        if (window.confirm('Da li ste sigurni da želite da se odjavite?')) {
+            auth.signOut()
+        }
 
         // after the user has logged out, the user is redirected to the Dashboard page
         navigate('/')
-    }
-
-    const deletePostedOffer = () => {
-        console.log('delete posted listing');
     }
 
     return (
@@ -82,11 +80,11 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer}/>
+                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer} />
 
                         {/* post new offer component */}
-                         <CreateNewOffer userID={userData.userID} showPostNewOffer={showPostNewOffer}/>
-                        
+                        <CreateNewOffer userID={userData.userID} showPostNewOffer={showPostNewOffer} />
+
                         {/* user posted offers component */}
                         <UserPostedOffersContainer />
                     </>

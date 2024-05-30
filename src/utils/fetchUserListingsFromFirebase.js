@@ -5,6 +5,10 @@ import { db } from "../firebase.config";
 const fetchUserListingsFromFirebase = async () => {
     const auth = getAuth()
     // console.log(auth);
+    // console.log(auth.currentUser);
+
+    if (!auth.currentUser) return null
+    // console.log(auth);
 
     try {
         const offersRef = collection(db, 'listings')

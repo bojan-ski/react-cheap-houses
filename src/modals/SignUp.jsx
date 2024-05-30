@@ -1,7 +1,9 @@
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
+// firebase/firestore funcs
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
+// app asset
 import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
@@ -11,7 +13,7 @@ const SignUp = () => {
         e.preventDefault()
 
         if (e.target.elements[2].value !== e.target.elements[3].value) {
-            alert('both password need to match')
+            alert('both passwords need to match')
         } else {
             const enteredUsername = e.target.elements[0].value.trim()
             const enteredEmail = e.target.elements[1].value.trim()

@@ -1,4 +1,8 @@
+import { useState } from "react"
 import { useLoaderData } from "react-router-dom"
+// firebase/firestore funcs
+import { doc, deleteDoc } from "firebase/firestore"
+import { db } from "../../firebase.config"
 // components
 import PostedOffersGridView from "../offersPage/PostedOffersGridView"
 
@@ -6,50 +10,22 @@ const UserPostedOffersContainer = () => {
     const userOffersList = useLoaderData()
     // console.log(userOffersList);
 
-    // console.log(auth);
+    const [listings, setListings] = useState(userOffersList)
+    
+    const deleteUserPostedListing = async (postedOfferID) => {
+        if (window.confirm('Are you sure you want to delete?')) {
+            await deleteDoc(doc(db, 'listings', postedOfferID))
 
-    // const [isLoading, setIsLoading] = useState(false)
-    // const [userOffersList, setUserOffersList] = useState(null)
+            const updatedListings = listings.filter(listing => listing.id !== postedOfferID)
 
-    // const fetchUserPostedOffers = async () => {
-    //     const offersRef = collection(db, 'listings')
-    //     const q = query(offersRef, where('userRef', '==', auth.currentUser.uid), orderBy('timestamp', 'desc'))
-
-    //     const querySnap = await getDocs(q)
-
-    //     let userOffersList = []
-
-    //     querySnap.forEach((offer) => {
-    //         return userOffersList.push({
-    //             id: offer.id,
-    //             data: offer.data
-    //         })
-    //     })
-
-    //     setUserOffersList(userOffersList)
-    //     setIsLoading(false)
-    // }
-
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //     fetchUserPostedOffers()
-    //     console.log(userOffersList);
-
-    // }, [])
-
-    // if (isLoading) return <Spinner />
-
-    // if(userOffersList.length > 0){
-    //     return <section>
-    //         <h2 className="text-center fw-bold">
-    //             Trenutno nemate objavljenih oglasa
-    //         </h2>
-    //     </section>
-    // } 
+            setListings(updatedListings)
+            console.log('Uspešno ste obrisali Vaš oglas');
+        }
+    }
 
     return (
         <section className="user-posted-offers mb-5">
-            {!userOffersList ? (
+            {!listings || listings.length > 0 ? (
                 <h2 className="fw-bold text-center">
                     Trenutno nemate postavljenih oglasa
                 </h2>
@@ -60,7 +36,7 @@ const UserPostedOffersContainer = () => {
                     </h2>
 
                     {/* user posted offers/listings */}
-                    <PostedOffersGridView postedOffers={userOffersList} />
+                    <PostedOffersGridView postedOffers={listings} deleteUserPostedListing={deleteUserPostedListing}/>
                 </>
             )}
         </section>

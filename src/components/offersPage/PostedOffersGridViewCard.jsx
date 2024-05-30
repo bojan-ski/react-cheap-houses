@@ -7,10 +7,11 @@ import { PiBathtubLight } from 'react-icons/pi'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
-const PostedOffersGridViewCard = (postedOffer) => {
+const PostedOffersGridViewCard = ({ postedOffer, deleteUserPostedListing }) => {
     // console.log(postedOffer);
+    // console.log(postedOffer.data.timestamp);
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice } = postedOffer.data
 
     return (
         <div className="grid-card-posted-offer-details col-12 col-lg-4 p-3 border border-1 rounded-4 text-center text-lg-start">
@@ -26,7 +27,7 @@ const PostedOffersGridViewCard = (postedOffer) => {
                     navigation={true}
                     pagination={{
                         dynamicBullets: true,
-                      }}
+                    }}
                 >
                     {imageUrls?.map((image, idx) => {
                         return (
@@ -79,9 +80,27 @@ const PostedOffersGridViewCard = (postedOffer) => {
                 </div>
             </div>
 
-            <Link to={`/oglasi/${postedOffer.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
-                Detailji
-            </Link>
+            <div className="d-flex align-items-center justify-content-between">
+                {deleteUserPostedListing ? (
+                    <>
+                        <Link to={`/moj-nalog/${postedOffer.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
+                            Detailji
+                        </Link>
+                        <button type="button" className="btn btn-danger fw-bold" onClick={()=>deleteUserPostedListing(postedOffer.id)}>
+                            Obriši oglas
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <Link to={`/oglasi/${postedOffer.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
+                            Detailji
+                        </Link>
+                        <p className="fw-bold mb-0">
+                            {postedOffer.data.timestamp.seconds}
+                        </p>
+                    </>
+                )}
+            </div>
         </div>
     )
 }
