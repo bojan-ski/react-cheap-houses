@@ -23,9 +23,11 @@ const UserPostedOffersContainer = () => {
         }
     }
 
+    // console.log(listings);
+
     return (
         <section className="user-posted-offers mb-5">
-            {!listings || listings.length > 0 ? (
+            {!listings || listings.length == 0 ? (
                 <h2 className="fw-bold text-center">
                     Trenutno nemate postavljenih oglasa
                 </h2>

@@ -72,6 +72,8 @@ const LogIn = () => {
                                         </label>
                                         <input type="password" className="form-control" id="userLogInPassword" placeholder="vaše lozinka" required />
                                     </div>
+
+                                    {/* submit btn */}
                                     <button type="submit" className="log-in-btn btn fw-bolder text-white py-3 w-100 rounded-4">
                                         Prijavite se
                                     </button>

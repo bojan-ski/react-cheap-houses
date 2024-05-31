@@ -99,7 +99,7 @@ textarea {
   background-color: #fff;
 }
 
-#header .navbar .navbar-brand img {
+#header .user-onboarding .navbar-brand img {
   width: 197px;
   height: 48px;
 }
@@ -119,14 +119,14 @@ textarea {
 }
 
 /* #header .navbar .btn-container .btn{ */
-#header .navbar .btn-container .display-signUp-modal,
-#header .navbar .btn-container .display-logIn-modal {
+#header .user-onboarding .btn-container .display-signUp-modal,
+#header .user-onboarding .btn-container .display-logIn-modal {
   font-weight: 500;
   font-size: 0.85rem;
 }
 
-#header .navbar .btn-container .display-signUp-modal:hover,
-#header .navbar .btn-container .display-logIn-modal:hover {
+#header .user-onboarding .btn-container .display-signUp-modal:hover,
+#header .user-onboarding .btn-container .display-logIn-modal:hover {
   color: rgb(226, 151, 31);
   transition: all 0.3s ease;
 }
