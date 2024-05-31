@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
-// firebase/firestore funcs
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+// app context
+import { useGlobalContext } from "../context"
+// firebase/firestore func
+import { onAuthStateChanged } from "firebase/auth"
 // utils func
 import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase"
 // components
@@ -11,10 +12,11 @@ import UserLoggedIn from "../components/profilePage/UserLoggedIn"
 import CreateNewOffer from "../components/profilePage/CreateNewOffer"
 import UserPostedOffersContainer from "../components/profilePage/UserPostedOffersContainer"
 
+
 // LOADER
 export const loader = async () => {
     const userPostedOffers = await fetchUserListingsFromFirebase()
-    
+
     return userPostedOffers
 
     // const auth = getAuth()
@@ -31,11 +33,7 @@ export const loader = async () => {
 }
 
 const Profile = () => {
-    // const { auth } = useLoaderData()
-    // console.log(auth);
-
-    const auth = getAuth()
-    const navigate = useNavigate()
+    const { auth } = useGlobalContext()
     const [userData, setUserData] = useState({
         userID: '',
         userName: ''
@@ -60,15 +58,6 @@ const Profile = () => {
         })
     }, [userData])
 
-    const logOutUser = () => {
-        if (window.confirm('Da li ste sigurni da želite da se odjavite?')) {
-            auth.signOut()
-        }
-
-        // after the user has logged out, the user is redirected to the Dashboard page
-        navigate('/')
-    }
-
     return (
         <div className="profile-page">
             {/* page location component */}
@@ -80,7 +69,7 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userName={userData.userName} logOutUser={logOutUser} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer} />
+                        <UserLoggedIn userName={userData.userName} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer} />
 
                         {/* post new offer component */}
                         <CreateNewOffer userID={userData.userID} showPostNewOffer={showPostNewOffer} />

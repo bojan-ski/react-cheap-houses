@@ -1,4 +1,7 @@
-const UserLoggedIn = ({ userName, logOutUser, showPostNewOffer, setShowPostNewOffer }) => {
+import { useGlobalContext } from "../../context"
+
+const UserLoggedIn = ({ userName, showPostNewOffer, setShowPostNewOffer }) => {
+    const {logOutUser} = useGlobalContext()
 
     return (
         <section className="page-heading my-5">
