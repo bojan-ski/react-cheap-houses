@@ -25,18 +25,44 @@ const PostedOffersContainer = () => {
         }))
     }
 
+    const handleSort = e => {
+        // console.log(e.target.value);
+
+        if (e.target.value == 'svi-oglasi') {
+            setPostedOffersList(curStat => ({
+                ...curStat,
+                displayedListOfPostedOffers: postedOffers
+            }))
+        } else {
+            const sortResults = postedOffers.filter(postedOffer => postedOffer.data.offerType == e.target.value)
+            setPostedOffersList(curStat => ({
+                ...curStat,
+                displayedListOfPostedOffers: sortResults
+            }))
+        }
+    }
+
     return (
         <>
-            <section className="posted-offers-search-container mb-5">
+            <section className="search-filter-posted-offers-container mb-5">
                 <div className="row">
-                    
-                    {/* row item 1 - search feature */}
+
+                    {/* row item 1 - sort */}
+                    <div className="col-2">
+                        <select className="form-select" onChange={handleSort}>
+                            <option value="svi-oglasi">Svi oglasi</option>
+                            <option value="prodajem">Na prodaju</option>
+                            <option value="izdajem">Izdaje se</option>
+                        </select>
+                    </div>
+
+                    {/* row item 2 - search feature */}
                     <div className="col-8">
                         <input type="text" className="form-control" id="searchByPlaceName" onChange={handleSearch} placeholder="Unesite naziv mesta" />
                     </div>
-                    
+
                     {/* row item 2 - display offers (grid view or list view) */}
-                    <div className="col-4 text-end">
+                    <div className="col-2 text-end">
                         <button type='button' className="layout-btn btn text-muted me-2" onClick={() => setLayout('grid')}>
                             <BsGrid3X3Gap size={18} />
                         </button>
@@ -44,10 +70,10 @@ const PostedOffersContainer = () => {
                             <FaListUl size={18} />
                         </button>
                     </div>
-                </div>              
+                </div>
             </section>
 
-            <section className="posted-offers-container">
+            <section className="display-posted-offers-container">
                 {layout === 'grid' ? (
                     <PostedOffersGridView postedOffers={postedOffersList.displayedListOfPostedOffers} />
                 ) : (
