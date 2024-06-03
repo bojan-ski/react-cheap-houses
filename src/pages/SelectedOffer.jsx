@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import fetchSelectedOfferDetailsFromFirebase from "../utils/fetchSelectedOfferDetailsFromFirebase";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
-import { MdOutlineBedroomChild } from 'react-icons/md'
+import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 // components
 import ImgsGallery from "../components/selectedOfferPage/ImgsGallery";
@@ -21,8 +21,8 @@ const SelectedOffer = () => {
     const selectedOfferDetails = useLoaderData()
     // console.log(selectedOfferDetails);  
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedOfferDetails
-    const [imageSrc, setImageSrc] = useState('')    
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedOfferDetails
+    const [imageSrc, setImageSrc] = useState('')
 
     const urlBackPath = window.location.pathname.split('/').includes('oglasi')
 
@@ -70,14 +70,25 @@ const SelectedOffer = () => {
 
                             {/* row item 2 */}
                             <div className="col-12 col-md-6 mb-4">
-                                <p className="mb-0 fw-bold text-muted d-flex align-items-center" >
-                                    <MdOutlineBedroomChild className='me-2' />
-                                    Sobe:<span className="ms-1 fw-bold text-dark">{numRooms}</span>
-                                </p>
-                                <p className="mb-0 fw-bold text-muted d-flex align-items-center">
-                                    <PiBathtubLight className='me-2' />
-                                    Kupatila:<span className="ms-1 fw-bold text-dark">{numBathrooms}</span>
-                                </p>
+                                {propertyType === 'plac' ? (
+                                    <>
+                                        <p className="mb-0 fw-bold text-muted" >
+                                            <MdConfirmationNumber className='me-2' />
+                                            Broj parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
+                                        </p>
+                                    </>
+                                ) : (
+                                    <>
+                                        <p className="mb-0 fw-bold text-muted d-flex align-items-center" >
+                                            <MdOutlineBedroomChild className='me-2' />
+                                            Sobe:<span className="ms-1 fw-bold text-dark">{numRooms}</span>
+                                        </p>
+                                        <p className="mb-0 fw-bold text-muted d-flex align-items-center">
+                                            <PiBathtubLight className='me-2' />
+                                            Kupatila:<span className="ms-1 fw-bold text-dark">{numBathrooms}</span>
+                                        </p>
+                                    </>
+                                )}
                                 <p className="mb-0 fw-bold text-muted d-flex align-items-center">
                                     <LiaTapeSolid className='me-2' />
                                     Kvadratura:<span className="ms-1 fw-bold text-dark"> {squareFootage} m²</span>
@@ -104,10 +115,10 @@ const SelectedOffer = () => {
                                 </h6>
 
                                 {/* ImgsGallery - component */}
-                                <ImgsGallery imageUrls={imageUrls} setImageSrc={setImageSrc}/>
+                                <ImgsGallery imageUrls={imageUrls} setImageSrc={setImageSrc} />
 
                                 {/* SelectedImageModal - modal */}
-                                <SelectedImageModal imageSrc={imageSrc}/>
+                                <SelectedImageModal imageSrc={imageSrc} />
                             </div>
                         </div>
                     </section>

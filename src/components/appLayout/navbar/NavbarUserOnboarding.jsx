@@ -31,7 +31,7 @@ const NavbarUserOnboarding = () => {
                                 </span>
                             </p>
 
-                            <button type="button" className="btn btn-danger fw-bold" onClick={logOutUser}>
+                            <button type="button" className="btn btn-danger px-2 py-1" onClick={logOutUser}>
                                 Odjavi se
                             </button>
                         </>

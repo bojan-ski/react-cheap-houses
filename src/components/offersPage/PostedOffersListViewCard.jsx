@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
-import { MdOutlineBedroomChild } from 'react-icons/md'
+import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
-const PostedOffersListViewCard = ( postedOffer ) => {
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
+const PostedOffersListViewCard = (postedOffer) => {
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
 
     return (
         <div className="col-12 list-card-posted-offer-details p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start">
@@ -40,17 +40,28 @@ const PostedOffersListViewCard = ( postedOffer ) => {
               </p>
             </div> */}
             <div className="list-card-posted-offer-info-3 mb-3 mb-md-0">
-                <p className="mb-0 d-flex align-items-center">
-                    <MdOutlineBedroomChild className='me-2' />
-                    Sobe: {numRooms}
-                </p>
-                <p className="mb-0 d-flex align-items-center">
-                    <PiBathtubLight className='me-2' />
-                    Kupatila: {numBathrooms}
-                </p>
+                {propertyType === 'plac' ? (
+                    <>
+                        <p className="mb-0 d-flex align-items-center" >
+                            <MdConfirmationNumber className='me-2' />
+                            Br. parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
+                        </p>
+                    </>
+                ) : (
+                    <>
+                        <p className="mb-0 d-flex align-items-center">
+                            <MdOutlineBedroomChild className='me-2' />
+                            Sobe: {numRooms}
+                        </p>
+                        <p className="mb-0 d-flex align-items-center">
+                            <PiBathtubLight className='me-2' />
+                            Kupatila: {numBathrooms}
+                        </p>
+                    </>
+                )}
                 <p className="mb-0 d-flex align-items-center">
                     <LiaTapeSolid className='me-2' />
-                    Kvadratura: {squareFootage} m²
+                    Kvadratura: {squareFootage}
                 </p>
             </div>
 

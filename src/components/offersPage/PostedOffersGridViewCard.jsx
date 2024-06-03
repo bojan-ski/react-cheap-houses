@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
-import { MdOutlineBedroomChild } from 'react-icons/md'
+import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -11,7 +11,7 @@ const PostedOffersGridViewCard = ({ postedOffer, deleteUserPostedListing }) => {
     // console.log(postedOffer);
     // console.log(postedOffer.data.timestamp);
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice } = postedOffer.data
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice } = postedOffer.data
 
     return (
         <div className="grid-card-posted-offer-details col-12 col-lg-4 p-3 border border-1 rounded-4 text-center text-lg-start">
@@ -65,17 +65,29 @@ const PostedOffersGridViewCard = ({ postedOffer, deleteUserPostedListing }) => {
                     </h6>
                 </div>
                 <div className="col-6 col-lg-12 grid-card-posted-offer-info-2">
-                    <p className="mb-0" >
-                        <MdOutlineBedroomChild className='me-2' />
-                        Sobe:<span className="ms-1 fw-bold text-dark">{numRooms}</span>
-                    </p>
-                    <p className="mb-0">
-                        <PiBathtubLight className='me-2' />
-                        Kupatila:<span className="ms-1 fw-bold text-dark">{numBathrooms}</span>
-                    </p>
+                {propertyType === 'plac' ? (    
+                    <>
+                        <p></p>
+                        <p className="mb-0" >
+                            <MdConfirmationNumber className='me-2' />
+                            Broj parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
+                        </p>
+                    </>
+                ):(
+                    <>
+                        <p className="mb-0" >
+                            <MdOutlineBedroomChild className='me-2' />
+                            Sobe:<span className="ms-1 fw-bold text-dark">{numRooms}</span>
+                        </p>
+                        <p className="mb-0">
+                            <PiBathtubLight className='me-2' />
+                            Kupatila:<span className="ms-1 fw-bold text-dark">{numBathrooms}</span>
+                        </p>                    
+                    </>
+                )}
                     <p className="mb-0">
                         <LiaTapeSolid className='me-2' />
-                        Kvadratura:<span className="ms-1 fw-bold text-dark"> {squareFootage} m²</span>
+                        Kvadratura:<span className="ms-1 fw-bold text-dark"> {squareFootage} </span>
                     </p>
                 </div>
             </div>
