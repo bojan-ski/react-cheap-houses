@@ -263,7 +263,7 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
                                             placeholder="Broj parcele"
                                         />
                                     </div>
-                                    
+
                                     {/* square footage */}
                                     <div className="mb-3">
                                         <label className='form-label fw-bold'>
@@ -279,59 +279,59 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
                                         />
                                     </div>
                                 </>
-                            ):(
-                            <>
-                                {/* number of rooms */}
-                                <div className="mb-3">
-                                    <label className='form-label fw-bold'>
-                                        Ukupan broj soba
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        type='number'
-                                        id='numRooms'
-                                        value={numRooms}
-                                        onChange={onMutate}
-                                        min='1'
-                                        max='15'
-                                        placeholder="0"
-                                    />
-                                </div>
+                            ) : (
+                                <>
+                                    {/* number of rooms */}
+                                    <div className="mb-3">
+                                        <label className='form-label fw-bold'>
+                                            Ukupan broj soba
+                                        </label>
+                                        <input
+                                            className='form-control'
+                                            type='number'
+                                            id='numRooms'
+                                            value={numRooms}
+                                            onChange={onMutate}
+                                            min='1'
+                                            max='15'
+                                            placeholder="0"
+                                        />
+                                    </div>
 
-                                {/* number of bathrooms */}
-                                <div className="mb-3">
-                                    <label className='form-label fw-bold'>
-                                        Ukupan broj kupatila
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        type='number'
-                                        id='numBathrooms'
-                                        value={numBathrooms}
-                                        onChange={onMutate}
-                                        min='1'
-                                        max='5'
-                                        placeholder="0"
-                                    />
-                                </div>
+                                    {/* number of bathrooms */}
+                                    <div className="mb-3">
+                                        <label className='form-label fw-bold'>
+                                            Ukupan broj kupatila
+                                        </label>
+                                        <input
+                                            className='form-control'
+                                            type='number'
+                                            id='numBathrooms'
+                                            value={numBathrooms}
+                                            onChange={onMutate}
+                                            min='1'
+                                            max='5'
+                                            placeholder="0"
+                                        />
+                                    </div>
 
-                                {/* square footage */}
-                                <div className="mb-3">
-                                    <label className='form-label fw-bold'>
-                                        Prostor (metara kvadratnih)
-                                    </label>
-                                    <input
-                                        className='form-control'
-                                        type='number'
-                                        id='squareFootage'
-                                        value={squareFootage}
-                                        onChange={onMutate}
-                                        // min='10'
-                                        // max='10000'
-                                        placeholder="Kvadratura imovine"
-                                    />
-                                </div>
-                            </>                            
+                                    {/* square footage */}
+                                    <div className="mb-3">
+                                        <label className='form-label fw-bold'>
+                                            Prostor (metara kvadratnih)
+                                        </label>
+                                        <input
+                                            className='form-control'
+                                            type='number'
+                                            id='squareFootage'
+                                            value={squareFootage}
+                                            onChange={onMutate}
+                                            // min='10'
+                                            // max='10000'
+                                            placeholder="Kvadratura imovine"
+                                        />
+                                    </div>
+                                </>
                             )}
 
                             {/* property address */}
