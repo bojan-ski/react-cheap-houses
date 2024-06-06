@@ -3,20 +3,18 @@ import { useLoaderData } from "react-router-dom";
 import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase";
 // components
 import PageLocation from "../components/PageLocation"
-import NoPostedOffersMessage from "../components/offersPage/NoPostedOffersMessage";
-import PostedOffersContainer from "../components/offersPage/PostedOffersContainer";
+import NoPostedListingsMessage from "../components/postedListingsPage/NoPostedListingsMessage";
+import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
 
 // LOADER
 export const loader = async () => {
-  const postedOffers = await fetchAllListingsFromFirebase()
-  // return null
-  return postedOffers
+  const allPostedListings = await fetchAllListingsFromFirebase()
+
+  return allPostedListings
 }
 
-const Offers = () => {
-  const postedOffers = useLoaderData()
-  // console.log(postedOffers);
-  // console.log(postedOffers.length);
+const PostedListings = () => {
+  const allPostedListings = useLoaderData()
 
   return (
     <div className="offers-page">
@@ -24,8 +22,8 @@ const Offers = () => {
       <PageLocation />
 
       <div className="container">
-        {!postedOffers || postedOffers.length == 0 ? (
-          <NoPostedOffersMessage />
+        {!allPostedListings || allPostedListings.length == 0 ? (
+          <NoPostedListingsMessage />
         ) : (
           <>
             <section className="text-center mb-5">
@@ -33,12 +31,12 @@ const Offers = () => {
                 Oglasi
               </h1>
               <h6 className="text-muted fw-bold">
-                Trenutno imamo {postedOffers.length} {postedOffers.length == 1 ? "oglas" : 'oglasa'} za nekretnine
+                Trenutno imamo {allPostedListings.length} {allPostedListings.length == 1 ? "oglas" : 'oglasa'} za nekretnine
               </h6>
             </section>
 
             {/* posted offers - list */}
-            <PostedOffersContainer />
+            <PostedListingsContainer />
           </>
         )}
       </div>
@@ -46,4 +44,4 @@ const Offers = () => {
   )
 }
 
-export default Offers
+export default PostedListings

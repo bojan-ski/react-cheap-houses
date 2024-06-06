@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom"
 import { doc, deleteDoc } from "firebase/firestore"
 import { db } from "../../firebase.config"
 // components
-import PostedOffersGridView from "../offersPage/PostedOffersGridView"
+import AllPostedListingsGridView from "../AllPostedListingsGridView"
 
 const UserPostedOffersContainer = () => {
     const userOffersList = useLoaderData()
@@ -38,7 +38,7 @@ const UserPostedOffersContainer = () => {
                     </h2>
 
                     {/* user posted offers/listings */}
-                    <PostedOffersGridView postedOffers={listings} deleteUserPostedListing={deleteUserPostedListing}/>
+                    <AllPostedListingsGridView postedOffers={listings} deleteUserPostedListing={deleteUserPostedListing}/>
                 </>
             )}
         </section>

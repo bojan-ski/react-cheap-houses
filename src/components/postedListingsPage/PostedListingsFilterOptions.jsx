@@ -4,12 +4,8 @@ import { useLoaderData } from "react-router-dom"
 import districts from "../../data/districts";
 import propertyTypes from '../../data/propertyTypes'
 
-const FilterOptions = ({ allPostedListings, setAllPostedListings }) => {
-    const postedOffers = useLoaderData()
-
-    // console.log(allPostedListings);
-    // console.log(setAllPostedListings);
-    // console.log(postedOffers);
+const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPostedListings }) => {
+    const allPostedListings = useLoaderData()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
@@ -32,36 +28,31 @@ const FilterOptions = ({ allPostedListings, setAllPostedListings }) => {
 
     const handleSubmittedFilterOptions = e => {
         e.preventDefault();
-
         const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
-        // console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
 
         if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
-            setAllPostedListings(postedOffers)
+            setDisplayAllPostedListings(allPostedListings)
         } else {
             setFilterOptionsApplied(true)
 
             if (selectedOfferType !== 'Svi oglasi') {
-                const filterResult = allPostedListings.filter(listing => listing.data.offerType == selectedOfferType)
-                // console.log(filterResult);
-                setAllPostedListings(filterResult)
+                const filterResult = displayAllPostedListings.filter(listing => listing.data.offerType == selectedOfferType)
+                setDisplayAllPostedListings(filterResult)
             }
             if (selectedPropertyType !== 'Svi tipovi imovine') {
-                const filterResult = allPostedListings.filter(listing => listing.data.propertyType == selectedPropertyType)
-                // console.log(filterResult);
-                setAllPostedListings(filterResult)
+                const filterResult = displayAllPostedListings.filter(listing => listing.data.propertyType == selectedPropertyType)
+                setDisplayAllPostedListings(filterResult)
             }
             if (selectedDistrict !== 'Svi okruzi') {
-                const filterResult = allPostedListings.filter(listing => listing.data.propertyDistrict == selectedDistrict)
-                // console.log(filterResult);
-                setAllPostedListings(filterResult)
+                const filterResult = displayAllPostedListings.filter(listing => listing.data.propertyDistrict == selectedDistrict)
+                setDisplayAllPostedListings(filterResult)
             }
         }
     }
 
     // reset function
     const handleResetFilterOptions = () => {
-        setAllPostedListings(postedOffers)
+        setDisplayAllPostedListings(allPostedListings)
         setFilterOptionsApplied(false)
         setSelectedFilterOptions({
             selectedOfferType: 'Svi oglasi',
@@ -123,4 +114,4 @@ const FilterOptions = ({ allPostedListings, setAllPostedListings }) => {
     )
 }
 
-export default FilterOptions
+export default PostedListingsFilterOptions

@@ -1,4 +1,4 @@
-const NoPostedOffersMessage = () => {
+const NoPostedListingsMessage = () => {
     return (
         <div className=" text-center my-5">
             <h1 className="fw-bold">
@@ -11,4 +11,4 @@ const NoPostedOffersMessage = () => {
     )
 }
 
-export default NoPostedOffersMessage
+export default NoPostedListingsMessage

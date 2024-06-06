@@ -4,8 +4,8 @@ import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
-const PostedOffersListViewCard = (postedOffer) => {
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedOffer.data
+const PostedListingListViewCard = (postedListing) => {
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedListing.data
 
     return (
         <div className="col-12 list-card-posted-offer-details p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start">
@@ -65,11 +65,11 @@ const PostedOffersListViewCard = (postedOffer) => {
                 </p>
             </div>
 
-            <Link to={`/oglasi/${postedOffer.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
+            <Link to={`/oglasi/${postedListing.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
                 Detailji
             </Link>
         </div>
     )
 }
 
-export default PostedOffersListViewCard
+export default PostedListingListViewCard

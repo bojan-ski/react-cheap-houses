@@ -3,14 +3,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom"
 // PAGES
 import AppLayout from "./pages/AppLayout"
 import Dashboard from "./pages/Dashboard"
-import Offers from "./pages/Offers"
+import PostedListings from "./pages/PostedListings"
 import SelectedOffer from "./pages/SelectedOffer"
 import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 
 // LOADERS
-import { loader as allPostedOffersLoader } from "./pages/Offers"
+import { loader as allPostedListingsLoader } from "./pages/PostedListings"
 import { loader as selectedOfferLoader } from "./pages/SelectedOffer"
 import { loader as userPostedOffersLoader } from "./pages/Profile"
 
@@ -25,8 +25,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'oglasi',
-        element: <Offers />,
-        loader: allPostedOffersLoader
+        element: <PostedListings />,
+        loader: allPostedListingsLoader
       },
       {
         path: 'oglasi/:id',
