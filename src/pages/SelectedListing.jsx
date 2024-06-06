@@ -1,27 +1,25 @@
 import { useState } from "react";
-import { useLoaderData, useSearchParams } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
 import { Link } from "react-router-dom";
-import fetchSelectedOfferDetailsFromFirebase from "../utils/fetchSelectedOfferDetailsFromFirebase";
+import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 // components
-import ImgsGallery from "../components/selectedOfferPage/ImgsGallery";
+import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
 import SelectedImageModal from "../modals/SelectedImageModal";
 
 export const loader = async ({ params }) => {
-    // console.log(params.id);
-    const selectedOfferDetails = await fetchSelectedOfferDetailsFromFirebase(params.id)
+    const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
 
-    return selectedOfferDetails
+    return selectedListingDetails
 }
 
-const SelectedOffer = () => {
-    const selectedOfferDetails = useLoaderData()
-    // console.log(selectedOfferDetails);  
+const SelectedListing = () => {
+    const selectedListingDetails = useLoaderData() 
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedOfferDetails
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
     const [imageSrc, setImageSrc] = useState('')
 
     const urlBackPath = window.location.pathname.split('/').includes('oglasi')
@@ -115,7 +113,7 @@ const SelectedOffer = () => {
                                 </h6>
 
                                 {/* ImgsGallery - component */}
-                                <ImgsGallery imageUrls={imageUrls} setImageSrc={setImageSrc} />
+                                <ImagesGallery imageUrls={imageUrls} setImageSrc={setImageSrc} />
 
                                 {/* SelectedImageModal - modal */}
                                 <SelectedImageModal imageSrc={imageSrc} />
@@ -128,4 +126,4 @@ const SelectedOffer = () => {
     )
 }
 
-export default SelectedOffer
+export default SelectedListing

@@ -6,28 +6,25 @@ import { db } from "../../firebase.config"
 // components
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 
-const UserPostedOffersContainer = () => {
+const UserPostedListingsContainer = () => {
     const userOffersList = useLoaderData()
-    // console.log(userOffersList);
 
-    const [listings, setListings] = useState(userOffersList)
+    const [userPostedListings, setUserPostedListings] = useState(userOffersList)
     
     const deleteUserPostedListing = async (postedOfferID) => {
         if (window.confirm('Are you sure you want to delete?')) {
             await deleteDoc(doc(db, 'listings', postedOfferID))
 
-            const updatedListings = listings.filter(listing => listing.id !== postedOfferID)
+            const updatedListings = userPostedListings.filter(listing => listing.id !== postedOfferID)
 
-            setListings(updatedListings)
+            setUserPostedListings(updatedListings)
             console.log('Uspešno ste obrisali Vaš oglas');
         }
     }
 
-    // console.log(listings);
-
     return (
         <section className="user-posted-offers mb-5">
-            {!listings || listings.length == 0 ? (
+            {!userPostedListings || userPostedListings.length == 0 ? (
                 <h2 className="fw-bold text-center">
                     Trenutno nemate postavljenih oglasa
                 </h2>
@@ -37,12 +34,12 @@ const UserPostedOffersContainer = () => {
                         Moji oglasi
                     </h2>
 
-                    {/* user posted offers/listings */}
-                    <AllPostedListingsGridView postedOffers={listings} deleteUserPostedListing={deleteUserPostedListing}/>
+                    {/* user posted listings */}
+                    <AllPostedListingsGridView allPostedListings={userPostedListings} deleteUserPostedListing={deleteUserPostedListing}/>
                 </>
             )}
         </section>
     )
 }
 
-export default UserPostedOffersContainer
+export default UserPostedListingsContainer

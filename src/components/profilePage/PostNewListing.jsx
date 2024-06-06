@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-// import { v4 as uuidv4 } from 'uuid';
-
 // firebase/firestore funcs
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from '../../firebase.config'
@@ -13,8 +10,7 @@ import Spinner from "../Spinner"
 // imported data
 import districts from "../../data/districts";
 
-const CreateNewOffer = ({ userID, showPostNewOffer }) => {
-    // console.log(userID);
+const PostNewListing = ({ userID, showPostNewListingForm }) => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -46,7 +42,7 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
             }))
         }
 
-        // text or nums
+        // text or numbers
         if (!e.target.files) {
             setFormData(prevState => ({
                 ...prevState,
@@ -66,42 +62,6 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
             return
         }
 
-        // store images in firebase
-        // const storeUploadedImage = async (uploadedImage) => {
-        //     return new Promise((resolve, reject) => {
-        //         const storage = getStorage();
-
-        //         const uploadedImageName = `${uploadedImage.name}-${uuidv4()}`;
-
-        //         const storageRef = ref(storage, `images/${uploadedImageName}`);
-
-        //         const uploadTask = uploadBytesResumable(storageRef, uploadedImage);
-
-        //         uploadTask.on('state_changed',
-        //             (snapshot) => {
-        //                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        //                 console.log('Upload is ' + progress + '% done');
-        //                 switch (snapshot.state) {
-        //                     case 'paused':
-        //                         console.log('Upload is paused');
-        //                         break;
-        //                     case 'running':
-        //                         console.log('Upload is running');
-        //                         break;
-        //                 }
-        //             },
-        //             (error) => {
-        //                 reject(error)
-        //             },
-        //             () => {
-        //                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        //                     resolve(downloadURL);
-        //                 });
-        //             }
-        //         );
-        //     })
-        // }
-
         const imageUrls = await Promise.all(
             [...propertyImages].map(uploadedImage => storeUploadedImage(uploadedImage))
         ).catch(() => {
@@ -109,7 +69,6 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
             console.log('greska prilikom upload images');
             return
         })
-        // console.log(imageUrls);
 
         const formDataCopy = {
             ...formData,
@@ -121,8 +80,6 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
 
         const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
 
-        // console.log(formData);
-        // console.log(formDataCopy);
         setIsLoading(false)
 
         // success message
@@ -135,7 +92,7 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
     if (isLoading) return <Spinner />
 
     return (
-        <section className={!showPostNewOffer ? "create-new-offer hide my-5" : "create-new-offer my-5"} >
+        <section className={!showPostNewListingForm ? "create-new-offer hide my-5" : "create-new-offer my-5"} >
             <h2 className="text-center fw-bold mb-4">
                 Postavi novi oglas
             </h2>
@@ -146,6 +103,7 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
 
                         {/* row item 1 */}
                         <div className="col-12 col-md-6">
+
                             {/* offer type */}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
@@ -462,12 +420,10 @@ const CreateNewOffer = ({ userID, showPostNewOffer }) => {
                     <button type='submit' className='w-100 btn btn-primary'>
                         Objavi Oglas
                     </button>
-                    {/* <div className="create-new-offer-form-submit-btn text-center">
-                    </div> */}
                 </form>
             </div>
         </section>
     )
 }
 
-export default CreateNewOffer
+export default PostNewListing

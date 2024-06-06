@@ -16,17 +16,17 @@ const fetchUserListingsFromFirebase = async () => {
 
         const querySnap = await getDocs(q)
 
-        let userOffersList = []
+        let userPostedListings = []
 
         querySnap.forEach((offer) => {
-            return userOffersList.push({
+            return userPostedListings.push({
                 id: offer.id,
                 data: offer.data()
             })
         })
-        // console.log(userOffersList);
+        // console.log(userPostedListings);
 
-        return userOffersList
+        return userPostedListings
     } catch (error) {
         console.log(error)
         console.log('Could not fetch user data')

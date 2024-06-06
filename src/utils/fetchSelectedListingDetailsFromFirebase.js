@@ -1,7 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 
-const fetchSelectedOfferDetailsFromFirebase = async (id) => {
+const fetchSelectedListingDetailsFromFirebase = async (id) => {
     try {
         const docRef = doc(db, "listings", id);
         const docSnap = await getDoc(docRef);
@@ -14,4 +14,4 @@ const fetchSelectedOfferDetailsFromFirebase = async (id) => {
     }
 }
 
-export default fetchSelectedOfferDetailsFromFirebase
+export default fetchSelectedListingDetailsFromFirebase

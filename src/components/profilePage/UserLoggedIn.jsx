@@ -1,6 +1,6 @@
 import { useGlobalContext } from "../../context"
 
-const UserLoggedIn = ({ userName, showPostNewOffer, setShowPostNewOffer }) => {
+const UserLoggedIn = ({ userName, showPostNewListingForm, setShowPostNewListingForm }) => {
     const {logOutUser} = useGlobalContext()
 
     return (
@@ -20,7 +20,7 @@ const UserLoggedIn = ({ userName, showPostNewOffer, setShowPostNewOffer }) => {
                     <h5 className="text-muted mb-3">
                         Ako zelite objaviti Vaš oglas:
                     </h5>
-                    <button className="btn bg-orange-hover text-white fw-bold" onClick={()=>setShowPostNewOffer(!showPostNewOffer)}>
+                    <button className="btn bg-orange-hover text-white fw-bold" onClick={()=>setShowPostNewListingForm(!showPostNewListingForm)}>
                         Postavi oglas
                     </button>
                 </div>

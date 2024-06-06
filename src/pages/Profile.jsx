@@ -9,23 +9,22 @@ import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebas
 import PageLocation from "../components/PageLocation"
 import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
 import UserLoggedIn from "../components/profilePage/UserLoggedIn"
-import CreateNewOffer from "../components/profilePage/CreateNewOffer"
-import UserPostedOffersContainer from "../components/profilePage/UserPostedOffersContainer"
-
+import PostNewListing from "../components/profilePage/PostNewListing"
+import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer"
 
 // LOADER
 export const loader = async () => {
-    const userPostedOffers = await fetchUserListingsFromFirebase()
+    const userPostedListings = await fetchUserListingsFromFirebase()
 
-    return userPostedOffers
+    return userPostedListings
 
     // const auth = getAuth()
 
     // if (auth.currentUser) {
-    //     const userPostedOffers = await fetchUserListingsFromFirebase()
+    //     const userPostedListings = await fetchUserListingsFromFirebase()
 
-    //     console.log(userPostedOffers)
-    //     return { userPostedOffers, auth }
+    //     console.log(userPostedListings)
+    //     return { userPostedListings, auth }
     // } else {
     //     console.log('user nije prijavljen');
     //     return null
@@ -38,7 +37,7 @@ const Profile = () => {
         userID: '',
         userName: ''
     })
-    const [showPostNewOffer, setShowPostNewOffer] = useState(false)
+    const [showPostNewListingForm, setShowPostNewListingForm] = useState(false)
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -69,13 +68,13 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userName={userData.userName} showPostNewOffer={showPostNewOffer} setShowPostNewOffer={setShowPostNewOffer} />
+                        <UserLoggedIn userName={userData.userName} showPostNewListingForm={showPostNewListingForm} setShowPostNewListingForm={setShowPostNewListingForm} />
 
                         {/* post new offer component */}
-                        <CreateNewOffer userID={userData.userID} showPostNewOffer={showPostNewOffer} />
+                        <PostNewListing userID={userData.userID} showPostNewListingForm={showPostNewListingForm} />
 
                         {/* user posted offers component */}
-                        <UserPostedOffersContainer />
+                        <UserPostedListingsContainer/>
                     </>
                 )}
             </div>
