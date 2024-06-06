@@ -27,11 +27,12 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         propertyDistrict: '',
         propertyImages: [],
         askingPrice: '',
+        contactFullName: '',
         contactPhoneNumber: '',
         contactEmailAddress: '',
     })
 
-    const { offerType, propertyType, propertyName, lotNumber, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactPhoneNumber, contactEmailAddress } = formData
+    const { offerType, propertyType, propertyName, lotNumber, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactFullName, contactPhoneNumber, contactEmailAddress } = formData
 
     const onMutate = (e) => {
         // images - files
@@ -196,7 +197,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     id='propertyName'
                                     value={propertyName}
                                     onChange={onMutate}
-                                    maxLength='50'
+                                    maxLength='30'
                                     minLength='8'
                                     placeholder="Porodična kuća, jednoiposoban stan ..."
                                     required
@@ -216,9 +217,8 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             id='lotNumber'
                                             value={lotNumber}
                                             onChange={onMutate}
-                                            // min='10'
-                                            // max='10000'
                                             placeholder="Broj parcele"
+                                            required
                                         />
                                     </div>
 
@@ -234,6 +234,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             value={squareFootage}
                                             onChange={onMutate}
                                             placeholder="Površina"
+                                            required
                                         />
                                     </div>
                                 </>
@@ -253,6 +254,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             min='1'
                                             max='15'
                                             placeholder="0"
+                                            required
                                         />
                                     </div>
 
@@ -270,6 +272,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             min='1'
                                             max='5'
                                             placeholder="0"
+                                            required
                                         />
                                     </div>
 
@@ -287,6 +290,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             // min='10'
                                             // max='10000'
                                             placeholder="Kvadratura imovine"
+                                            required
                                         />
                                     </div>
                                 </>
@@ -297,7 +301,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                 <label className='form-label fw-bold'>
                                     Adresa
                                 </label>
-                                <textarea
+                                <input
                                     className='form-control'
                                     type='text'
                                     id='propertyAddress'
@@ -307,16 +311,13 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     required
                                 />
                             </div>
-                        </div>
 
-                        {/* row item 2 */}
-                        <div className="col-12 col-md-6">
                             {/* property location */}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
                                     Lokacija
                                 </label>
-                                <textarea
+                                <input
                                     className='form-control'
                                     type='text'
                                     id='propertyLocation'
@@ -326,6 +327,10 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     required
                                 />
                             </div>
+                        </div>
+
+                        {/* row item 2 */}
+                        <div className="col-12 col-md-6">
 
                             {/* property district */}
                             <div className="mb-3">
@@ -384,6 +389,22 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                 <h4 className="fw-bold">
                                     Kontakt informacije:
                                 </h4>
+
+                                {/* owner full name */}
+                                <div className="mb-3">
+                                    <label className='form-label fw-bold'>
+                                        Vaše ime i prezime
+                                    </label>
+                                    <input
+                                        className='form-control'
+                                        type='text'
+                                        id='contactFullName'
+                                        value={contactFullName}
+                                        onChange={onMutate}
+                                        required
+                                    />
+                                </div>
+
                                 {/* contact phone */}
                                 <div className="mb-3">
                                     <label className='form-label fw-bold'>
@@ -398,6 +419,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                         required
                                     />
                                 </div>
+
                                 {/* contact email */}
                                 <div>
                                     <label className='form-label fw-bold'>

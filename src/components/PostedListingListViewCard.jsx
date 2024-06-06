@@ -8,18 +8,23 @@ const PostedListingListViewCard = (postedListing) => {
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedListing.data
 
     return (
-        <div className="col-12 list-card-posted-offer-details p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start">
-            <h4 className="text-orange fw-bold mb-2 mb-md-0">
-                {offerType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
-            </h4>
-
-            <div className="list-card-posted-offer-image d-none d-lg-block">
+        <div className="col-12 list-card p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start mb-3">
+            {offerType === 'izdajem' ? (
+                <h4 className="text-orange fw-bold mb-2 mb-md-0 mx-0 mx-md-3">
+                    IZDAJE SE
+                </h4>
+            ) : (
+                <h4 className="text-orange fw-bold mb-2 mb-md-0">
+                    NA PRODAJU
+                </h4>
+            )}
+            <div className="list-card-image d-none d-lg-block">
                 <img src={imageUrls[0]} alt="slike-imovine" className="rounded-4" />
             </div>
 
-            <div className="list-card-posted-offer-info-1 mb-3 mb-md-0">
+            <div className="mb-3 mb-md-0">
                 <h6 className="fw-bold text-orange">
-                    {askingPrice} EUR {offerType === 'izdajem' ? 'mesečno' : ''}
+                    {askingPrice} EUR {offerType === 'izdajem' ? 'mes.' : ''}
                 </h6>
                 <h6 className='capitalize'>
                     {propertyType}
@@ -28,7 +33,7 @@ const PostedListingListViewCard = (postedListing) => {
                     {propertyName}
                 </h6>
             </div>
-            {/* <div className="list-card-posted-offer-info-2 mb-3 mb-md-0">
+            {/* <div className="mb-3 mb-md-0">
               <p className='mb-0 fw-bold'>
                 Adresa: <span className='text-dark capitalize'>{propertyAddress}</span>
               </p>
@@ -39,12 +44,15 @@ const PostedListingListViewCard = (postedListing) => {
                 Okrug: <span className='text-dark capitalize'>{propertyDistrict}</span>
               </p>
             </div> */}
-            <div className="list-card-posted-offer-info-3 mb-3 mb-md-0">
+            <div className="mb-3 mb-md-0">
                 {propertyType === 'plac' ? (
                     <>
                         <p className="mb-0 d-flex align-items-center" >
-                            <MdConfirmationNumber className='me-2' />
-                            Br. parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
+                            <MdConfirmationNumber className='me-2 text-muted' />
+                            Br. parcele:
+                        </p>
+                        <p className='mb-0 fw-bold text-dark'>
+                            {lotNumber}
                         </p>
                     </>
                 ) : (
@@ -61,7 +69,7 @@ const PostedListingListViewCard = (postedListing) => {
                 )}
                 <p className="mb-0 d-flex align-items-center">
                     <LiaTapeSolid className='me-2' />
-                    Kvadratura: {squareFootage}
+                    Prostor: {squareFootage}
                 </p>
             </div>
 

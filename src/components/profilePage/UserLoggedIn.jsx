@@ -1,13 +1,13 @@
 import { useGlobalContext } from "../../context"
 
 const UserLoggedIn = ({ userName, showPostNewListingForm, setShowPostNewListingForm }) => {
-    const {logOutUser} = useGlobalContext()
+    const { logOutUser } = useGlobalContext()
 
     return (
         <section className="page-heading my-5">
             <div className="mb-4">
                 <h2 className="text-center fw-bold">
-                    Dobrodošli 
+                    Dobrodošli
                 </h2>
                 <h2 className="text-center fw-bold">
                     {userName.toUpperCase()}
@@ -20,7 +20,7 @@ const UserLoggedIn = ({ userName, showPostNewListingForm, setShowPostNewListingF
                     <h5 className="text-muted mb-3">
                         Ako zelite objaviti Vaš oglas:
                     </h5>
-                    <button className="btn bg-orange-hover text-white fw-bold" onClick={()=>setShowPostNewListingForm(!showPostNewListingForm)}>
+                    <button className="btn bg-orange-hover text-white fw-bold" onClick={() => setShowPostNewListingForm(!showPostNewListingForm)}>
                         Postavi oglas
                     </button>
                 </div>
@@ -34,7 +34,7 @@ const UserLoggedIn = ({ userName, showPostNewListingForm, setShowPostNewListingF
                         Odjavi se
                     </button>
                 </div>
-                
+
             </div>
         </section>
     )

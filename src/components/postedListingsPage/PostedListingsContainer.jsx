@@ -33,12 +33,12 @@ const PostedListingsContainer = () => {
                     </div>
 
                     {/* row item 2 - search feature */}
-                    <div className="col-12 col-sm-8 mb-3">
+                    <div className="col-12 col-sm-9 mb-3">
                         <input type="text" className="form-control" id="searchByPlaceName" onChange={handleSearch} placeholder="Unesite naziv mesta" />
                     </div>
 
                     {/* row item 3 - display listings (grid view or list view) */}
-                    <div className="col-12 col-sm-4 text-end">
+                    <div className="col-12 col-sm-3 text-end">
                         <button type='button' className="layout-btn btn text-muted me-2" onClick={() => setLayout('grid')}>
                             <BsGrid3X3Gap size={18} />
                         </button>
@@ -49,12 +49,10 @@ const PostedListingsContainer = () => {
                 </div>
             </section>
 
-            <section className="display-posted-offers-container">
+            <section className="display-posted-offers-container mb-5">
                 {layout === 'grid' ? (
-                    // <PostedOffersGridView postedOffers={allPostedListings} />
                     <AllPostedListingsGridView allPostedListings={displayAllPostedListings} />
                 ) : (
-                    // <PostedOffersListView allPostedListings={allPostedListings} />
                     <AllPostedListingsListView allPostedListings={displayAllPostedListings} />
                 )}
             </section>

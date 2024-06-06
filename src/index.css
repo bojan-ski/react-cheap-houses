@@ -293,32 +293,46 @@ main {
   color: #fff;
 }
 
-/* PostedOffersGridViewCard component */
-.grid-card-posted-offer-details .grid-card-posted-offer-images {
+/* PostedListingGridViewCard component */
+.grid-card .grid-card-details{
+  background-color: #fff;
+  box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
+  margin: 5px;
+  padding: 25px;
+  border: 1px solid var(--gray-color);
+  border-radius: 25px;
+}
+
+.grid-card .grid-card-details-images {
   height: 300px;
 }
-/* .grid-card-posted-offer-details .grid-card-posted-offer-images .grid-card-posted-offer-image {
+/* .grid-card .grid-card-details-images .grid-card-details-image {
   position: relative;
   height: 400px;
 } */
 
-/* PostedOffersListViewCard component */
-.list-card-posted-offer-details p {
+/* PostedListingListViewCard component */
+.list-card{
+  background-color: #fff;
+  box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
+}
+
+.list-card p {
   font-size: 0.85rem;
 }
 
-.list-card-posted-offer-details .list-card-posted-offer-image {
+.list-card .list-card-image {
   height: 75px;
   width: 75px;
   overflow: hidden;
 }
 
-.list-card-posted-offer-details .list-card-posted-offer-image img {
+.list-card .list-card-image img {
   height: 100%;
   width: 100%;
 }
 
-/* SELECTED OFFER PAGE */
+/* SELECTED LISTING PAGE */
 .swiper-container {
   height: 500px;
   width: 100%;

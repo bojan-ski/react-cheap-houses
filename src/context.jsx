@@ -27,8 +27,8 @@ export const AppProvider = ({ children }) => {
     }
 
     return <AppContext.Provider value={{
-        auth,
-        logOutUser,
+        auth, // NavbarUserOnboarding, Profile
+        logOutUser, // NavbarUserOnboarding, UserLoggedIn
     }}>
         {children}
     </AppContext.Provider>

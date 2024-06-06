@@ -10,7 +10,6 @@ import SignUp from '../../../modals/SignUp'
 import LogIn from '../../../modals/LogIn'
 import ForgotPassword from '../../../modals/ForgotPassword'
 
-
 const NavbarUserOnboarding = () => {
     const { auth, logOutUser } = useGlobalContext()
 
