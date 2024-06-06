@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
 import { getAuth, signOut } from 'firebase/auth'
@@ -26,7 +26,10 @@ export const AppProvider = ({ children }) => {
         }
     }
 
-    return <AppContext.Provider value={{ auth, logOutUser }}>
+    return <AppContext.Provider value={{
+        auth,
+        logOutUser,
+    }}>
         {children}
     </AppContext.Provider>
 }

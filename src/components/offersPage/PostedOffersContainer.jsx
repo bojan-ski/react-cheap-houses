@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLoaderData } from 'react-router-dom'
 // components
 import PostedOffersGridView from "./PostedOffersGridView"
@@ -10,78 +10,87 @@ import { BsGrid3X3Gap } from "react-icons/bs"
 import districts from "../../data/districts";
 import propertyTypes from '../../data/propertyTypes'
 
+
+import { useGlobalContext } from "../../context"
+import FilterOptions from "./FilterOptions"
+
 const PostedOffersContainer = () => {
     const postedOffers = useLoaderData()
-    const [currentListOfPostedOffers, setCurrentListOfPostedOffers] = useState(postedOffers)
+    // const {allPostedListings, setAllPostedListings} = useGlobalContext()
+
+    const [allPostedListings, setAllPostedListings] = useState(postedOffers)
+
+    // useEffect(()=>{
+    //     setAllPostedListings(postedOffers)
+    // },[])
+
+    // console.log(postedOffers);
+    // console.log(allPostedListings);
+
+    // const [currentListOfPostedOffers, setCurrentListOfPostedOffers] = useState(postedOffers)
 
     const [layout, setLayout] = useState('grid')
-    const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
-    const districtsList = ['Svi okruzi', ...districts]
 
-    const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
-    const [selectedFilterOptions, setSelectedFilterOptions] = useState({
-        selectedOfferType: 'Svi oglasi',
-        selectedPropertyType: 'Svi tipovi imovine',
-        selectedDistrict: 'Svi okruzi',
-    })
+    // const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
+    // const districtsList = ['Svi okruzi', ...districts]
+
+    // const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
+    // const [selectedFilterOptions, setSelectedFilterOptions] = useState({
+    //     selectedOfferType: 'Svi oglasi',
+    //     selectedPropertyType: 'Svi tipovi imovine',
+    //     selectedDistrict: 'Svi okruzi',
+    // })
 
     // Search function
     const handleSearch = e => {
         const searchTerm = e.target.value.toLowerCase()
 
-        const searchResults = postedOffers.filter(postedOffer => postedOffer.data.propertyLocation.toLowerCase().includes(searchTerm))
-        setCurrentListOfPostedOffers(searchResults)
+        const searchResults = postedOffers.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+        setAllPostedListings(searchResults)
     }
 
     // filter functions
-    const handleSelectedFilterOption = e => {
-        // console.log(e.target.value);
+    // const handleSelectedFilterOption = e => {
+    //     setSelectedFilterOptions(curState => ({
+    //         ...curState,
+    //         [e.target.id]: e.target.value
+    //     }))
+    // }
 
-        setSelectedFilterOptions(curState => ({
-            ...curState,
-            [e.target.id]: e.target.value
-        }))
-    }
+    // const handleSubmittedFilterOptions = e => {
+    //     e.preventDefault();
+    //     const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
-    const handleSubmittedFilterOptions = e => {
-        e.preventDefault();
+    //     if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
+    //         setCurrentListOfPostedOffers(postedOffers)
+    //     } else {
+    //         setFilterOptionsApplied(true)
 
-        const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
-        // console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
-
-        if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
-            setCurrentListOfPostedOffers(postedOffers)
-        } else {
-            setFilterOptionsApplied(true)
-
-            if (selectedOfferType !== 'Svi oglasi') {
-                const filterResult = currentListOfPostedOffers.filter(listing => listing.data.offerType == selectedOfferType)
-                // console.log(filterResult);
-                setCurrentListOfPostedOffers(filterResult)
-            }
-            if (selectedPropertyType !== 'Svi tipovi imovine') {
-                const filterResult = currentListOfPostedOffers.filter(listing => listing.data.propertyType == selectedPropertyType)
-                // console.log(filterResult);
-                setCurrentListOfPostedOffers(filterResult)
-            }
-            if (selectedDistrict !== 'Svi okruzi') {
-                const filterResult = currentListOfPostedOffers.filter(listing => listing.data.propertyDistrict == selectedDistrict)
-                // console.log(filterResult);
-                setCurrentListOfPostedOffers(filterResult)
-            }
-        }
-    }
+    //         if (selectedOfferType !== 'Svi oglasi') {
+    //             const filterResult = currentListOfPostedOffers.filter(listing => listing.data.offerType == selectedOfferType)
+    //             setCurrentListOfPostedOffers(filterResult)
+    //         }
+    //         if (selectedPropertyType !== 'Svi tipovi imovine') {
+    //             const filterResult = currentListOfPostedOffers.filter(listing => listing.data.propertyType == selectedPropertyType)
+    //             setCurrentListOfPostedOffers(filterResult)
+    //         }
+    //         if (selectedDistrict !== 'Svi okruzi') {
+    //             const filterResult = currentListOfPostedOffers.filter(listing => listing.data.propertyDistrict == selectedDistrict)
+    //             setCurrentListOfPostedOffers(filterResult)
+    //         }
+    //     }
+    // }
 
     // reset function
-    const handleResetFilterOptions = () => {
-        setCurrentListOfPostedOffers(postedOffers)
-        setFilterOptionsApplied(false)
-        setSelectedFilterOptions({
-            selectedOfferType: 'Svi oglasi',
-            selectedPropertyType: 'Svi tipovi imovine',
-            selectedDistrict: 'Svi okruzi',
-        })
-    }
+    // const handleResetFilterOptions = () => {
+    //     setCurrentListOfPostedOffers(postedOffers)
+    //     setFilterOptionsApplied(false)
+    //     setSelectedFilterOptions({
+    //         selectedOfferType: 'Svi oglasi',
+    //         selectedPropertyType: 'Svi tipovi imovine',
+    //         selectedDistrict: 'Svi okruzi',
+    //     })
+    // }
 
     return (
         <>
@@ -91,54 +100,7 @@ const PostedOffersContainer = () => {
                     {/* row item 1 - filter form */}
                     <div className="col-12 mb-4">
 
-                        <form onSubmit={handleSubmittedFilterOptions}>
-                            <div className="row">
-                                {/* sub row item 1 - display selected offer type */}
-                                <div className="col-12 col-md-3 mb-3">
-                                    <select className="form-select" value={selectedFilterOptions.selectedOfferType} id="selectedOfferType" onChange={handleSelectedFilterOption}>
-                                        <option value="Svi oglasi">Svi oglasi</option>
-                                        <option value="prodajem">Na prodaju</option>
-                                        <option value="izdajem">Izdaje se</option>
-                                    </select>
-                                </div>
-
-                                {/* sub row item 2 - display selected property type */}
-                                <div className="col-12 col-md-3 mb-3">
-                                    <select className="form-select" value={selectedFilterOptions.selectedPropertyType} id="selectedPropertyType" onChange={handleSelectedFilterOption}>
-                                        {propertyTypesList.map((propertyType, idx) => {
-                                            return <option key={idx} value={propertyType} className="capitalize">
-                                                {propertyType}
-                                            </option>
-                                        })}
-                                    </select>
-                                </div>
-
-                                {/* sub row item 3 - display selected district */}
-                                <div className="col-12 col-md-3 mb-3">
-                                    <select className="form-select" value={selectedFilterOptions.selectedDistrict} id="selectedDistrict" onChange={handleSelectedFilterOption}>
-                                        {districtsList.map((district, idx) => {
-                                            return <option key={idx} value={district} className="capitalize">
-                                                {district}
-                                            </option>
-                                        })}
-                                    </select>
-                                </div>
-
-                                {!filterOptionsApplied && (
-                                    <div className="col-12 col-md-3 mb-3">
-                                        <button type="submit" className="fw-bold btn btn-warning w-100 text-white">
-                                            Primeni filter
-                                        </button>
-                                    </div>
-                                )}
-                            </div>
-
-                        </form>
-                        {filterOptionsApplied && (
-                            <button type="button" className="btn btn-warning px-5" onClick={handleResetFilterOptions}>
-                                Reset
-                            </button>
-                        )}
+                        <FilterOptions allPostedListings={allPostedListings} setAllPostedListings={setAllPostedListings} />
                     </div>
 
                     {/* row item 2 - search feature */}
@@ -161,9 +123,9 @@ const PostedOffersContainer = () => {
 
             <section className="display-posted-offers-container">
                 {layout === 'grid' ? (
-                    <PostedOffersGridView postedOffers={currentListOfPostedOffers} />
+                    <PostedOffersGridView postedOffers={allPostedListings} />
                 ) : (
-                    <PostedOffersListView postedOffers={currentListOfPostedOffers} />
+                    <PostedOffersListView postedOffers={allPostedListings} />
                 )}
             </section>
         </>
