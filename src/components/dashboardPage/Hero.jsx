@@ -1,18 +1,24 @@
+import CountUp from 'react-countup';
+// dashboard asset 
 import heroImg from '../../assets/dashboard-assets/jeftine_kuce_hero.png'
+// components
+import DashboardFilterOptions from './DashboardFilterOptions';
+import CounterBox from './CounterBox';
 
 const Hero = () => {
     return (
         <section className='hero py-5'>
-            <div className="container">
+            <div className="hero-container">
 
                 <div className="row">
                     {/* row item 1 */}
-                    <div className="col-12 col-md-7">
+                    <div className="col-12 col-lg-6 hero-info d-flex flex-column justify-content-center">
+
                         <div className='hero-heading'>
                             <h1 className='fw-bold mb-4'>
                                 Portal JEFTINE KUĆE
                             </h1>
-                            <h6>
+                            <h6 className='text-muted'>
                                 Jedno mesto za nekretnine i sve oko nekretnina. Pretražite, kupite, prodajte nekretninu ili se samo posavetujte sa stručnim ljudima iz ove oblasti...
                             </h6>
                         </div>
@@ -20,50 +26,26 @@ const Hero = () => {
                         <div className='counter-boxes'>
                             <div className="row">
 
-                                {/* counter-box one */}
-                                <div className="col-4 counter-box one">
-                                    <h3 className='fw-bold value' limit="250">
-                                        0
-                                    </h3>
-                                    <p className='fw-bold text-muted'>
-                                        Nekretnina u ponudi
-                                    </p>
-                                </div>
+                                {/* row item 1 - counter-box one */}
+                                <CounterBox value='250' text='Nekretnina u ponudi'/>
 
-                                {/* counter-box two */}
-                                <div className="col-4 counter-box two">
-                                    <h3 className='fw-bold value' limit="150">
-                                        0
-                                    </h3>
-                                    <p className='fw-bold text-muted'>
-                                        Saradnika
-                                    </p>
-                                </div>
+                                {/* row item 2 - counter-box two */}
+                                <CounterBox value='150' text='Saradnika'/>
 
-                                {/* counter-box three */}
-                                <div className="col-4 counter-box three">
-                                    <h3 className='fw-bold value' limit="750">
-                                        0
-                                    </h3>
-                                    <p className='fw-bold text-muted'>
-                                        Zadovoljinih kupaca
-                                    </p>
-                                </div>
+                                {/* row item 3 - counter-box three */}
+                                <CounterBox value='750' text='Zadovoljinih kupaca'/>
                             </div>
-
                         </div>
                     </div>
 
                     {/* row item 2 */}
-                    <div className="col-12 col-md-5">
-
+                    <div className="col-6 d-none d-lg-block hero-img">
+                        <img src={heroImg} alt="slika kuce iz snova" className='img-fluid' />
                     </div>
                 </div>
 
-                {/* hero filter component */}
-                <div className="hero-filter">
-
-                </div>
+                {/* hero/dashboard filter component */}
+                <DashboardFilterOptions/>
             </div>
         </section>
     )

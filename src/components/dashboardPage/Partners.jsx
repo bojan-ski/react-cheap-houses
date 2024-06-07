@@ -1,6 +1,6 @@
 const Partners = () => {
     return (
-        <section className="partners bg-info my-5">
+        <section className="partners bg-info">
             <div className="container">
 
                 <h6 className="mb-3">
