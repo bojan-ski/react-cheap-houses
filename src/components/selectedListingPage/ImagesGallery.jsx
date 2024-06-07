@@ -14,7 +14,7 @@ const ImagesGallery = ({ imageUrls, setImageSrc }) => {
                 pagination={{
                     dynamicBullets: true,
                 }}
-                className="swiper-container rounded-5"
+                className="images-gallery rounded-5"
             >
                 {imageUrls.map((image, idx) => {
                     return <SwiperSlide key={idx} >

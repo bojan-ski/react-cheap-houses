@@ -1,17 +1,23 @@
 import ExpertAdvices from "../components/dashboardPage/ExpertAdvices"
+import Hero from "../components/dashboardPage/Hero"
+import Partners from "../components/dashboardPage/Partners"
 import Testimonials from "../components/dashboardPage/Testimonials"
 
 
 const Dashboard = () => {
   return (
     <div>
-      <h1 className="bg-warning text-center">Dashboard</h1>  
+      {/* hero component */}
+      <Hero />
 
-      {/* expert advices */}
-      <ExpertAdvices/>
+      {/* partners - swiper component */}
+      <Partners />
 
-      {/* testimonials */}
-      <Testimonials/>
+      {/* expert advices component */}
+      <ExpertAdvices />
+
+      {/* testimonials component */}
+      <Testimonials />
     </div>
   )
 }
