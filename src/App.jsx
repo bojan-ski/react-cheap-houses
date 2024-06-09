@@ -8,6 +8,7 @@ import SelectedListing from "./pages/SelectedListing"
 import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
+import ErrorPage from "./pages/ErrorPage"
 
 // LOADERS
 import { loader as allPostedListingsLoader } from "./pages/PostedListings"
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,

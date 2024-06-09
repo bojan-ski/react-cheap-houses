@@ -605,3 +605,12 @@ main {
 #footer .rights-footer a:hover {
   color: rgb(226, 151, 31);
 }
+
+/* ERROR PAGE */
+.error{
+  background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
+}
+
+.error-page{
+  height: 100vh;  
+}

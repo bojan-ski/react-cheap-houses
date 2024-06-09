@@ -30,6 +30,7 @@ const Testimonials = () => {
                             disableOnInteraction: true,
                             pauseOnMouseEnter: true
                         }}
+                        speed={1000}
                         modules={[Autoplay]}
                         breakpoints={{
                             768: {

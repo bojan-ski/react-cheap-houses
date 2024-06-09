@@ -19,7 +19,6 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
 
     // filter functions
     const handleSelectedFilterOption = e => {
-
         setSelectedFilterOptions(curState => ({
             ...curState,
             [e.target.id]: e.target.value
@@ -30,25 +29,38 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
         e.preventDefault();
         const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
+        console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
+
         if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
             setDisplayAllPostedListings(allPostedListings)
         } else {
             setFilterOptionsApplied(true)
 
             if (selectedOfferType !== 'Svi oglasi') {
-                const filterResult = displayAllPostedListings.filter(listing => listing.data.offerType == selectedOfferType)
+                const filterResult = displayAllPostedListings.filter(listing => {
+                    listing.data.offerType == selectedOfferType
+                    // console.log(listing.data.offerType == selectedOfferType);
+                })
                 setDisplayAllPostedListings(filterResult)
             }
             if (selectedPropertyType !== 'Svi tipovi imovine') {
-                const filterResult = displayAllPostedListings.filter(listing => listing.data.propertyType == selectedPropertyType)
+                const filterResult = displayAllPostedListings.filter(listing => {
+                    listing.data.propertyType == selectedPropertyType
+                    console.log(listing.data.propertyType == selectedPropertyType);
+                })
                 setDisplayAllPostedListings(filterResult)
             }
             if (selectedDistrict !== 'Svi okruzi') {
-                const filterResult = displayAllPostedListings.filter(listing => listing.data.propertyDistrict == selectedDistrict)
+                const filterResult = displayAllPostedListings.filter(listing => {
+                    listing.data.propertyDistrict == selectedDistrict
+                    console.log(listing.data.propertyDistrict == selectedDistrict);
+                })
                 setDisplayAllPostedListings(filterResult)
             }
         }
     }
+
+    // console.log(displayAllPostedListings);
 
     // reset function
     const handleResetFilterOptions = () => {
