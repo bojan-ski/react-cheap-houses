@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom"
 // imported data
 import districts from "../../data/districts";
 import propertyTypes from '../../data/propertyTypes'
+// import fetchSelectedFilterOptionsResults from "../../utils/fetchSelectedFilterOptionsResults";
 
 const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPostedListings }) => {
     const allPostedListings = useLoaderData()
@@ -25,38 +26,84 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
         }))
     }
 
-    const handleSubmittedFilterOptions = e => {
+    const handleSubmittedFilterOptions = (e) => {
         e.preventDefault();
         const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
-        console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
+        // console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
 
         if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
             setDisplayAllPostedListings(allPostedListings)
         } else {
             setFilterOptionsApplied(true)
 
+            let filteredListOfPostedListings = displayAllPostedListings
+            // console.log(filteredListOfPostedListings);
+
             if (selectedOfferType !== 'Svi oglasi') {
-                const filterResult = displayAllPostedListings.filter(listing => {
-                    listing.data.offerType == selectedOfferType
+                // console.log(selectedOfferType);
+                const filterResult = filteredListOfPostedListings.filter(listing => {
+                    // console.log(listing);
+                    // console.log(listing.data.offerType);
+                    return listing.data.offerType == selectedOfferType
                     // console.log(listing.data.offerType == selectedOfferType);
                 })
-                setDisplayAllPostedListings(filterResult)
+                // console.log(filterResult);
+                // setDisplayAllPostedListings(filterResult)
+                // console.log(displayAllPostedListings);
+                filteredListOfPostedListings = filterResult
+                // console.log(filteredListOfPostedListings);
             }
             if (selectedPropertyType !== 'Svi tipovi imovine') {
-                const filterResult = displayAllPostedListings.filter(listing => {
-                    listing.data.propertyType == selectedPropertyType
-                    console.log(listing.data.propertyType == selectedPropertyType);
+                const filterResult = filteredListOfPostedListings.filter(listing => {
+                    return listing.data.propertyType == selectedPropertyType
+                    // console.log(listing.data.propertyType == selectedPropertyType);
                 })
-                setDisplayAllPostedListings(filterResult)
+                // console.log(filterResult);
+                // setDisplayAllPostedListings(filterResult)
+                // console.log(displayAllPostedListings);
+                filteredListOfPostedListings = filterResult
+                // console.log(filteredListOfPostedListings);
             }
             if (selectedDistrict !== 'Svi okruzi') {
-                const filterResult = displayAllPostedListings.filter(listing => {
-                    listing.data.propertyDistrict == selectedDistrict
-                    console.log(listing.data.propertyDistrict == selectedDistrict);
+                const filterResult = filteredListOfPostedListings.filter(listing => {
+                    return listing.data.propertyDistrict == selectedDistrict
+                    // console.log(listing.data.propertyDistrict == selectedDistrict);
                 })
-                setDisplayAllPostedListings(filterResult)
+                // console.log(filterResult);
+                // setDisplayAllPostedListings(filterResult)
+                // console.log(displayAllPostedListings);
+                filteredListOfPostedListings = filterResult
+                // console.log(filteredListOfPostedListings);
             }
+
+            // console.log(filteredListOfPostedListings);
+            setDisplayAllPostedListings(filteredListOfPostedListings)
+
+            // fetchSelectedFilterOptionsResults(selectedFilterOptions)
+            // const results = await fetchSelectedFilterOptionsResults(selectedFilterOptions)
+
+            // if (selectedOfferType !== 'Svi oglasi') {
+            //     const filterResult = displayAllPostedListings.filter(listing => {
+            //         listing.data.offerType == selectedOfferType
+            //         console.log(listing.data.offerType == selectedOfferType);
+            //     })
+            //     setDisplayAllPostedListings(filterResult)
+            // }
+            // if (selectedPropertyType !== 'Svi tipovi imovine') {
+            //     const filterResult = displayAllPostedListings.filter(listing => {
+            //         listing.data.propertyType == selectedPropertyType
+            //         console.log(listing.data.propertyType == selectedPropertyType);
+            //     })
+            //     setDisplayAllPostedListings(filterResult)
+            // }
+            // if (selectedDistrict !== 'Svi okruzi') {
+            //     const filterResult = displayAllPostedListings.filter(listing => {
+            //         listing.data.propertyDistrict == selectedDistrict
+            //         console.log(listing.data.propertyDistrict == selectedDistrict);
+            //     })
+            //     setDisplayAllPostedListings(filterResult)
+            // }
         }
     }
 
