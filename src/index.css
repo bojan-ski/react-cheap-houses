@@ -606,6 +606,11 @@ main {
   color: rgb(226, 151, 31);
 }
 
+/* BLOG PAGE */
+.blog-content{
+  background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
+}
+
 /* ERROR PAGE */
 .error{
   background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
