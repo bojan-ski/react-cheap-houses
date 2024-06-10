@@ -7,6 +7,7 @@ import AllPostedListingsListView from "../AllPostedListingsListView"
 // React Icons
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
+import Pagination from "../Pagination"
 
 
 const PostedListingsContainer = () => {
@@ -55,6 +56,9 @@ const PostedListingsContainer = () => {
                 ) : (
                     <AllPostedListingsListView allPostedListings={displayAllPostedListings} />
                 )}
+
+                {/* Pagination */}
+                <Pagination />
             </section>
         </>
     )

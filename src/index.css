@@ -8,7 +8,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 /* GENERAL */
-
 :root {
   --orange-color: rgb(255, 169, 32);
   --dark-orange-color: rgb(226, 151, 31);
@@ -77,6 +76,11 @@ textarea {
   transform: scale(0.9);
 }
 
+/* LOADER - LOADING */
+.loading {
+  height: 100vh;
+}
+
 /* SWIPER */
 .swiper-slide {
   background-position: center;
@@ -89,9 +93,23 @@ textarea {
   object-fit: cover;
 }
 
-/* LOADER - LOADING */
-.loading {
-  height: 100vh;
+/* PAGINATION */
+.btn-container button{
+  border: 1px solid var(--orange-color);
+  color: #000;
+}
+
+.btn-container button svg polyline{
+  color: #000;
+  font-weight: 700;
+}
+
+.btn-container button:hover{
+  background-color: var(--orange-color);
+}
+
+.btn-container button:hover svg polyline{
+  color: #fff;
 }
 
 /* ---------- HEADER ---------- */
