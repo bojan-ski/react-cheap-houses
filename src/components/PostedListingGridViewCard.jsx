@@ -9,7 +9,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) => {
     // console.log(postedListing);
-    // console.log(postedListing.data.timestamp);
+    // console.log(postedListing.data);
 
     const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice } = postedListing.data
 
@@ -109,9 +109,9 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                             <Link to={`/oglasi/${postedListing.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
                                 Detailji
                             </Link>
-                            <p className="fw-bold mb-0">
-                                {postedListing.data.timestamp.seconds}
-                            </p>
+                            {/* <p className="fw-bold mb-0">
+                                {postedListing.data.timestamp}
+                            </p> */}
                         </>
                     )}
                 </div>

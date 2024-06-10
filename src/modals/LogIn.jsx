@@ -28,7 +28,7 @@ const LogIn = () => {
             console.log('Prijavili ste se');
 
             // after the user has logged in, the user is redirected to the Profile page
-            navigate('/moj-nalog')
+            navigate('/nalog')
         } catch (error) {
             console.log(error);            
         }       

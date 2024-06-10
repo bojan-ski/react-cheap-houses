@@ -74,7 +74,7 @@ const Profile = () => {
                         <PostNewListing userID={userData.userID} showPostNewListingForm={showPostNewListingForm} />
 
                         {/* user posted offers component */}
-                        <UserPostedListingsContainer/>
+                        {/* <UserPostedListingsContainer/> */}
                     </>
                 )}
             </div>

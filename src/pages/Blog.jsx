@@ -1,7 +1,6 @@
 import PageLocation from "../components/PageLocation"
 
 const Blog = () => {
-
   return (
     <div className="blog-page">
       {/* page location */}

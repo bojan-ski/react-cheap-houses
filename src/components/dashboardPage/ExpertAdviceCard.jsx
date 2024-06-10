@@ -15,7 +15,7 @@ const ExpertAdviceCard = ({ cardImg, cardMonth }) => {
 
                         <div className="box-image-text fw-bold position-absolute d-flex align-items-center justify-content-center">
                             <p className="text-muted mb-0 me-3">
-                                Jun
+                            {cardMonth}
                             </p>
                             <FaRegFolderOpen size={15} className="text-muted me-1" />
                             <span>
@@ -29,7 +29,7 @@ const ExpertAdviceCard = ({ cardImg, cardMonth }) => {
                 <div className="box-link">
                     <Link to="/blog" className="fw-bold d-flex align-items-center justify-content-center">
                         <span className="me-2">
-                            {cardMonth}
+                            Pročitajte više
                         </span>
                         <FaArrowRight />
                     </Link>

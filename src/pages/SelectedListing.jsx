@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom"
 import { Link } from "react-router-dom";
+// helper func
 import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase";
+// components
+import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
+import SelectedImageModal from "../modals/SelectedImageModal";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
-// components
-import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
-import SelectedImageModal from "../modals/SelectedImageModal";
+import { CiCalendarDate } from "react-icons/ci";
+
 
 export const loader = async ({ params }) => {
     const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
@@ -19,7 +22,7 @@ export const loader = async ({ params }) => {
 const SelectedListing = () => {
     const selectedListingDetails = useLoaderData() 
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
+    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, timestamp, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
     const [imageSrc, setImageSrc] = useState('')
 
     const urlBackPath = window.location.pathname.split('/').includes('oglasi')
@@ -89,8 +92,12 @@ const SelectedListing = () => {
                                 )}
                                 <p className="mb-0 fw-bold text-muted d-flex align-items-center">
                                     <LiaTapeSolid className='me-2' />
-                                    Kvadratura:<span className="ms-1 fw-bold text-dark"> {squareFootage} m²</span>
+                                    Prostor:<span className="ms-1 fw-bold text-dark"> {squareFootage}</span>
                                 </p>
+                                {/* <p className="mb-0 fw-bold text-muted d-flex align-items-center">
+                                    <CiCalendarDate className='me-2' />
+                                    Oglas objavljen:<span className="ms-1 fw-bold text-dark"> {timestamp}</span>
+                                </p> */}
                             </div>
 
                             {/* row item 3 */}

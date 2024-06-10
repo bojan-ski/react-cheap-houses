@@ -36,12 +36,12 @@ const router = createBrowserRouter([
         loader: selectedListingLoader
       },
       {
-        path: 'moj-nalog',
+        path: 'nalog',
         element: <Profile/>,
         loader: userPostedListingsLoader
       },
       {
-        path: 'moj-nalog/:id',
+        path: 'nalog/:id',
         element: <SelectedListing />,
         loader: selectedListingLoader
       },

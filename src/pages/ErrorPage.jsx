@@ -10,7 +10,7 @@ const ErrorPage = () => {
         {error.status == 404 ? (
             <Error404 textOne="Stranicu koju tražite ne postoji" textTwo="Molimo Vas da se vratite na početnu stranicu" />
         ) : (
-            <Error textOne="Pojavi se problem" textTwo="Molimo Vas da se vratite na početnu stranicu" />
+            <Error textOne="Pojavio se problem" textTwo="Molimo Vas da se vratite na početnu stranicu" />
         )}
     </div>
 }

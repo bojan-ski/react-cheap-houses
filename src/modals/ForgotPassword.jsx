@@ -26,7 +26,7 @@ const ForgotPassword = () => {
             console.log('Proverite svoj email radi promere sifre');
 
             // after the user has submitted for a new password, the user is redirected to the Profile page
-            navigate('/moj-nalog')
+            navigate('/nalog')
         } catch (error) {
             console.log(error);
         }

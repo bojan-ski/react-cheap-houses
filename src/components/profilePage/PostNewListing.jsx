@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from '../../firebase.config'
 // helper func
 import storeUploadedImage from "../../utils/storeUploadedImage";
+import getCurrentTimeAndDate from "../../utils/getCurrentTimeAndDate";
 // components
 import Spinner from "../Spinner"
 // imported data
@@ -24,7 +25,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         squareFootage: '',
         propertyAddress: '',
         propertyLocation: '',
-        propertyDistrict: '',
+        propertyDistrict: 'Beograd',
         propertyImages: [],
         askingPrice: '',
         contactFullName: '',
@@ -57,8 +58,11 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
 
         setIsLoading(true)
 
-        if (propertyImages.length > 6) {
+        console.log(formData.propertyImages.length);
+        if (formData.propertyImages.length >= 6) {
             setIsLoading(false)
+
+            // error message
             console.log('Preko 6 slika');
             return
         }
@@ -74,7 +78,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         const formDataCopy = {
             ...formData,
             imageUrls,
-            timestamp: serverTimestamp()
+            timestamp: getCurrentTimeAndDate()
         }
 
         delete formDataCopy.propertyImages
@@ -197,7 +201,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     id='propertyName'
                                     value={propertyName}
                                     onChange={onMutate}
-                                    maxLength='30'
+                                    maxLength='25'
                                     minLength='8'
                                     placeholder="Porodična kuća, jednoiposoban stan ..."
                                     required

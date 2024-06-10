@@ -152,22 +152,22 @@ const MainFooterContent = () => {
                             </h5>
                             <ul className="footer-category-links list-unstyled">
                                 <li className="footer-category-link mb-2">
-                                    <Link to='/'>
+                                    <Link to='/oglasi'>
                                         Kuće
                                     </Link>
                                 </li>
                                 <li className="footer-category-link mb-2">
-                                    <Link to='/'>
+                                    <Link to='/oglasi'>
                                         Stanovi
                                     </Link>
                                 </li>
                                 <li className="footer-category-link mb-2">
-                                    <Link to='/'>
+                                    <Link to='/oglasi'>
                                         Vikendice
                                     </Link>
                                 </li>
                                 <li className="footer-category-link mb-2">
-                                    <Link to='/'>
+                                    <Link to='/oglasi'>
                                         Placevi
                                     </Link>
                                 </li>
@@ -187,7 +187,7 @@ const MainFooterContent = () => {
                             <form onSubmit={handleNewsletterEmailSummation}>
                                 <input type="email" className="form-control py-3 mb-2" name="email" id="email" placeholder="Vaša adresa elektronske pošte" required/>
                                 <button type="submit" className="footer-form-btn btn text-white fw-bolder w-100 mb-2">
-                                    Prijavite se {'->'}
+                                    Prijavite se
                                 </button>
                                 <div className="mb-3 form-check">
                                     <input type="checkbox" className="form-check-input" name="check" id="check" required/>
