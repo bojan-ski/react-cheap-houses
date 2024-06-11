@@ -44,9 +44,9 @@ p {
   text-transform: capitalize;
 }
 
-textarea {
+/* textarea {
   resize: none;
-}
+} */
 
 .text-orange,
 .text-orange-hover {
@@ -81,6 +81,7 @@ textarea {
   height: 100vh;
 }
 
+/* ---------- APP (SHARED) COMPONENTS ---------- */
 /* SWIPER */
 .swiper-slide {
   background-position: center;
@@ -117,46 +118,70 @@ textarea {
   background-color: #fff;
 }
 
+/* NavbarUserOnboarding component */
 #header .user-onboarding .navbar-brand img {
   width: 197px;
   height: 48px;
 }
 
-#header .navbar .navbar-toggler {
-  color: rgb(255, 169, 32);
-}
-
-#header .navbar .navbar-nav .nav-item a {
-  color: #120a21;
-}
-
-#header .navbar .navbar-nav .nav-item a:hover,
-#header .navbar .navbar-nav .nav-item a.active {
-  color: rgb(255, 169, 32);
-  transition: all 0.3s ease;
-}
-
-/* #header .navbar .btn-container .btn{ */
-#header .user-onboarding .btn-container,
-#header .user-onboarding .btn-container button {
+#header .user-onboarding .header-btn-container,
+#header .user-onboarding .header-btn-container button {
   font-weight: 500;
   font-size: 0.85rem;
 }
 
-#header .user-onboarding .btn-container .display-signUp-modal:hover,
-#header .user-onboarding .btn-container .display-logIn-modal:hover {
-  color: rgb(226, 151, 31);
+#header .user-onboarding .header-btn-container .display-signUp-modal:hover,
+#header .user-onboarding .header-btn-container .display-logIn-modal:hover {
+  color: var(--orange-color);
   transition: all 0.3s ease;
 }
 
+/* NavbarNavigation component */
 #header .navbar .home-btn {
-  background-color: rgb(255, 169, 32);
   padding: 15px 18px;
   border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
 #header .navbar .home-btn:hover {
-  background-color: rgb(226, 151, 31);
+  transition: all 0.3s ease;
+}
+
+#header .navbar .navbar-toggler {
+  color: var(--orange-color);
+}
+
+#header .navbar .navbar-nav{
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  #header .navbar .navbar-nav{
+    width: 75%;
+  }
+}
+
+@media (min-width: 992px) {
+  #header .navbar .navbar-nav{
+    width: 50%;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a {
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #header .navbar .navbar-nav .nav-item {
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+#header .navbar .navbar-nav .nav-item a:hover,
+#header .navbar .navbar-nav .nav-item a.active {
+  color: var(--orange-color);
   transition: all 0.3s ease;
 }
 

@@ -51,9 +51,14 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                     </Swiper>
                 </div>
 
-                <h5 className="capitalize">
-                    {propertyType}, {propertyName}
-                </h5>
+                <div className="grid-card-details-header">
+                    <h5 className="capitalize">
+                        {propertyType}
+                    </h5>
+                    <h5 className="capitalize">
+                        {propertyName}
+                    </h5>
+                </div>
 
                 <div className="grid-card-details-info row border-bottom pb-3 mb-3">
                     <div className="col-6 col-lg-12">

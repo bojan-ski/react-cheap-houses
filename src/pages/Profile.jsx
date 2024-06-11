@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
-// app context
-import { useGlobalContext } from "../context"
 // firebase/firestore func
-import { onAuthStateChanged } from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 // utils func
 import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase"
 // components
@@ -32,7 +30,7 @@ export const loader = async () => {
 }
 
 const Profile = () => {
-    const { auth } = useGlobalContext()
+    const auth = getAuth()
     const [userData, setUserData] = useState({
         userID: '',
         userName: ''
