@@ -30,7 +30,10 @@ const LogIn = () => {
             // after the user has logged in, the user is redirected to the Profile page
             navigate('/nalog')
         } catch (error) {
-            console.log(error);            
+            console.log(error); 
+            
+            // user does not exist (error) message
+            console.log('Kredencijale koje ste uneli ne postoje, molimo Vas probajte ponovo');
         }       
     }
 

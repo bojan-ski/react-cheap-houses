@@ -4,7 +4,7 @@ const AllPostedListingsListView = ({ allPostedListings }) => {
 
   return (
     <div className='row'>
-      {allPostedListings.map(postedListing => {
+      {allPostedListings?.map(postedListing => {
         return <PostedListingListViewCard key={postedListing.id} {...postedListing} />
       })}
     </div>

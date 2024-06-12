@@ -4,7 +4,7 @@ const AllPostedListingsGridView = ({ allPostedListings, deleteUserPostedListing 
 
     return (
         <div className='row'>
-            {allPostedListings.map(postedListing => {
+            {allPostedListings?.map(postedListing => {
                 return <PostedListingGridViewCard key={postedListing.id} postedListing={postedListing} deleteUserPostedListing={deleteUserPostedListing} />
             })}
         </div>

@@ -1,36 +1,44 @@
+// data
+import partners from '../../data/partners';
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+
 const Partners = () => {
     return (
-        <section className="partners bg-info">
+        <section className="partners py-5">
             <div className="container">
 
                 <h6 className="mb-3">
                     Samo dobra ekipa garantuje dobar rezultat, ovo su neki od naših partnera
                 </h6>
 
-
-                <div className="row">
-                    <div className="col-8">
-
-                        <div className="partners-slider swiper-container carousel-5">
-                            <div className="partners-slider-wrapper swiper-wrapper">
-
-                                <div className="swiper-slide">
-                                    <a href="#">
-                                        <img src="" alt="JK - Partner #1" className="img-fluid" />
-                                    </a>
-                                </div>
-
-                                <div className="swiper-slide">
-                                    <a href="#">
-                                        <img src="" alt="JK - Partner #2" className="img-fluid" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                <Swiper
+                    spaceBetween={10}
+                    slidesPerView={3}
+                    loop={true}
+                    autoplay={{
+                        delay: 0,
+                    }}
+                    speed={7000}
+                    modules={[Autoplay]}
+                    breakpoints={{
+                        768: {
+                            slidesPerView: 4,
+                        },
+                        992: {
+                            slidesPerView: 6,
+                        }
+                    }}
+                >
+                    {partners.map((partner, idx) => {
+                        return <SwiperSlide key={idx}>
+                            <p className='fw-bold mb-0'>
+                                {partner}
+                            </p>
+                        </SwiperSlide>
+                    })}
+                </Swiper>
             </div>
         </section>
     )

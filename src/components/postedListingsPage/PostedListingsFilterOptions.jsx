@@ -13,7 +13,7 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
 
     const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
     const [selectedFilterOptions, setSelectedFilterOptions] = useState({
-        selectedOfferType: 'Svi oglasi',
+        selectedListingType: 'Svi oglasi',
         selectedPropertyType: 'Svi tipovi imovine',
         selectedDistrict: 'Svi okruzi',
     })
@@ -28,11 +28,11 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
 
     const handleSubmittedFilterOptions = (e) => {
         e.preventDefault();
-        const { selectedOfferType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
+        const { selectedListingType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
-        // console.log(selectedOfferType, selectedPropertyType, selectedDistrict);
+        // console.log(selectedListingType, selectedPropertyType, selectedDistrict);
 
-        if (selectedOfferType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
+        if (selectedListingType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
             setDisplayAllPostedListings(allPostedListings)
         } else {
             setFilterOptionsApplied(true)
@@ -40,13 +40,13 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
             let filteredListOfPostedListings = displayAllPostedListings
             // console.log(filteredListOfPostedListings);
 
-            if (selectedOfferType !== 'Svi oglasi') {
-                // console.log(selectedOfferType);
+            if (selectedListingType !== 'Svi oglasi') {
+                // console.log(selectedListingType);
                 const filterResult = filteredListOfPostedListings.filter(listing => {
                     // console.log(listing);
-                    // console.log(listing.data.offerType);
-                    return listing.data.offerType == selectedOfferType
-                    // console.log(listing.data.offerType == selectedOfferType);
+                    // console.log(listing.data.listingType);
+                    return listing.data.listingType == selectedListingType
+                    // console.log(listing.data.listingType == selectedListingType);
                 })
                 // console.log(filterResult);
                 // setDisplayAllPostedListings(filterResult)
@@ -83,10 +83,10 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
             // fetchSelectedFilterOptionsResults(selectedFilterOptions)
             // const results = await fetchSelectedFilterOptionsResults(selectedFilterOptions)
 
-            // if (selectedOfferType !== 'Svi oglasi') {
+            // if (selectedListingType !== 'Svi oglasi') {
             //     const filterResult = displayAllPostedListings.filter(listing => {
-            //         listing.data.offerType == selectedOfferType
-            //         console.log(listing.data.offerType == selectedOfferType);
+            //         listing.data.listingType == selectedListingType
+            //         console.log(listing.data.listingType == selectedListingType);
             //     })
             //     setDisplayAllPostedListings(filterResult)
             // }
@@ -114,7 +114,7 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
         setDisplayAllPostedListings(allPostedListings)
         setFilterOptionsApplied(false)
         setSelectedFilterOptions({
-            selectedOfferType: 'Svi oglasi',
+            selectedListingType: 'Svi oglasi',
             selectedPropertyType: 'Svi tipovi imovine',
             selectedDistrict: 'Svi okruzi',
         })
@@ -125,7 +125,7 @@ const PostedListingsFilterOptions = ({ displayAllPostedListings, setDisplayAllPo
             <div className="row">
                 {/* row item 1 - display selected offer type */}
                 <div className="col-12 col-md-3 mb-3">
-                    <select className="form-select" value={selectedFilterOptions.selectedOfferType} id="selectedOfferType" onChange={handleSelectedFilterOption}>
+                    <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption}>
                         <option value="Svi oglasi">Svi oglasi</option>
                         <option value="prodajem">Na prodaju</option>
                         <option value="izdajem">Izdaje se</option>

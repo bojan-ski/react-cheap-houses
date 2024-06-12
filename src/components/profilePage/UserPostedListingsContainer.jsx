@@ -7,17 +7,18 @@ import { db } from "../../firebase.config"
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 
 const UserPostedListingsContainer = () => {
-    const userOffersList = useLoaderData()
+    const userPostedListings = useLoaderData()
+    // console.log(userPostedListings);
 
-    const [userPostedListings, setUserPostedListings] = useState(userOffersList)
+    const [displayUserPostedListings, setDisplayUserPostedListings] = useState(userPostedListings)
     
-    const deleteUserPostedListing = async (postedOfferID) => {
+    const deleteUserPostedListing = async (userPostedListingID) => {
         if (window.confirm('Are you sure you want to delete?')) {
-            await deleteDoc(doc(db, 'listings', postedOfferID))
+            await deleteDoc(doc(db, 'listings', userPostedListingID))
 
-            const updatedListings = userPostedListings.filter(listing => listing.id !== postedOfferID)
+            const updatedListOfUserPostedListings = displayUserPostedListings.filter(listing => listing.id !== userPostedListingID)
 
-            setUserPostedListings(updatedListings)
+            setDisplayUserPostedListings(updatedListOfUserPostedListings)
             console.log('Uspešno ste obrisali Vaš oglas');
         }
     }
@@ -35,7 +36,7 @@ const UserPostedListingsContainer = () => {
                     </h2>
 
                     {/* user posted listings */}
-                    <AllPostedListingsGridView allPostedListings={userPostedListings} deleteUserPostedListing={deleteUserPostedListing}/>
+                    <AllPostedListingsGridView allPostedListings={displayUserPostedListings} deleteUserPostedListing={deleteUserPostedListing}/>
                 </>
             )}
         </section>

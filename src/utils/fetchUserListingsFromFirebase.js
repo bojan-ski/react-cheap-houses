@@ -5,23 +5,24 @@ import { db } from "../firebase.config";
 const fetchUserListingsFromFirebase = async () => {
     const auth = getAuth()
     // console.log(auth);
-    // console.log(auth.currentUser);
+    // console.log(auth.currentUser.displayName);
 
     if (!auth.currentUser) return null
     // console.log(auth);
 
     try {
-        const offersRef = collection(db, 'listings')
-        const q = query(offersRef, where('userRef', '==', auth.currentUser.uid), orderBy('timestamp', 'desc'))
+        const q = query(collection(db, 'listings'),
+            where('userRef', '==', auth.currentUser.uid),
+            orderBy('timestamp', 'desc'))
 
-        const querySnap = await getDocs(q)
+        const querySnapshot = await getDocs(q)
 
         let userPostedListings = []
 
-        querySnap.forEach((offer) => {
+        querySnapshot.forEach((listing) => {
             return userPostedListings.push({
-                id: offer.id,
-                data: offer.data()
+                id: listing.id,
+                data: listing.data()
             })
         })
         // console.log(userPostedListings);

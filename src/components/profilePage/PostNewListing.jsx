@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from '../../firebase.config'
 // helper func
 import storeUploadedImage from "../../utils/storeUploadedImage";
@@ -16,7 +16,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         userRef: userID,
-        offerType: 'prodajem',
+        listingType: 'prodajem',
         propertyType: 'kuca',
         propertyName: '',
         lotNumber: '',
@@ -33,7 +33,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         contactEmailAddress: '',
     })
 
-    const { offerType, propertyType, propertyName, lotNumber, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactFullName, contactPhoneNumber, contactEmailAddress } = formData
+    const { listingType, propertyType, propertyName, lotNumber, numRooms, numBathrooms, squareFootage, propertyAddress, propertyLocation, propertyDistrict, propertyImages, askingPrice, contactFullName, contactPhoneNumber, contactEmailAddress } = formData
 
     const onMutate = (e) => {
         // images - files
@@ -58,12 +58,12 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
 
         setIsLoading(true)
 
-        console.log(formData.propertyImages.length);
-        if (formData.propertyImages.length >= 6) {
+        // console.log(formData.propertyImages.length);
+        if (formData.propertyImages.length > 8) {
             setIsLoading(false)
 
             // error message
-            console.log('Preko 6 slika');
+            console.log('Preko 7 slika');
             return
         }
 
@@ -78,7 +78,8 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         const formDataCopy = {
             ...formData,
             imageUrls,
-            timestamp: getCurrentTimeAndDate()
+            timestamp: serverTimestamp(),
+            listingCreated: getCurrentTimeAndDate()
         }
 
         delete formDataCopy.propertyImages
@@ -109,7 +110,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                         {/* row item 1 */}
                         <div className="col-12 col-md-6">
 
-                            {/* offer type */}
+                            {/* listing type */}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
                                     Prodajem / Izdajem
@@ -117,8 +118,8 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                 <div className='offer-type-btns'>
                                     <button
                                         type='button'
-                                        className={offerType === 'prodajem' ? 'form-btn-active' : 'form-btn'}
-                                        id='offerType'
+                                        className={listingType === 'prodajem' ? 'form-btn-active' : 'form-btn'}
+                                        id='listingType'
                                         value='prodajem'
                                         onClick={onMutate}
                                     >
@@ -126,8 +127,8 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     </button>
                                     <button
                                         type='button'
-                                        className={offerType === 'izdajem' ? 'form-btn-active' : 'form-btn'}
-                                        id='offerType'
+                                        className={listingType === 'izdajem' ? 'form-btn-active' : 'form-btn'}
+                                        id='listingType'
                                         value='izdajem'
                                         onClick={onMutate}
                                     >
@@ -283,7 +284,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                     {/* square footage */}
                                     <div className="mb-3">
                                         <label className='form-label fw-bold'>
-                                            Prostor (metara kvadratnih)
+                                            Prostor (kvadrata)
                                         </label>
                                         <input
                                             className='form-control'
@@ -353,7 +354,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                             {/* property images */}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
-                                    Slike - do 5 slika, veličine do 2MB
+                                    Slike - do 7 slika, veličine do 2MB
                                 </label>
                                 <input
                                     className='form-control'
@@ -370,7 +371,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                             {/* asking price*/}
                             <div className="mb-3">
                                 <label className='form-label fw-bold'>
-                                    Cena
+                                    Cena (EUR)
                                 </label>
                                 <div className='asking-price-info d-flex align-items-center'>
                                     <input
@@ -384,7 +385,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                         placeholder="Unesite trazenu cenu/kiriju"
                                         required
                                     />
-                                    {offerType === 'izdajem' && <p className='fw-bold ms-2 mb-0'>Mesečno</p>}
+                                    {listingType === 'izdajem' && <p className='fw-bold ms-2 mb-0'>Mesečno</p>}
                                 </div>
                             </div>
 

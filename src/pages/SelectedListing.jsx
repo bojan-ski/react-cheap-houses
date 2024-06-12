@@ -22,7 +22,7 @@ export const loader = async ({ params }) => {
 const SelectedListing = () => {
     const selectedListingDetails = useLoaderData() 
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, timestamp, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
+    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated, contactFullName, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
     const [imageSrc, setImageSrc] = useState('')
 
     const urlBackPath = window.location.pathname.split('/').includes('oglasi')
@@ -33,11 +33,11 @@ const SelectedListing = () => {
                 <div className="container px-5 rounded-4 border bg-white">
 
                     <section className="d-flex align-items-center justify-content-between my-5">
-                        <Link to={urlBackPath ? '/oglasi' : '/moj-nalog'} className="btn bg-orange-hover text-white fw-bold px-4">
+                        <Link to={urlBackPath ? '/oglasi' : '/nalog'} className="btn bg-orange-hover text-white fw-bold px-4">
                             Nazad
                         </Link>
                         <h2 className="text-orange fw-bold">
-                            {offerType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
+                            {listingType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
                         </h2>
                     </section>
 
@@ -49,7 +49,7 @@ const SelectedListing = () => {
                             {propertyName}
                         </h2>
                         <h4 className="text-orange fw-bold">
-                            {askingPrice} EUR {offerType === 'izdajem' ? 'mesečno' : ''}
+                            {askingPrice} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
                         </h4>
                     </section>
 
@@ -92,12 +92,14 @@ const SelectedListing = () => {
                                 )}
                                 <p className="mb-0 fw-bold text-muted d-flex align-items-center">
                                     <LiaTapeSolid className='me-2' />
-                                    Prostor:<span className="ms-1 fw-bold text-dark"> {squareFootage}</span>
+                                    Prostor:
+                                    <span className="ms-1 fw-bold text-dark"> {squareFootage}</span>
+                                    <span className="ms-1 fw-bold text-dark">{propertyType == 'plac' ? 'ari' : 'kvadrata'}</span>
                                 </p>
-                                {/* <p className="mb-0 fw-bold text-muted d-flex align-items-center">
+                                <p className="mb-0 fw-bold text-muted d-flex align-items-center">
                                     <CiCalendarDate className='me-2' />
-                                    Oglas objavljen:<span className="ms-1 fw-bold text-dark"> {timestamp}</span>
-                                </p> */}
+                                    Oglas objavljen:<span className="ms-1 fw-bold text-dark"> {listingCreated}</span>
+                                </p>
                             </div>
 
                             {/* row item 3 */}
@@ -105,6 +107,9 @@ const SelectedListing = () => {
                                 <h4 className="mb-3">
                                     Kontakt informacije:
                                 </h4>
+                                <p className='mb-0 fw-bold text-muted'>
+                                    Ime vlasnika:<span className='ms-1 text-dark'>{contactFullName}</span>
+                                </p>
                                 <p className='mb-0 fw-bold text-muted'>
                                     Email:<span className='ms-1 text-dark'>{contactEmailAddress}</span>
                                 </p>

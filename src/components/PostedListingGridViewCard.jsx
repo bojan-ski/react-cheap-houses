@@ -11,15 +11,15 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
     // console.log(postedListing);
     // console.log(postedListing.data);
 
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice } = postedListing.data
+    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = postedListing.data
 
     return (
         <div className="grid-card col-12 col-lg-4 p-1 text-center text-lg-start">
-            
+
             <div className="grid-card-details">
 
                 <h4 className="text-orange text-center fw-bold mb-3">
-                    {offerType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
+                    {listingType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
                 </h4>
 
                 <div className="grid-card-details-images d-flex mb-3">
@@ -69,7 +69,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                             Okrug:<span className="ms-1 text-dark capitalize">{propertyDistrict}</span>
                         </h6>
                         <h6 className="text-orange fw-bold">
-                            {askingPrice} EUR {offerType === 'izdajem' ? 'mesečno' : ''}
+                            {askingPrice} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
                         </h6>
                     </div>
                     <div className="col-6 col-lg-12">
@@ -94,7 +94,13 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                         )}
                         <p className={propertyType === 'plac' ? "mb-4" : "mb-0"}>
                             <LiaTapeSolid className='me-2' />
-                            Prostor:<span className="ms-1 fw-bold text-dark"> {squareFootage} </span>
+                            Prostor:
+                            <span className="ms-1 fw-bold text-dark">
+                                {squareFootage}
+                            </span>
+                            <span className="ms-1 fw-bold text-dark">
+                                {propertyType == 'plac' ? 'ari' : 'kvadrata'}
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -102,7 +108,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                 <div className="d-flex align-items-center justify-content-between">
                     {deleteUserPostedListing ? (
                         <>
-                            <Link to={`/moj-nalog/${postedListing.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
+                            <Link to={`/nalog/${postedListing.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
                                 Detailji
                             </Link>
                             <button type="button" className="btn btn-danger fw-bold" onClick={() => deleteUserPostedListing(postedListing.id)}>
@@ -114,9 +120,9 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                             <Link to={`/oglasi/${postedListing.id}`} className="btn bg-orange-hover text-white fw-bold px-4">
                                 Detailji
                             </Link>
-                            {/* <p className="fw-bold mb-0">
-                                {postedListing.data.timestamp}
-                            </p> */}
+                            <p className="fw-bold mb-0">
+                                {listingCreated.split('-')[1]}
+                            </p>
                         </>
                     )}
                 </div>

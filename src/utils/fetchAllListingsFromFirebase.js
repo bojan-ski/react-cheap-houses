@@ -1,9 +1,14 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase.config";
 
 const fetchAllListingsFromFirebase = async () => {
     try {
-        const querySnapshot = await getDocs(collection(db, "listings"));
+        const q = query(collection(db, 'listings'),
+            orderBy('timestamp', 'desc'))
+
+        const querySnapshot = await getDocs(q)
+
+        // const querySnapshot = await getDocs(collection(db, "listings"));
 
         let allPostedListings = []
 

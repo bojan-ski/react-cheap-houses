@@ -13,6 +13,7 @@ import UserPostedListingsContainer from "../components/profilePage/UserPostedLis
 // LOADER
 export const loader = async () => {
     const userPostedListings = await fetchUserListingsFromFirebase()
+    // console.log(userPostedListings);
 
     return userPostedListings
 
@@ -31,11 +32,20 @@ export const loader = async () => {
 
 const Profile = () => {
     const auth = getAuth()
+    // console.log(auth.currentUser);
+    // console.log(auth.currentUser.displayName);
+    // console.log(auth.currentUser.uid);
+
+    // const [userData, setUserData] = useState({
+    //     userID: auth?.currentUser?.uid,
+    //     userName: auth?.currentUser?.displayName
+    // })
+    const [showPostNewListingForm, setShowPostNewListingForm] = useState(false)
+
     const [userData, setUserData] = useState({
         userID: '',
         userName: ''
     })
-    const [showPostNewListingForm, setShowPostNewListingForm] = useState(false)
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -53,7 +63,7 @@ const Profile = () => {
                 )
             }
         })
-    }, [userData])
+    }, [])
 
     return (
         <div className="profile-page">
@@ -72,7 +82,7 @@ const Profile = () => {
                         <PostNewListing userID={userData.userID} showPostNewListingForm={showPostNewListingForm} />
 
                         {/* user posted offers component */}
-                        {/* <UserPostedListingsContainer/> */}
+                        <UserPostedListingsContainer />
                     </>
                 )}
             </div>

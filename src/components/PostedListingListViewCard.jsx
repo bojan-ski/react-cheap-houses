@@ -5,11 +5,11 @@ import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
 const PostedListingListViewCard = (postedListing) => {
-    const { offerType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedListing.data
+    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedListing.data
 
     return (
         <div className="col-12 list-card p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start mb-3">
-            {offerType === 'izdajem' ? (
+            {listingType === 'izdajem' ? (
                 <h4 className="text-orange fw-bold mb-2 mb-md-0 mx-0 mx-md-3">
                     IZDAJE SE
                 </h4>
@@ -24,7 +24,7 @@ const PostedListingListViewCard = (postedListing) => {
 
             <div className="mb-3 mb-md-0">
                 <h6 className="fw-bold text-orange">
-                    {askingPrice} EUR {offerType === 'izdajem' ? 'mes.' : ''}
+                    {askingPrice} EUR {listingType === 'izdajem' ? 'mes.' : ''}
                 </h6>
                 <h6 className='capitalize'>
                     {propertyType}
@@ -69,7 +69,7 @@ const PostedListingListViewCard = (postedListing) => {
                 )}
                 <p className="mb-0 d-flex align-items-center">
                     <LiaTapeSolid className='me-2' />
-                    Prostor: {squareFootage}
+                    Prostor: {squareFootage} {propertyType == 'plac' ? 'ari' : 'kvad.'}
                 </p>
             </div>
 
