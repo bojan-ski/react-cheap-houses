@@ -91,20 +91,20 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
         // success message
         console.log('uspesno ste postavili/objavili novi oglas');
 
-        // after the user has posted a new offer, the user is redirected to the Offers page
+        // after the user has posted a new listing, the user is redirected to the Listings page
         navigate(`/oglasi`)
     }
 
     if (isLoading) return <Spinner />
 
     return (
-        <section className={!showPostNewListingForm ? "create-new-offer hide my-5" : "create-new-offer my-5"} >
+        <section className={!showPostNewListingForm ? "create-new-listing hide my-5" : "create-new-listing my-5"} >
             <h2 className="text-center fw-bold mb-4">
                 Postavi novi oglas
             </h2>
 
-            <div className="new-offer-details">
-                <form className="bg-info p-4 rounded-5" onSubmit={handleCreateNewOfferSubmit}>
+            <div className="new-listing-details">
+                <form className="p-4 rounded-5" onSubmit={handleCreateNewOfferSubmit}>
                     <div className="row">
 
                         {/* row item 1 */}
@@ -294,7 +294,7 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                                             onChange={onMutate}
                                             // min='10'
                                             // max='10000'
-                                            placeholder="Kvadratura imovine"
+                                            placeholder="Kvadratura"
                                             required
                                         />
                                     </div>
@@ -444,9 +444,11 @@ const PostNewListing = ({ userID, showPostNewListingForm }) => {
                     </div>
 
                     {/* submit btn */}
-                    <button type='submit' className='w-100 btn btn-primary'>
-                        Objavi Oglas
-                    </button>
+                    <div className="submit-button text-center">
+                        <button type='submit' className='px-5 py-3 fw-bold text-white btn bg-orange-hover'>
+                            Objavi Oglas
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>

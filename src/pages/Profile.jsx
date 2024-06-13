@@ -9,6 +9,7 @@ import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
 import UserLoggedIn from "../components/profilePage/UserLoggedIn"
 import PostNewListing from "../components/profilePage/PostNewListing"
 import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer"
+import OglasModal from "../modals/OglasModal"
 
 // LOADER
 export const loader = async () => {
@@ -77,6 +78,9 @@ const Profile = () => {
                     <>
                         {/* user logged in component */}
                         <UserLoggedIn userName={userData.userName} showPostNewListingForm={showPostNewListingForm} setShowPostNewListingForm={setShowPostNewListingForm} />
+
+                        {/* sign up modal */}
+                        <OglasModal userID={userData.userID}/>
 
                         {/* post new offer component */}
                         <PostNewListing userID={userData.userID} showPostNewListingForm={showPostNewListingForm} />

@@ -69,7 +69,7 @@ const PostedListingListViewCard = (postedListing) => {
                 )}
                 <p className="mb-0 d-flex align-items-center">
                     <LiaTapeSolid className='me-2' />
-                    Prostor: {squareFootage} {propertyType == 'plac' ? 'ari' : 'kvad.'}
+                    Prostor: {squareFootage} {propertyType == 'plac' ? 'ari' : 'kv.'}
                 </p>
             </div>
 

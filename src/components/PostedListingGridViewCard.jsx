@@ -14,7 +14,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
     const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = postedListing.data
 
     return (
-        <div className="grid-card col-12 col-lg-4 p-1 text-center text-lg-start">
+        <div className="grid-card col-12 col-md-6 col-lg-4 p-1 text-center text-lg-start">
 
             <div className="grid-card-details">
 
@@ -34,7 +34,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                     >
                         {imageUrls?.map((image, idx) => {
                             return (
-                                <SwiperSlide key={idx} className="text-center">
+                                <SwiperSlide key={idx} className="text-center grid-card-details-image">
                                     <img src={image} alt="slike-imovine" className="rounded-4" />
                                     {/* <div
                                     style={{
@@ -60,7 +60,9 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                     </h5>
                 </div>
 
-                <div className="grid-card-details-info row border-bottom pb-3 mb-3">
+                {/* grid-card-details-info row border-bottom pb-3 mb-3 */}
+
+                <div className={listingType === 'izdajem' ? 'grid-card-details-info row border-bottom pb-3 mb-3' : 'grid-card-details-info row border-bottom pb-4 mb-4 pb-lg-3 mb-lg-3' }>
                     <div className="col-6 col-lg-12">
                         <h6 className="text-muted">
                             Mesto:<span className="ms-1 text-dark capitalize">{propertyLocation}</span>
@@ -82,24 +84,24 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                             </>
                         ) : (
                             <>
-                                <p className="mb-0" >
+                                <p className="mb-0 d-flex align-items-center" >
                                     <MdOutlineBedroomChild className='me-2' />
                                     Sobe:<span className="ms-1 fw-bold text-dark">{numRooms}</span>
                                 </p>
-                                <p className="mb-0">
+                                <p className="mb-0 d-flex align-items-center">
                                     <PiBathtubLight className='me-2' />
                                     Kupatila:<span className="ms-1 fw-bold text-dark">{numBathrooms}</span>
                                 </p>
                             </>
                         )}
-                        <p className={propertyType === 'plac' ? "mb-4" : "mb-0"}>
+                        <p className={propertyType === 'plac' ? "d-flex align-items-center mb-4" : "d-flex align-items-center mb-0"}>
                             <LiaTapeSolid className='me-2' />
                             Prostor:
                             <span className="ms-1 fw-bold text-dark">
                                 {squareFootage}
                             </span>
                             <span className="ms-1 fw-bold text-dark">
-                                {propertyType == 'plac' ? 'ari' : 'kvadrata'}
+                                {propertyType == 'plac' ? 'ari' : 'kv.'}
                             </span>
                         </p>
                     </div>

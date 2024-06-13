@@ -1,7 +1,10 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+// assets
 import footerIcon1 from '../../../assets/footer-assets/jeftine_kuce_footer_1.png'
 import footerIcon2 from '../../../assets/footer-assets/jeftine_kuce_footer_2.png'
+// data
+import propertyTypes from "../../../data/propertyTypes"
 
 
 const MainFooterContent = () => {
@@ -9,7 +12,7 @@ const MainFooterContent = () => {
 
     const handleNewsletterEmailSummation = (e) => {
         e.preventDefault()
-        
+
         setSubmittedEmail(e.target.elements[0].value);
         e.target.elements[0].value = ""
     }
@@ -151,7 +154,14 @@ const MainFooterContent = () => {
                                 Kategorije
                             </h5>
                             <ul className="footer-category-links list-unstyled">
-                                <li className="footer-category-link mb-2">
+                                {propertyTypes.map((propertyType, idx) => {
+                                    return <li key={idx} className="footer-category-link capitalize mb-2">
+                                        <Link to='/oglasi'>
+                                            {propertyType == 'kuca' ? "kuća" : propertyType}
+                                        </Link>
+                                    </li>
+                                })}
+                                {/* <li className="footer-category-link mb-2">
                                     <Link to='/oglasi'>
                                         Kuće
                                     </Link>
@@ -168,9 +178,14 @@ const MainFooterContent = () => {
                                 </li>
                                 <li className="footer-category-link mb-2">
                                     <Link to='/oglasi'>
-                                        Placevi
+                                        Lokali
                                     </Link>
                                 </li>
+                                <li className="footer-category-link mb-2">
+                                    <Link to='/oglasi'>
+                                        Placevi
+                                    </Link>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
@@ -185,12 +200,12 @@ const MainFooterContent = () => {
                                 Ukoliko ste zainteresovani da primate obaveštenja sa Portala "Jeftine Kuće", registrujte se ovde:
                             </p>
                             <form onSubmit={handleNewsletterEmailSummation}>
-                                <input type="email" className="form-control py-3 mb-2" name="email" id="email" placeholder="Vaša adresa elektronske pošte" required/>
+                                <input type="email" className="form-control py-3 mb-2" name="email" id="email" placeholder="Vaša adresa elektronske pošte" required />
                                 <button type="submit" className="footer-form-btn btn text-white fw-bolder w-100 mb-2">
                                     Prijavite se
                                 </button>
                                 <div className="mb-3 form-check">
-                                    <input type="checkbox" className="form-check-input" name="check" id="check" required/>
+                                    <input type="checkbox" className="form-check-input" name="check" id="check" required />
                                     <label className="form-check-label" htmlFor="check">
                                         Slažem se da primam elektronsku poštu sa ovog portala
                                     </label>

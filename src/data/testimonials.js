@@ -1,3 +1,5 @@
+// used for Testimonials.jsx component - Dashboard page
+
 const testimonials = [
     {
         userID: 1,

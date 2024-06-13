@@ -89,22 +89,45 @@ p {
   object-fit: cover;
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff !important;
+  z-index: 0 !important;
+  transition: all 0.5s ease;
+}
+
+.swiper-pagination {
+  z-index: 0 !important;
+  transition: all 0.5s ease;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active.swiper-pagination-bullet-active-main {
+  background-color: #fff;
+}
+
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-pagination {
+  z-index: 10 !important;
+  transition: all 0.5s ease;
+}
+
 /* PAGINATION */
-.btn-container button{
+.btn-container button {
   border: 1px solid var(--orange-color);
   color: #000;
 }
 
-.btn-container button svg polyline{
+.btn-container button svg polyline {
   color: #000;
   font-weight: 700;
 }
 
-.btn-container button:hover{
+.btn-container button:hover {
   background-color: var(--orange-color);
 }
 
-.btn-container button:hover svg polyline{
+.btn-container button:hover svg polyline {
   color: #fff;
 }
 
@@ -146,18 +169,18 @@ p {
   color: var(--orange-color);
 }
 
-#header .navbar .navbar-nav{
+#header .navbar .navbar-nav {
   width: 100%;
 }
 
 @media (min-width: 768px) {
-  #header .navbar .navbar-nav{
+  #header .navbar .navbar-nav {
     width: 75%;
   }
 }
 
 @media (min-width: 992px) {
-  #header .navbar .navbar-nav{
+  #header .navbar .navbar-nav {
     width: 50%;
   }
 }
@@ -377,7 +400,7 @@ main {
   font-size: 0.88rem;
 }
 
-/* OFFERS PAGE */
+/* LISTINGS PAGE */
 /* PostedOffersList component */
 .layout-btn {
   border: 1px solid var(--gray-color);
@@ -401,10 +424,27 @@ main {
 
 .grid-card .grid-card-details-images {
   height: 300px;
+  position: relative;
 }
 /* .grid-card .grid-card-details-images .grid-card-details-image {
   position: relative;
   height: 400px;
+} */
+
+/* .grid-card .grid-card-details-images .grid-card-details-image:before{
+  content: "";
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5019607843);
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease;
+  z-index: 99;
+  opacity: 0;
+  border-radius: 10px;
 } */
 
 /* PostedListingListViewCard component */
@@ -435,17 +475,18 @@ main {
 }
 
 /* PROFILE PAGE */
-/* CreateNewOffer component */
-.create-new-offer {
+/* PostNewListing component */
+.create-new-listing {
   display: block;
 }
 
-.create-new-offer.hide {
+.create-new-listing.hide {
   display: none;
 }
 
 .form-btn,
 .form-btn-active {
+  background-color: #fff;
   padding: 5px 10px;
   margin-right: 7px;
   border: 1px solid var(--dark-orange-color);
@@ -456,6 +497,12 @@ main {
   background-color: var(--dark-orange-color);
   border: 1px solid transparent;
   color: #fff;
+}
+
+.create-new-listing form {
+  background-color: #fff;
+  box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
+  /* border: 1px solid var(--dark-orange-color); */
 }
 
 /* CONTRACT PAGE */
@@ -602,7 +649,7 @@ main {
 }
 
 .footer-category-links .footer-category-link:hover a::before {
-  opacity: 0; 
+  opacity: 0;
   visibility: hidden;
   margin-right: 0;
 }
@@ -675,5 +722,3 @@ main {
 #footer .rights-footer a:hover {
   color: rgb(226, 151, 31);
 }
-
-
