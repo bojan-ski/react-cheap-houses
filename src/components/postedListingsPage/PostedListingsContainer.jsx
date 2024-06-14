@@ -40,10 +40,10 @@ const PostedListingsContainer = () => {
 
                     {/* row item 3 - display listings (grid view or list view) */}
                     <div className="col-12 col-sm-3 text-end">
-                        <button type='button' className="layout-btn btn text-muted me-2" onClick={() => setLayout('grid')}>
+                        <button type='button' className={layout == 'grid' ? "layout-selected layout-btn btn text-muted me-2" : "layout-btn btn text-muted me-2"} onClick={() => setLayout('grid')}>
                             <BsGrid3X3Gap size={18} />
                         </button>
-                        <button type='button' className="layout-btn btn text-muted" onClick={() => setLayout('list')}>
+                        <button type='button' className={layout == 'list' ? "layout-selected layout-btn btn text-muted" : "layout-btn btn text-muted"} onClick={() => setLayout('list')}>
                             <FaListUl size={18} />
                         </button>
                     </div>

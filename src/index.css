@@ -401,13 +401,20 @@ main {
 }
 
 /* LISTINGS PAGE */
-/* PostedOffersList component */
+/* PostedListingsContainer component */
 .layout-btn {
   border: 1px solid var(--gray-color);
 }
 
 .layout-btn:hover,
 .layout-btn:hover svg {
+  background-color: var(--orange-color);
+  color: #fff;
+}
+
+.layout-btn.layout-selected, 
+.layout-btn.layout-selected svg{
+  border:none;
   background-color: var(--orange-color);
   color: #fff;
 }

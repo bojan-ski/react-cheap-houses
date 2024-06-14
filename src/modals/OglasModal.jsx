@@ -6,10 +6,12 @@ import { db } from "../firebase.config";
 // helper func
 import storeUploadedImage from "../utils/storeUploadedImage";
 import getCurrentTimeAndDate from "../utils/getCurrentTimeAndDate";
+import closeModalOnSubmit from "../utils/closeModalOnSubmit";
 // components
 import Spinner from "../components/Spinner";
 // imported data
 import districts from "../data/districts";
+
 
 
 const OglasModal = ({userID}) => {
@@ -94,6 +96,9 @@ const OglasModal = ({userID}) => {
 
         // after the user has posted a new listing, the user is redirected to the Listings page
         navigate(`/oglasi`)
+
+        // close Modal on Submit
+        closeModalOnSubmit('#postNewModal')
     }
 
     if (isLoading) return <Spinner />

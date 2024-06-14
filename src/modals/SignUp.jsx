@@ -3,6 +3,8 @@ import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
+// utils func
+import closeModalOnSubmit from '../utils/closeModalOnSubmit'
 // app asset
 import { useNavigate } from 'react-router-dom';
 
@@ -24,6 +26,9 @@ const SignUp = () => {
             e.target.elements[0].value = ''
             e.target.elements[1].value = ''
             e.target.elements[2].value = ''
+
+            // close Modal on Submit
+            closeModalOnSubmit('#signUpModal')
         }
     }
 

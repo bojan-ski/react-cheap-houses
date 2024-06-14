@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 // firebase/firestore funcs
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
+// utils func
+import closeModalOnSubmit from '../utils/closeModalOnSubmit'
 // app asset
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 
@@ -15,6 +17,9 @@ const ForgotPassword = () => {
         resetPassword(enteredEmail)
 
         e.target.elements[0].value = ''
+
+        // close Modal on Submit
+        closeModalOnSubmit('#forgotPasswordModal')
     }
 
     const resetPassword = async (enteredEmail) => {

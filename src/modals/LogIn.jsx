@@ -10,7 +10,7 @@ const LogIn = () => {
     const navigate = useNavigate()
 
     const handleLogInSubmit = e => {
-        e.preventDefault()      
+        e.preventDefault()
 
         const enteredEmail = e.target.elements[0].value.trim()
         const enteredPassword = e.target.elements[1].value
@@ -21,13 +21,13 @@ const LogIn = () => {
         e.target.elements[1].value = ''
 
         // close Modal on Submit
-        closeModalOnSubmit()
+        closeModalOnSubmit('#logInModal')
     }
 
-    const logInUser = async (enteredEmail, enteredPassword) =>{
+    const logInUser = async (enteredEmail, enteredPassword) => {
         try {
             const auth = getAuth()
-            await signInWithEmailAndPassword(auth, enteredEmail, enteredPassword) 
+            await signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
 
             // success message
             console.log('Prijavili ste se');
@@ -35,11 +35,11 @@ const LogIn = () => {
             // after the user has logged in, the user is redirected to the Profile page
             navigate('/nalog')
         } catch (error) {
-            console.log(error); 
-            
+            console.log(error);
+
             // user does not exist (error) message
             console.log('Kredencijale koje ste uneli ne postoje, molimo Vas probajte ponovo');
-        }       
+        }
     }
 
     return (
@@ -61,7 +61,7 @@ const LogIn = () => {
                                 <h2 className="modal-title fw-bolder">
                                     Prijava
                                 </h2>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                             </div>
 
                             {/* modal-body */}
