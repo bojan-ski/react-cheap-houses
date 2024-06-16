@@ -1,20 +1,21 @@
-import { useState } from "react"
-import { useLoaderData } from "react-router-dom"
+// import { useState } from "react"
+// import { useLoaderData } from "react-router-dom"
 // React Icons
 import { GrNext, GrPrevious } from "react-icons/gr"
 
 let pointA = 0
-let pointB = 4
+let pointB = 6
 let currentPageNumber = 1
 
-const Pagination = () => {
-    const allPostedListings = useLoaderData()
+const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
+    // console.log(allPostedListingsData);
+    // const allPostedListings = useLoaderData()
     // console.log(allPostedListings);
 
-    const [list, setList] = useState({
-        totalListOfPostedListings: allPostedListings,
-        displayedListOfPostedListings: allPostedListings.length > 4 ? allPostedListings.slice(0, 4) : allPostedListings
-    })
+    // const [list, setList] = useState({
+    //     totalListOfPostedListings: allPostedListingsData,
+    //     displayedListOfPostedListings: allPostedListingsData.length > 6 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
+    // })
 
     const paginationOption = (term) => {
         // console.log(term);
@@ -24,49 +25,49 @@ const Pagination = () => {
         // console.log(list.displayedListOfPostedListings);
 
         if (term === 'plus') {
-            pointA += 4
-            pointB += 4
+            pointA += 6
+            pointB += 6
             currentPageNumber += 1
         }
 
         if (term === 'minus') {
-            pointA -= 4
-            pointB -= 4
+            pointA -= 6
+            pointB -= 6
             currentPageNumber -= 1
         }
 
         if (pointB == 0) {
             // console.log('Radi - 1');
-            setList(currData => ({
+            setDisplayedListingsList(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 4)
+                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 6)
             }))
             pointA = 0
-            pointB = 4
+            pointB = 6
             currentPageNumber = 1
-        } else if (pointB > allPostedListings.length && pointA >= allPostedListings.length) {
+        } else if (pointB > allPostedListingsData.length && pointA >= allPostedListingsData.length) {
             // console.log('Radi - 2');
-            setList(currData => ({
+            setDisplayedListingsList(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 4)
+                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 6)
             }))
             pointA = 0
-            pointB = 4
+            pointB = 6
             currentPageNumber = 1
-        } else if (pointB > allPostedListings.length) {
+        } else if (pointB > allPostedListingsData.length) {
             // console.log('Radi - 3');
-            const lastPostedListings = allPostedListings.length - pointA
+            const lastPostedListings = allPostedListingsData.length - pointA
             // console.log(lastPostedListings);
-            setList(currData => ({
+            setDisplayedListingsList(currData => ({
                 ...currData,
                 displayedListOfPostedListings: currData.totalListOfPostedListings.slice(-lastPostedListings)
             }))
             // pointA = 0
-            // pointB = 4
-            currentPageNumber = Math.ceil(allPostedListings.length / 4)
+            // pointB = 6
+            currentPageNumber = Math.ceil(allPostedListingsData.length / 6)
         } else {
             // console.log('Radi - 4');
-            setList(currData => ({
+            setDisplayedListingsList(currData => ({
                 ...currData,
                 displayedListOfPostedListings: currData.totalListOfPostedListings.slice(pointA, pointB)
             }))
@@ -91,7 +92,7 @@ const Pagination = () => {
                     </span>
                     /
                     <span className="ms-1 text-dark">
-                        {Math.ceil(allPostedListings.length / 4)}
+                        {Math.ceil(allPostedListingsData.length / 6)}
                     </span>
                 </p>
             </div>

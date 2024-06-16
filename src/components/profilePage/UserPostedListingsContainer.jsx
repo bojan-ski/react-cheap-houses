@@ -11,7 +11,7 @@ const UserPostedListingsContainer = () => {
     // console.log(userPostedListings);
 
     const [displayUserPostedListings, setDisplayUserPostedListings] = useState(userPostedListings)
-    
+
     const deleteUserPostedListing = async (userPostedListingID) => {
         if (window.confirm('Are you sure you want to delete?')) {
             await deleteDoc(doc(db, 'listings', userPostedListingID))
@@ -35,8 +35,8 @@ const UserPostedListingsContainer = () => {
                         Moji oglasi
                     </h2>
 
-                    {/* user posted listings */}
-                    <AllPostedListingsGridView allPostedListings={displayUserPostedListings} deleteUserPostedListing={deleteUserPostedListing}/>
+                    {/* user posted listings component */}
+                    <AllPostedListingsGridView userDisplayedPostedListings={displayUserPostedListings} deleteUserPostedListing={deleteUserPostedListing} />
                 </>
             )}
         </section>

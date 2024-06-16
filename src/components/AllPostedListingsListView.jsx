@@ -1,10 +1,10 @@
 import PostedListingListViewCard from "./PostedListingListViewCard"
 
-const AllPostedListingsListView = ({ allPostedListings }) => {
+const AllPostedListingsListView = ({ userDisplayedPostedListings }) => {
 
   return (
     <div className='row'>
-      {allPostedListings?.map(postedListing => {
+      {userDisplayedPostedListings?.map(postedListing => {
         return <PostedListingListViewCard key={postedListing.id} {...postedListing} />
       })}
     </div>

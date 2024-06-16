@@ -3,7 +3,10 @@ const closeModalOnSubmit = (modalID) => {
     
     document.body.classList.remove('modal-open')
     document.querySelector('.modal-backdrop').remove()
-    document.querySelector(modalID).classList.remove('show')
+
+    if(document.querySelector(modalID)){
+        document.querySelector(modalID).classList.remove('show')
+    }
 }
 
 export default closeModalOnSubmit

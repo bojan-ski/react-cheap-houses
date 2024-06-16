@@ -4,15 +4,20 @@ import { useLoaderData } from 'react-router-dom'
 import PostedListingsFilterOptions from "./PostedListingsFilterOptions"
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 import AllPostedListingsListView from "../AllPostedListingsListView"
+import Pagination from "../Pagination"
 // React Icons
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
-import Pagination from "../Pagination"
 
 
 const PostedListingsContainer = () => {
     const allPostedListings = useLoaderData()
-    const [displayAllPostedListings, setDisplayAllPostedListings] = useState(allPostedListings)
+    const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
+    // const [displayAllPostedListings, setDisplayAllPostedListings] = useState(allPostedListings)
+    const [displayedListingsList, setDisplayedListingsList] = useState({
+        totalListOfPostedListings: allPostedListingsData,
+        displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
+    })
     const [layout, setLayout] = useState('grid')
 
     // Search function
@@ -20,7 +25,7 @@ const PostedListingsContainer = () => {
         const searchTerm = e.target.value.toLowerCase()
 
         const searchResults = allPostedListings.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
-        setDisplayAllPostedListings(searchResults)
+        setAllPostedListingsData(searchResults)
     }
 
     return (
@@ -30,7 +35,7 @@ const PostedListingsContainer = () => {
 
                     {/* row item 1 - filter form */}
                     <div className="col-12 mb-4">
-                        <PostedListingsFilterOptions displayAllPostedListings={displayAllPostedListings} setDisplayAllPostedListings={setDisplayAllPostedListings} />
+                        <PostedListingsFilterOptions allPostedListingsData={allPostedListingsData} setAllPostedListingsData={setAllPostedListingsData} />
                     </div>
 
                     {/* row item 2 - search feature */}
@@ -52,13 +57,15 @@ const PostedListingsContainer = () => {
 
             <section className="display-posted-offers-container mb-5">
                 {layout === 'grid' ? (
-                    <AllPostedListingsGridView allPostedListings={displayAllPostedListings} />
+                    <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
                 ) : (
-                    <AllPostedListingsListView allPostedListings={displayAllPostedListings} />
+                    <AllPostedListingsListView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
                 )}
 
                 {/* Pagination */}
-                <Pagination />
+                {allPostedListingsData.length >= 7 && (
+                    <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList}/>
+                )}
             </section>
         </>
     )
