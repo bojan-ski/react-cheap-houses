@@ -1,10 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLoaderData } from 'react-router-dom'
 // components
 import PostedListingsFilterOptions from "./PostedListingsFilterOptions"
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 import AllPostedListingsListView from "../AllPostedListingsListView"
 import Pagination from "../Pagination"
+// context
+import { useGlobalContext } from "../../context"
 // React Icons
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
@@ -12,13 +14,24 @@ import { BsGrid3X3Gap } from "react-icons/bs"
 
 const PostedListingsContainer = () => {
     const allPostedListings = useLoaderData()
+    const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()
     const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
+
     // const [displayAllPostedListings, setDisplayAllPostedListings] = useState(allPostedListings)
-    const [displayedListingsList, setDisplayedListingsList] = useState({
-        totalListOfPostedListings: allPostedListingsData,
-        displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
-    })
+    // const [displayedListingsList, setDisplayedListingsList] = useState({
+    //     totalListOfPostedListings: allPostedListingsData,
+    //     displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
+    // })
+
     const [layout, setLayout] = useState('grid')
+
+    useEffect(() => {
+        setDisplayedListingsList({
+            totalListOfPostedListings: allPostedListingsData,
+            displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
+        })
+    }, [])
+
 
     // Search function
     const handleSearch = e => {
@@ -55,18 +68,19 @@ const PostedListingsContainer = () => {
                 </div>
             </section>
 
-            <section className="display-posted-offers-container mb-5">
+            <section className="display-posted-offers-container mb-4">
                 {layout === 'grid' ? (
                     <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
                 ) : (
                     <AllPostedListingsListView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
                 )}
 
-                {/* Pagination */}
-                {allPostedListingsData.length >= 7 && (
-                    <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList}/>
-                )}
             </section>
+            
+            {/* Pagination */}
+            {allPostedListingsData.length >= 7 && (
+                <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
+            )}
         </>
     )
 }

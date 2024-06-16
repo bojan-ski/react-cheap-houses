@@ -26,8 +26,15 @@ export const AppProvider = ({ children }) => {
         }
     }
 
+    const [displayedListingsList, setDisplayedListingsList] = useState({
+        totalListOfPostedListings: null,
+        displayedListOfPostedListings: null
+    })
+
     return <AppContext.Provider value={{
         logOutUser, // NavbarUserOnboarding, UserLoggedIn
+        displayedListingsList, // PostedListingsContainer
+        setDisplayedListingsList, // PostedListingsContainer
     }}>
         {children}
     </AppContext.Provider>

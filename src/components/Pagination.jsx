@@ -83,7 +83,7 @@ const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
     // console.log(list.displayedListOfPostedListings);
 
     return (
-        <div className="pagination mt-3 d-flex align-items-center justify-content-between">
+        <div className="pagination mb-4 d-flex align-items-center justify-content-between">
             <div className="number-of-pages">
                 <p className="mb-0 fw-bold text-muted">
                     Broj stranice:
