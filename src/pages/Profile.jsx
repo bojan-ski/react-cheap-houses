@@ -7,9 +7,7 @@ import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebas
 import PageLocation from "../components/PageLocation"
 import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
 import UserLoggedIn from "../components/profilePage/UserLoggedIn"
-import PostNewListing from "../components/profilePage/PostNewListing"
 import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer"
-import OglasModal from "../modals/OglasModal"
 
 // LOADER
 export const loader = async () => {
@@ -41,7 +39,6 @@ const Profile = () => {
     //     userID: auth?.currentUser?.uid,
     //     userName: auth?.currentUser?.displayName
     // })
-    const [showPostNewListingForm, setShowPostNewListingForm] = useState(false)
 
     const [userData, setUserData] = useState({
         userID: '',
@@ -77,13 +74,7 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userName={userData.userName} showPostNewListingForm={showPostNewListingForm} setShowPostNewListingForm={setShowPostNewListingForm} />
-
-                        {/* sign up modal */}
-                        <OglasModal userID={userData.userID}/>
-
-                        {/* post new offer component */}
-                        <PostNewListing userID={userData.userID} showPostNewListingForm={showPostNewListingForm} />
+                        <UserLoggedIn userData={userData} />
 
                         {/* user posted offers component */}
                         <UserPostedListingsContainer />

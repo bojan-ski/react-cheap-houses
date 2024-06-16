@@ -12,9 +12,8 @@ import Spinner from "../components/Spinner";
 // imported data
 import districts from "../data/districts";
 
-
-
-const OglasModal = ({userID}) => {
+const PostNewListingModal = ({ userID }) => {
+    // console.log(userID);
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -124,7 +123,7 @@ const OglasModal = ({userID}) => {
                             <div className="row">
 
                                 {/* row item 1 */}
-                                <div className="col-12 col-md-6">
+                                <div className="col-12 col-lg-6">
 
                                     {/* listing type */}
                                     <div className="mb-3">
@@ -161,7 +160,7 @@ const OglasModal = ({userID}) => {
                                         <div className='property-type-btns'>
                                             <button
                                                 type='button'
-                                                className={propertyType === 'kuca' ? 'form-btn-active' : 'form-btn'}
+                                                className={propertyType === 'kuca' ? 'form-btn-active mb-1' : 'form-btn mb-1'}
                                                 id='propertyType'
                                                 value='kuca'
                                                 onClick={onMutate}
@@ -351,7 +350,7 @@ const OglasModal = ({userID}) => {
                                 </div>
 
                                 {/* row item 2 */}
-                                <div className="col-12 col-md-6">
+                                <div className="col-12 col-lg-6">
 
                                     {/* property district */}
                                     <div className="mb-3">
@@ -473,4 +472,4 @@ const OglasModal = ({userID}) => {
     )
 }
 
-export default OglasModal
+export default PostNewListingModal
