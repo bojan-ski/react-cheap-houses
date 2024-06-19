@@ -1,7 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
 import { getAuth, signOut } from 'firebase/auth'
+import fetchAllListingsFromFirebase from "./utils/fetchAllListingsFromFirebase";
 
 const AppContext = createContext()
 
@@ -27,8 +28,20 @@ export const AppProvider = ({ children }) => {
         }
     }
 
-    // filter option
+    // fetch all listings from DB
     const [allPostedListingsData, setAllPostedListingsData] = useState({})
+
+    const fetchAllListings = async () => {
+        const allPostedListings = await fetchAllListingsFromFirebase()
+        setAllPostedListingsData(allPostedListings)
+    }
+
+    useEffect(() => {
+        fetchAllListings()
+    }, [])
+    // console.log(allPostedListingsData);
+
+    // filter option
     const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
     const [selectedFilterOptions, setSelectedFilterOptions] = useState({
         selectedListingType: 'Svi oglasi',
@@ -52,6 +65,7 @@ export const AppProvider = ({ children }) => {
         setSelectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
         displayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
         setDisplayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
+        fetchAllListings, // PostedListingsFilterOptions
     }}>
         {children}
     </AppContext.Provider>

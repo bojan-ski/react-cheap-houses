@@ -44,12 +44,24 @@ const PostedListingsContainer = () => {
     const handleSearch = e => {
         const searchTerm = e.target.value.toLowerCase()
 
-        const searchResults = allPostedListings.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+        // const searchResults = allPostedListingsData.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+        // const searchResults = allPostedListings.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+
+        // console.log(allPostedListingsData);
+
+        const searchResults = allPostedListingsData.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+
+        setDisplayedListingsList({
+            totalListOfPostedListings: searchResults,
+            displayedListOfPostedListings: searchResults.length >= 7 ? searchResults.slice(0, 6) : searchResults
+        })
 
         // console.log(searchResults);
-        setAllPostedListingsData(searchResults)
+        // setAllPostedListingsData(searchResults)
         // console.log(allPostedListingsData);
     }
+
+    // console.log(allPostedListingsData);
 
     return (
         <>
@@ -89,9 +101,12 @@ const PostedListingsContainer = () => {
             </section>
 
             {/* Pagination */}
-            {allPostedListingsData.length >= 7 && (
+            {displayedListingsList.totalListOfPostedListings.length >= 7 && (
                 <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
             )}
+            {/* {allPostedListingsData.length >= 7 && (
+                <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
+            )} */}
         </>
     )
 }

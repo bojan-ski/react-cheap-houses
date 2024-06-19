@@ -3,11 +3,11 @@ import { useLoaderData } from "react-router-dom"
 // firebase/firestore funcs
 import { doc, deleteDoc } from "firebase/firestore"
 import { db } from "../../firebase.config"
+// app context
+import { useGlobalContext } from "../../context"
 // components
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 import Pagination from "../Pagination"
-// context
-import { useGlobalContext } from "../../context"
 
 
 const UserPostedListingsContainer = () => {

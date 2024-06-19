@@ -8,9 +8,9 @@ import { useGlobalContext } from "../../context";
 // import fetchSelectedFilterOptionsResults from "../../utils/fetchSelectedFilterOptionsResults";
 
 const PostedListingsFilterOptions = () => {
-    const allPostedListings = useLoaderData()    
+    // const allPostedListings = useLoaderData()    
 
-    const {allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions} = useGlobalContext()
+    const {allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions, fetchAllListings} = useGlobalContext()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
@@ -37,7 +37,8 @@ const PostedListingsFilterOptions = () => {
         // console.log(selectedListingType, selectedPropertyType, selectedDistrict);
 
         if (selectedListingType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
-            setAllPostedListingsData(allPostedListings)
+            // setAllPostedListingsData(allPostedListings)
+            fetchAllListings()
         } else {
             setFilterOptionsApplied(true)
 
@@ -115,7 +116,8 @@ const PostedListingsFilterOptions = () => {
 
     // reset function
     const handleResetFilterOptions = () => {
-        setAllPostedListingsData(allPostedListings)
+        // setAllPostedListingsData(allPostedListings)
+        fetchAllListings()
         setFilterOptionsApplied(false)
         setSelectedFilterOptions({
             selectedListingType: 'Svi oglasi',

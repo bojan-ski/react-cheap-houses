@@ -13,7 +13,14 @@ const DashboardFilterOptions = () => {
     const { allPostedListingsData, setAllPostedListingsData, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions} = useGlobalContext()
 
     useEffect(()=>{
-        setAllPostedListingsData(allPostedListings)
+        // setAllPostedListingsData(allPostedListings)
+
+        setFilterOptionsApplied(false)
+        setSelectedFilterOptions({
+            selectedListingType: 'Svi oglasi',
+            selectedPropertyType: 'Svi tipovi imovine',
+            selectedDistrict: 'Svi okruzi',
+        })
     },[])
 
     const navigate = useNavigate()

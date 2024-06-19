@@ -5,6 +5,7 @@ import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase"
 import PageLocation from "../components/PageLocation"
 import NoPostedListingsMessage from "../components/postedListingsPage/NoPostedListingsMessage";
 import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
+import { useGlobalContext } from "../context";
 
 // LOADER
 export const loader = async () => {
@@ -15,6 +16,8 @@ export const loader = async () => {
 
 const PostedListings = () => {
   const allPostedListings = useLoaderData()
+
+  const {allPostedListingsData} = useGlobalContext()
 
   return (
     <div className="offers-page">
