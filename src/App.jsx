@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />,
+        loader: allPostedListingsLoader
       },
       {
         path: 'oglasi',

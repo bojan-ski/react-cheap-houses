@@ -11,23 +11,25 @@ const fetchUserListingsFromFirebase = async () => {
     // console.log(auth);
 
     try {
+        // const auth = getAuth()
+        // if (!auth.currentUser) return null
         const q = query(collection(db, 'listings'),
             where('userRef', '==', auth.currentUser.uid),
             orderBy('timestamp', 'desc'))
 
         const querySnapshot = await getDocs(q)
 
-        let userPostedListings = []
+        let allUserPostedListings = []
 
         querySnapshot.forEach((listing) => {
-            return userPostedListings.push({
+            return allUserPostedListings.push({
                 id: listing.id,
                 data: listing.data()
             })
         })
-        // console.log(userPostedListings);
+        // console.log(allUserPostedListings);
 
-        return userPostedListings
+        return allUserPostedListings
     } catch (error) {
         console.log(error)
         console.log('Could not fetch user data')

@@ -3,8 +3,7 @@ import { db } from "../firebase.config";
 
 const fetchAllListingsFromFirebase = async () => {
     try {
-        const q = query(collection(db, 'listings'),
-            orderBy('timestamp', 'desc'))
+        const q = query(collection(db, 'listings'), orderBy('timestamp', 'desc'))
 
         const querySnapshot = await getDocs(q)
 

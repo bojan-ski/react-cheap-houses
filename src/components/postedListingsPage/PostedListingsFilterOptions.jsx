@@ -3,20 +3,24 @@ import { useLoaderData } from "react-router-dom"
 // imported data
 import districts from "../../data/districts";
 import propertyTypes from '../../data/propertyTypes'
+// app context
+import { useGlobalContext } from "../../context";
 // import fetchSelectedFilterOptionsResults from "../../utils/fetchSelectedFilterOptionsResults";
 
-const PostedListingsFilterOptions = ({ allPostedListingsData, setAllPostedListingsData }) => {
-    const allPostedListings = useLoaderData()
+const PostedListingsFilterOptions = () => {
+    const allPostedListings = useLoaderData()    
+
+    const {allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions} = useGlobalContext()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
 
-    const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
-    const [selectedFilterOptions, setSelectedFilterOptions] = useState({
-        selectedListingType: 'Svi oglasi',
-        selectedPropertyType: 'Svi tipovi imovine',
-        selectedDistrict: 'Svi okruzi',
-    })
+    // const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
+    // const [selectedFilterOptions, setSelectedFilterOptions] = useState({
+    //     selectedListingType: 'Svi oglasi',
+    //     selectedPropertyType: 'Svi tipovi imovine',
+    //     selectedDistrict: 'Svi okruzi',
+    // })
 
     // filter functions
     const handleSelectedFilterOption = e => {
@@ -125,7 +129,7 @@ const PostedListingsFilterOptions = ({ allPostedListingsData, setAllPostedListin
             <div className="row">
                 {/* row item 1 - display selected offer type */}
                 <div className="col-12 col-md-3 mb-3">
-                    <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption}>
+                    <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption} disabled={filterOptionsApplied}>
                         <option value="Svi oglasi">Svi oglasi</option>
                         <option value="prodajem">Na prodaju</option>
                         <option value="izdajem">Izdaje se</option>
@@ -134,7 +138,7 @@ const PostedListingsFilterOptions = ({ allPostedListingsData, setAllPostedListin
 
                 {/* row item 2 - display selected property type */}
                 <div className="col-12 col-md-3 mb-3">
-                    <select className="form-select" value={selectedFilterOptions.selectedPropertyType} id="selectedPropertyType" onChange={handleSelectedFilterOption}>
+                    <select className="form-select" value={selectedFilterOptions.selectedPropertyType} id="selectedPropertyType" onChange={handleSelectedFilterOption} disabled={filterOptionsApplied}>
                         {propertyTypesList.map((propertyType, idx) => {
                             return <option key={idx} value={propertyType} className="capitalize">
                                 {propertyType}
@@ -145,7 +149,7 @@ const PostedListingsFilterOptions = ({ allPostedListingsData, setAllPostedListin
 
                 {/* row item 3 - display selected district */}
                 <div className="col-12 col-md-3 mb-3">
-                    <select className="form-select" value={selectedFilterOptions.selectedDistrict} id="selectedDistrict" onChange={handleSelectedFilterOption}>
+                    <select className="form-select" value={selectedFilterOptions.selectedDistrict} id="selectedDistrict" onChange={handleSelectedFilterOption} disabled={filterOptionsApplied}>
                         {districtsList.map((district, idx) => {
                             return <option key={idx} value={district} className="capitalize">
                                 {district}

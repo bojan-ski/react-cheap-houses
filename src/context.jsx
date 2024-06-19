@@ -6,6 +6,7 @@ import { getAuth, signOut } from 'firebase/auth'
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
+    // log out user
     const auth = getAuth()
     const navigate = useNavigate()
 
@@ -26,6 +27,16 @@ export const AppProvider = ({ children }) => {
         }
     }
 
+    // filter option
+    const [allPostedListingsData, setAllPostedListingsData] = useState({})
+    const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
+    const [selectedFilterOptions, setSelectedFilterOptions] = useState({
+        selectedListingType: 'Svi oglasi',
+        selectedPropertyType: 'Svi tipovi imovine',
+        selectedDistrict: 'Svi okruzi',
+    })
+
+    // pagination
     const [displayedListingsList, setDisplayedListingsList] = useState({
         totalListOfPostedListings: null,
         displayedListOfPostedListings: null
@@ -33,8 +44,14 @@ export const AppProvider = ({ children }) => {
 
     return <AppContext.Provider value={{
         logOutUser, // NavbarUserOnboarding, UserLoggedIn
-        displayedListingsList, // PostedListingsContainer
-        setDisplayedListingsList, // PostedListingsContainer
+        filterOptionsApplied, //PostedListingsFilterOptions
+        setFilterOptionsApplied, // DashboardFilterOptions, PostedListingsFilterOptions
+        allPostedListingsData, // DashboardFilterOptions, PostedListingsContainer, PostedListingsFilterOptions
+        setAllPostedListingsData, // DashboardFilterOptions, PostedListingsContainer, PostedListingsFilterOptions
+        selectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
+        setSelectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
+        displayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
+        setDisplayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
     }}>
         {children}
     </AppContext.Provider>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useLoaderData } from 'react-router-dom'
+// app context
+import { useGlobalContext } from "../../context"
 // components
 import PostedListingsFilterOptions from "./PostedListingsFilterOptions"
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 import AllPostedListingsListView from "../AllPostedListingsListView"
 import Pagination from "../Pagination"
-// context
-import { useGlobalContext } from "../../context"
 // React Icons
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
@@ -14,8 +14,9 @@ import { BsGrid3X3Gap } from "react-icons/bs"
 
 const PostedListingsContainer = () => {
     const allPostedListings = useLoaderData()
-    const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()
-    const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
+    // console.log(allPostedListings);
+
+    // const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
 
     // const [displayAllPostedListings, setDisplayAllPostedListings] = useState(allPostedListings)
     // const [displayedListingsList, setDisplayedListingsList] = useState({
@@ -23,22 +24,31 @@ const PostedListingsContainer = () => {
     //     displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
     // })
 
+    const { allPostedListingsData, setAllPostedListingsData, displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+
     const [layout, setLayout] = useState('grid')
 
+    // useEffect(() => {
+    //     setAllPostedListingsData(allPostedListings)
+    // }, [])
+
     useEffect(() => {
+        // setAllPostedListingsData(allPostedListings)
         setDisplayedListingsList({
             totalListOfPostedListings: allPostedListingsData,
             displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
         })
-    }, [])
-
+    }, [allPostedListingsData])
 
     // Search function
     const handleSearch = e => {
         const searchTerm = e.target.value.toLowerCase()
 
         const searchResults = allPostedListings.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
+
+        // console.log(searchResults);
         setAllPostedListingsData(searchResults)
+        // console.log(allPostedListingsData);
     }
 
     return (
@@ -48,7 +58,8 @@ const PostedListingsContainer = () => {
 
                     {/* row item 1 - filter form */}
                     <div className="col-12 mb-4">
-                        <PostedListingsFilterOptions allPostedListingsData={allPostedListingsData} setAllPostedListingsData={setAllPostedListingsData} />
+                        {/* <PostedListingsFilterOptions allPostedListingsData={allPostedListingsData} setAllPostedListingsData={setAllPostedListingsData} /> */}
+                        <PostedListingsFilterOptions  />
                     </div>
 
                     {/* row item 2 - search feature */}
@@ -76,7 +87,7 @@ const PostedListingsContainer = () => {
                 )}
 
             </section>
-            
+
             {/* Pagination */}
             {allPostedListingsData.length >= 7 && (
                 <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />

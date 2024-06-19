@@ -11,15 +11,18 @@ import { useGlobalContext } from "../../context"
 
 
 const UserPostedListingsContainer = () => {
-    const userPostedListings = useLoaderData()
+    const allUserPostedListings = useLoaderData()
     // console.log(userPostedListings);
-    const [displayUserPostedListings, setDisplayUserPostedListings] = useState(userPostedListings)
+    const [userPostedListings, setUserPostedListings] = useState(allUserPostedListings)
 
-    const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+    // console.log(allUserPostedListings);
+    // console.log(userPostedListings);
+
+    const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()    
     useEffect(() => {
         setDisplayedListingsList({
-            totalListOfPostedListings: displayUserPostedListings,
-            displayedListOfPostedListings: displayUserPostedListings.length >= 7 ? displayUserPostedListings.slice(0, 6) : displayUserPostedListings
+            totalListOfPostedListings: userPostedListings,
+            displayedListOfPostedListings: userPostedListings?.length >= 7 ? userPostedListings.slice(0, 6) : userPostedListings
         })
     }, [])    
 
@@ -27,12 +30,13 @@ const UserPostedListingsContainer = () => {
         if (window.confirm('Are you sure you want to delete?')) {
             await deleteDoc(doc(db, 'listings', userPostedListingID))
 
-            const updatedListOfUserPostedListings = displayUserPostedListings.filter(listing => listing.id !== userPostedListingID)
+            const updatedListOfUserPostedListings = userPostedListings.filter(listing => listing.id !== userPostedListingID)
 
-            setDisplayUserPostedListings(updatedListOfUserPostedListings)
+            setUserPostedListings(updatedListOfUserPostedListings)
             console.log('Uspešno ste obrisali Vaš oglas');
         }
     }
+
 
     return (
         <>
@@ -48,15 +52,15 @@ const UserPostedListingsContainer = () => {
                     </h2>
 
                     {/* user posted listings component */}
-                    {/* <AllPostedListingsGridView userDisplayedPostedListings={displayUserPostedListings} deleteUserPostedListing={deleteUserPostedListing} /> */}
+                    {/* <AllPostedListingsGridView userDisplayedPostedListings={userPostedListings} deleteUserPostedListing={deleteUserPostedListing} /> */}
                     <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} deleteUserPostedListing={deleteUserPostedListing} />
                 </>
             )}
         </section>
 
         {/* Pagination */}
-        {displayUserPostedListings.length >= 7 && (
-                <Pagination allPostedListingsData={displayUserPostedListings} setDisplayedListingsList={setDisplayedListingsList} />
+        {(userPostedListings && userPostedListings?.length >= 7) && (
+                <Pagination allPostedListingsData={userPostedListings} setDisplayedListingsList={setDisplayedListingsList} />
             )}
         </>        
     )

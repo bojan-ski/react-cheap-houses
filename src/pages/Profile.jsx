@@ -9,20 +9,21 @@ import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
 import UserLoggedIn from "../components/profilePage/UserLoggedIn"
 import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer"
 
+
 // LOADER
 export const loader = async () => {
-    const userPostedListings = await fetchUserListingsFromFirebase()
-    // console.log(userPostedListings);
+    const allUserPostedListings = await fetchUserListingsFromFirebase()
+    // console.log(allUserPostedListings);
 
-    return userPostedListings
+    return allUserPostedListings
 
     // const auth = getAuth()
 
     // if (auth.currentUser) {
-    //     const userPostedListings = await fetchUserListingsFromFirebase()
+    //     const allUserPostedListings = await fetchUserListingsFromFirebase()
 
-    //     console.log(userPostedListings)
-    //     return { userPostedListings, auth }
+    //     console.log(allUserPostedListings)
+    //     return { allUserPostedListings, auth }
     // } else {
     //     console.log('user nije prijavljen');
     //     return null
