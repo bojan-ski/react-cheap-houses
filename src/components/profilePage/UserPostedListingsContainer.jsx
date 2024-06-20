@@ -12,7 +12,7 @@ import Pagination from "../Pagination"
 
 const UserPostedListingsContainer = () => {
     const allUserPostedListings = useLoaderData()
-    // console.log(userPostedListings);
+    // console.log(allUserPostedListings);
     const [userPostedListings, setUserPostedListings] = useState(allUserPostedListings)
 
     // console.log(allUserPostedListings);

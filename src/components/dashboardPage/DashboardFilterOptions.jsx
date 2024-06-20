@@ -6,7 +6,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../context';
 
 const DashboardFilterOptions = () => {
-    const allPostedListings = useLoaderData()
+    // const allPostedListings = useLoaderData()
     // console.log(allPostedListings);
 
     // const [test, setTest] = useState(allPostedListings)
@@ -95,6 +95,7 @@ const DashboardFilterOptions = () => {
         <div className="hero-filter">
             <form className='dashboard-form' onSubmit={handleSubmit}>
                 <div className="row">
+                    
                     {/* row item 1 - display selected offer type */}
                     <div className="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption}>

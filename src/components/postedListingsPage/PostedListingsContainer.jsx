@@ -13,7 +13,7 @@ import { BsGrid3X3Gap } from "react-icons/bs"
 
 
 const PostedListingsContainer = () => {
-    const allPostedListings = useLoaderData()
+    // const allPostedListings = useLoaderData()
     // console.log(allPostedListings);
 
     // const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
@@ -24,7 +24,7 @@ const PostedListingsContainer = () => {
     //     displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
     // })
 
-    const { allPostedListingsData, setAllPostedListingsData, displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+    const { allPostedListingsData, displayedListingsList, setDisplayedListingsList } = useGlobalContext()
 
     const [layout, setLayout] = useState('grid')
 
@@ -101,7 +101,7 @@ const PostedListingsContainer = () => {
             </section>
 
             {/* Pagination */}
-            {displayedListingsList.totalListOfPostedListings.length >= 7 && (
+            {(displayedListingsList.totalListOfPostedListings && displayedListingsList.totalListOfPostedListings.length >= 7) && (
                 <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
             )}
             {/* {allPostedListingsData.length >= 7 && (

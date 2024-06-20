@@ -129,6 +129,7 @@ const PostedListingsFilterOptions = () => {
     return (
         <form onSubmit={handleSubmittedFilterOptions}>
             <div className="row">
+                
                 {/* row item 1 - display selected offer type */}
                 <div className="col-12 col-md-3 mb-3">
                     <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption} disabled={filterOptionsApplied}>

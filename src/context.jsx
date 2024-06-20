@@ -60,7 +60,7 @@ export const AppProvider = ({ children }) => {
         filterOptionsApplied, //PostedListingsFilterOptions
         setFilterOptionsApplied, // DashboardFilterOptions, PostedListingsFilterOptions
         allPostedListingsData, // DashboardFilterOptions, PostedListingsContainer, PostedListingsFilterOptions
-        setAllPostedListingsData, // DashboardFilterOptions, PostedListingsContainer, PostedListingsFilterOptions
+        setAllPostedListingsData, // DashboardFilterOptions, PostedListingsFilterOptions
         selectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
         setSelectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
         displayedListingsList, // PostedListingsContainer, UserPostedListingsContainer

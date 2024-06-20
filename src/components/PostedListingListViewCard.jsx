@@ -5,53 +5,44 @@ import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
 const PostedListingListViewCard = (postedListing) => {
-    const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, contactPhoneNumber, contactEmailAddress } = postedListing.data
+    const { listingType, propertyType, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, imageUrls, askingPrice } = postedListing.data
 
     return (
-        <div className="col-12 list-card p-3 border border-1 rounded-4 d-flex flex-column flex-md-row align-items-center justify-content-around text-center text-md-start mb-3">
-            {listingType === 'izdajem' ? (
-                <h4 className="text-orange fw-bold mb-2 mb-md-0 mx-0 mx-md-3">
-                    IZDAJE SE
-                </h4>
-            ) : (
-                <h4 className="text-orange fw-bold mb-2 mb-md-0">
-                    NA PRODAJU
-                </h4>
-            )}
-            <div className="list-card-image d-none d-lg-block">
+        <div className="col-12 list-card p-3 border border-1 rounded-4 d-flex flex-row align-items-center justify-content-around text-start mb-3">
+            <div className='list-card-info-1'>
+                {listingType === 'izdajem' ? (
+                    <h4 className="text-orange fw-bold mb-0 mx-3">
+                        IZDAJE SE
+                    </h4>
+                ) : (
+                    <h4 className="text-orange fw-bold mb-0">
+                        NA PRODAJU
+                    </h4>
+                )}
+            </div>
+            <div className="list-card-info-2 list-card-image d-none d-lg-block">
                 <img src={imageUrls[0]} alt="slike-imovine" className="rounded-4" />
             </div>
 
-            <div className="mb-3 mb-md-0">
+            <div className="list-card-info-3">
                 <h6 className="fw-bold text-orange">
                     {askingPrice} EUR {listingType === 'izdajem' ? 'mes.' : ''}
                 </h6>
-                <h6 className='capitalize'>
+                <h6 className='capitalize fw-bold'>
                     {propertyType}
                 </h6>
                 <h6 className='capitalize mb-0'>
-                    {propertyName}
+                    {propertyLocation}
                 </h6>
             </div>
-            {/* <div className="mb-3 mb-md-0">
-              <p className='mb-0 fw-bold'>
-                Adresa: <span className='text-dark capitalize'>{propertyAddress}</span>
-              </p>
-              <p className='mb-0 fw-bold'>
-                Mesto: <span className='text-dark capitalize'>{propertyLocation}</span>
-              </p>
-              <p className='mb-0 fw-bold'>
-                Okrug: <span className='text-dark capitalize'>{propertyDistrict}</span>
-              </p>
-            </div> */}
-            <div className="mb-3 mb-md-0">
+            <div className="list-card-info-4 d-none d-md-block">
                 {propertyType === 'plac' ? (
                     <>
                         <p className="mb-0 d-flex align-items-center" >
                             <MdConfirmationNumber className='me-2 text-muted' />
                             Br. parcele:
                         </p>
-                        <p className='mb-0 fw-bold text-dark'>
+                        <p className='mb-0'>
                             {lotNumber}
                         </p>
                     </>
