@@ -24,7 +24,7 @@ const UserPostedListingsContainer = () => {
             totalListOfPostedListings: userPostedListings,
             displayedListOfPostedListings: userPostedListings?.length >= 7 ? userPostedListings.slice(0, 6) : userPostedListings
         })
-    }, [])    
+    }, [userPostedListings])    
 
     const deleteUserPostedListing = async (userPostedListingID) => {
         if (window.confirm('Are you sure you want to delete?')) {
@@ -36,7 +36,6 @@ const UserPostedListingsContainer = () => {
             console.log('Uspešno ste obrisali Vaš oglas');
         }
     }
-
 
     return (
         <>

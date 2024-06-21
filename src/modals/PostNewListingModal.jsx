@@ -218,8 +218,8 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyName'
                                             value={propertyName}
                                             onChange={onMutate}
-                                            maxLength='30'
                                             minLength='10'
+                                            maxLength='25'
                                             placeholder="Porodična kuća, jednoiposoban stan ..."
                                             required
                                         />
@@ -329,7 +329,7 @@ const PostNewListingModal = ({ userID }) => {
                                             value={propertyAddress}
                                             onChange={onMutate}
                                             minLength='10'
-                                            maxLength='40'
+                                            maxLength='30'
                                             placeholder="Adreasa na kojoj se nalazi imovina"
                                             required
                                         />
@@ -347,7 +347,7 @@ const PostNewListingModal = ({ userID }) => {
                                             value={propertyLocation}
                                             onChange={onMutate}
                                             minLength='10'
-                                            maxLength='30'
+                                            maxLength='20'
                                             placeholder="Naziv grada, sela..."
                                             required
                                         />
@@ -383,7 +383,7 @@ const PostNewListingModal = ({ userID }) => {
                                             onChange={onMutate}
                                             accept='.jpg,.png,.jpeg'
                                             multiple
-                                        // required
+                                            required
                                         />
                                     </div>
 
@@ -423,7 +423,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 id='contactFullName'
                                                 value={contactFullName}
                                                 onChange={onMutate}
-                                                maxLength='30'
+                                                maxLength='20'
                                                 required
                                             />
                                         </div>

@@ -45,9 +45,9 @@ const SelectedListing = () => {
                         <h4 className="text-muted fw-bold capitalize">
                             {propertyType}
                         </h4>
-                        <h2 className="fw-bold capitalize mb-3">
+                        <h3 className="fw-bold capitalize mb-3">
                             {propertyName}
-                        </h2>
+                        </h3>
                         <h4 className="text-orange fw-bold">
                             {askingPrice} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
                         </h4>
@@ -57,7 +57,7 @@ const SelectedListing = () => {
                         <div className="row">
 
                             {/* row item 1 */}
-                            <div className="col-12 col-md-6 mb-4">
+                            <div className="col-12 col-lg-6 mb-4">
                                 <p className='mb-0 fw-bold text-muted'>
                                     Adresa:<span className='ms-1 text-dark capitalize'>{propertyAddress}</span>
                                 </p>
@@ -70,7 +70,7 @@ const SelectedListing = () => {
                             </div>
 
                             {/* row item 2 */}
-                            <div className="col-12 col-md-6 mb-4">
+                            <div className="col-12 col-lg-6 mb-4">
                                 {propertyType === 'plac' ? (
                                     <>
                                         <p className="mb-0 fw-bold text-muted" >

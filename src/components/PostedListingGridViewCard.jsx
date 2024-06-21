@@ -50,9 +50,9 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                     <h5 className="capitalize fw-bold text-orange">
                         {propertyType}
                     </h5>
-                    <h5 className="capitalize">
+                    <h6 className="capitalize">
                         {propertyName}
-                    </h5>
+                    </h6>
                 </div>
 
                 <div className={listingType === 'izdajem' ? 'grid-card-details-info row border-bottom pb-3 mb-3' : 'grid-card-details-info row border-bottom pb-4 mb-4 pb-lg-3 mb-lg-3' }>

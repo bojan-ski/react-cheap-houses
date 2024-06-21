@@ -1,4 +1,3 @@
-import CountUp from 'react-countup';
 // dashboard asset 
 import heroImg from '../../assets/dashboard-assets/jeftine_kuce_hero.png'
 // components
@@ -6,8 +5,6 @@ import DashboardFilterOptions from './DashboardFilterOptions';
 import CounterBox from './CounterBox';
 
 const Hero = () => {
-    const headerArr = ['P', 'o', 'r', 't', 'a', 'l', ' ', 'J', 'E', 'F', 'T', 'I', 'N', 'E', ' ', 'K', 'U', 'Ć', 'E']
-
     return (
         <section className='hero py-5'>
             <div className="hero-container">
@@ -17,11 +14,8 @@ const Hero = () => {
                     <div className="col-12 col-lg-6 hero-info d-flex flex-column justify-content-center">
 
                         <div className='hero-heading'>
-                            <h1 className='fw-bold mb-4 slideInDown'>
+                            <h1 className='fw-bold mb-4 fadeInUp'>
                                 Portal JEFTINE KUĆE
-                                {/* {headerArr.map(letter =>{
-                                    return <span>{letter}</span>
-                                })} */}
                             </h1>
                             <h6 className='text-muted fadeInUp'>
                                 Jedno mesto za nekretnine i sve oko nekretnina. Pretražite, kupite, prodajte nekretninu ili se samo posavetujte sa stručnim ljudima iz ove oblasti...

@@ -1,8 +1,6 @@
 import CountUp from 'react-countup';
 
-const CounterBox = ({value, text}) => {
-    // console.log(value, text);
-
+const CounterBox = ({ value, text }) => {
     return (
         <div className="col-4">
             <h3 className='fw-bold'>

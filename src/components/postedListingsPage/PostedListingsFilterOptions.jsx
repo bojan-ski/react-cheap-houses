@@ -1,26 +1,18 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom"
+// app context
+import { useGlobalContext } from "../../context";
+// utils func
+import applySelectedFilterOptions from "../../utils/applySelectedFilterOptions";
 // imported data
 import districts from "../../data/districts";
 import propertyTypes from '../../data/propertyTypes'
-// app context
-import { useGlobalContext } from "../../context";
-// import fetchSelectedFilterOptionsResults from "../../utils/fetchSelectedFilterOptionsResults";
+
 
 const PostedListingsFilterOptions = () => {
-    // const allPostedListings = useLoaderData()    
-
     const {allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions, fetchAllListings} = useGlobalContext()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
 
-    // const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
-    // const [selectedFilterOptions, setSelectedFilterOptions] = useState({
-    //     selectedListingType: 'Svi oglasi',
-    //     selectedPropertyType: 'Svi tipovi imovine',
-    //     selectedDistrict: 'Svi okruzi',
-    // })
 
     // filter functions
     const handleSelectedFilterOption = e => {
@@ -34,89 +26,23 @@ const PostedListingsFilterOptions = () => {
         e.preventDefault();
         const { selectedListingType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
-        // console.log(selectedListingType, selectedPropertyType, selectedDistrict);
 
         if (selectedListingType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
-            // setAllPostedListingsData(allPostedListings)
             fetchAllListings()
         } else {
             setFilterOptionsApplied(true)
 
-            let filteredListOfPostedListings = allPostedListingsData
-            // console.log(filteredListOfPostedListings);
+            setFilterOptionsApplied(true)
 
-            if (selectedListingType !== 'Svi oglasi') {
-                // console.log(selectedListingType);
-                const filterResult = filteredListOfPostedListings.filter(listing => {
-                    // console.log(listing);
-                    // console.log(listing.data.listingType);
-                    return listing.data.listingType == selectedListingType
-                    // console.log(listing.data.listingType == selectedListingType);
-                })
-                // console.log(filterResult);
-                // setAllPostedListingsData(filterResult)
-                // console.log(allPostedListingsData);
-                filteredListOfPostedListings = filterResult
-                // console.log(filteredListOfPostedListings);
-            }
-            if (selectedPropertyType !== 'Svi tipovi imovine') {
-                const filterResult = filteredListOfPostedListings.filter(listing => {
-                    return listing.data.propertyType == selectedPropertyType
-                    // console.log(listing.data.propertyType == selectedPropertyType);
-                })
-                // console.log(filterResult);
-                // setAllPostedListingsData(filterResult)
-                // console.log(allPostedListingsData);
-                filteredListOfPostedListings = filterResult
-                // console.log(filteredListOfPostedListings);
-            }
-            if (selectedDistrict !== 'Svi okruzi') {
-                const filterResult = filteredListOfPostedListings.filter(listing => {
-                    return listing.data.propertyDistrict == selectedDistrict
-                    // console.log(listing.data.propertyDistrict == selectedDistrict);
-                })
-                // console.log(filterResult);
-                // setAllPostedListingsData(filterResult)
-                // console.log(allPostedListingsData);
-                filteredListOfPostedListings = filterResult
-                // console.log(filteredListOfPostedListings);
-            }
+            let filteredListOfPostedListings = applySelectedFilterOptions(selectedFilterOptions, allPostedListingsData)
 
-            // console.log(filteredListOfPostedListings);
             setAllPostedListingsData(filteredListOfPostedListings)
-
-            // fetchSelectedFilterOptionsResults(selectedFilterOptions)
-            // const results = await fetchSelectedFilterOptionsResults(selectedFilterOptions)
-
-            // if (selectedListingType !== 'Svi oglasi') {
-            //     const filterResult = allPostedListingsData.filter(listing => {
-            //         listing.data.listingType == selectedListingType
-            //         console.log(listing.data.listingType == selectedListingType);
-            //     })
-            //     setAllPostedListingsData(filterResult)
-            // }
-            // if (selectedPropertyType !== 'Svi tipovi imovine') {
-            //     const filterResult = allPostedListingsData.filter(listing => {
-            //         listing.data.propertyType == selectedPropertyType
-            //         console.log(listing.data.propertyType == selectedPropertyType);
-            //     })
-            //     setAllPostedListingsData(filterResult)
-            // }
-            // if (selectedDistrict !== 'Svi okruzi') {
-            //     const filterResult = allPostedListingsData.filter(listing => {
-            //         listing.data.propertyDistrict == selectedDistrict
-            //         console.log(listing.data.propertyDistrict == selectedDistrict);
-            //     })
-            //     setAllPostedListingsData(filterResult)
-            // }
         }
     }
 
-    // console.log(allPostedListingsData);
 
     // reset function
     const handleResetFilterOptions = () => {
-        // setAllPostedListingsData(allPostedListings)
         fetchAllListings()
         setFilterOptionsApplied(false)
         setSelectedFilterOptions({

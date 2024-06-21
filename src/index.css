@@ -289,21 +289,6 @@ main {
   margin: 0 auto;
 }
 
-@media (min-width: 992px) {
-  .hero-container {
-    position: relative;
-  }
-
-  .hero-filter {
-    position: absolute;
-    width: 70%;
-  }
-
-  .hero-container .hero-heading {
-    margin-bottom: 250px;
-  }
-}
-
 .hero-heading {
   margin-bottom: 30px;
 }
@@ -312,19 +297,12 @@ main {
   font-size: 60px;
 }
 
-/* .hero-heading h1.slideInDown {
-  animation-name: slideInDown;
+.hero-heading h1.fadeInUp {
+  visibility: visible;
+  animation-duration: 2000ms;
+  animation-delay: 50ms;
+  animation-name: fadeInUp;
 }
-
-@keyframes slideInDown {
-  0% {
-    transform: translate3d(0, -100%, 0);
-    visibility: visible;
-  }
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-} */
 
 .hero-heading h6.fadeInUp {
   line-height: 1.3;
@@ -351,12 +329,26 @@ main {
 
 .hero-filter {
   background-color: #fff;
-  /* border: 1px solid var(--gray-color); */
   box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.07);
   border-radius: 10px;
   padding: 30px 10px;
   z-index: 10;
   top: 50%;
+}
+
+@media (min-width: 992px) {
+  .hero-container {
+    position: relative;
+  }
+
+  .hero-filter {
+    position: absolute;
+    width: 70%;
+  }
+
+  .hero-container .hero-heading {
+    margin-bottom: 250px;
+  }
 }
 
 /* Partners component */
