@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
-// helper func
+// utils funcs
 import storeUploadedImage from "../utils/storeUploadedImage";
 import getCurrentTimeAndDate from "../utils/getCurrentTimeAndDate";
 import closeModalOnSubmit from "../utils/closeModalOnSubmit";
+// data
+import districts from "../data/districts";
 // components
 import Spinner from "../components/Spinner";
-// imported data
-import districts from "../data/districts";
+
 
 const PostNewListingModal = ({ userID }) => {
     // console.log(userID);
@@ -217,8 +218,8 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyName'
                                             value={propertyName}
                                             onChange={onMutate}
-                                            maxLength='25'
-                                            minLength='8'
+                                            maxLength='30'
+                                            minLength='10'
                                             placeholder="Porodična kuća, jednoiposoban stan ..."
                                             required
                                         />
@@ -233,11 +234,13 @@ const PostNewListingModal = ({ userID }) => {
                                                 </label>
                                                 <input
                                                     className='form-control'
-                                                    type='number'
+                                                    type='text'
                                                     id='lotNumber'
                                                     value={lotNumber}
                                                     onChange={onMutate}
-                                                    placeholder="Broj parcele"
+                                                    maxLength='10'
+                                                    minLength='6'
+                                                    placeholder="112233, 1122/3"
                                                     required
                                                 />
                                             </div>
@@ -307,9 +310,7 @@ const PostNewListingModal = ({ userID }) => {
                                                     id='squareFootage'
                                                     value={squareFootage}
                                                     onChange={onMutate}
-                                                    // min='10'
-                                                    // max='10000'
-                                                    placeholder="Kvadratura"
+                                                    placeholder="Površina"
                                                     required
                                                 />
                                             </div>
@@ -327,6 +328,8 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyAddress'
                                             value={propertyAddress}
                                             onChange={onMutate}
+                                            minLength='10'
+                                            maxLength='40'
                                             placeholder="Adreasa na kojoj se nalazi imovina"
                                             required
                                         />
@@ -343,6 +346,8 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyLocation'
                                             value={propertyLocation}
                                             onChange={onMutate}
+                                            minLength='10'
+                                            maxLength='30'
                                             placeholder="Naziv grada, sela..."
                                             required
                                         />
@@ -376,7 +381,6 @@ const PostNewListingModal = ({ userID }) => {
                                             type='file'
                                             id='propertyImages'
                                             onChange={onMutate}
-                                            max='5'
                                             accept='.jpg,.png,.jpeg'
                                             multiple
                                         // required
@@ -395,8 +399,6 @@ const PostNewListingModal = ({ userID }) => {
                                                 id='askingPrice'
                                                 value={askingPrice}
                                                 onChange={onMutate}
-                                                min='50'
-                                                max='1000000'
                                                 placeholder="Unesite trazenu cenu/kiriju"
                                                 required
                                             />
@@ -421,6 +423,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 id='contactFullName'
                                                 value={contactFullName}
                                                 onChange={onMutate}
+                                                maxLength='30'
                                                 required
                                             />
                                         </div>
@@ -430,14 +433,18 @@ const PostNewListingModal = ({ userID }) => {
                                             <label className='form-label fw-bold'>
                                                 Telefon
                                             </label>
-                                            <input
-                                                className='form-control'
-                                                type='number'
-                                                id='contactPhoneNumber'
-                                                value={contactPhoneNumber}
-                                                onChange={onMutate}
-                                                required
-                                            />
+                                            <div className="input-group">
+                                                <span className="input-group-text" id="phone-number">+381</span>
+                                                <input
+                                                    className='form-control'
+                                                    type='number'
+                                                    id='contactPhoneNumber'
+                                                    aria-describedby="phone-number"
+                                                    value={contactPhoneNumber}
+                                                    onChange={onMutate}
+                                                    required
+                                                />
+                                            </div>
                                         </div>
 
                                         {/* contact email */}
@@ -451,6 +458,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 id='contactEmailAddress'
                                                 value={contactEmailAddress}
                                                 onChange={onMutate}
+                                                maxLength='30'
                                                 required
                                             />
                                         </div>

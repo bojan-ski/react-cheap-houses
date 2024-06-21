@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-
 // PAGES
 import AppLayout from "./pages/AppLayout"
 import Dashboard from "./pages/Dashboard"
@@ -9,7 +8,6 @@ import Profile from "./pages/Profile"
 import Blog from "./pages/Blog"
 import Contact from "./pages/Contact"
 import ErrorPage from "./pages/ErrorPage"
-
 // LOADERS
 import { loader as allPostedListingsLoader } from "./pages/PostedListings"
 import { loader as selectedListingLoader } from "./pages/SelectedListing"
@@ -59,7 +57,6 @@ const router = createBrowserRouter([
 ])
 
 const App = () => {
-
   return (
     <RouterProvider router={router}></RouterProvider>
   )
