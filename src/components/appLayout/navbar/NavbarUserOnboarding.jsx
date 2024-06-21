@@ -19,7 +19,7 @@ const NavbarUserOnboarding = () => {
         <>
             <div className='user-onboarding container-fluid d-flex align-items-center justify-content-between pb-1 border-bottom'>
                 <Link className="navbar-brand" to="/">
-                    <img src={headerLogo} alt="portal jefitene kuce - logo" />
+                    <img src={headerLogo} alt="portal jeftine kuce - logo" />
                 </Link>
 
                 <div className="header-btn-container d-flex align-items-center">

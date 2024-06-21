@@ -1,4 +1,4 @@
-// data from data folder
+// data
 import testimonials from '../../data/testimonials';
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';

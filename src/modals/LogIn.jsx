@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
 // app asset
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
+import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
 const LogIn = () => {
     const navigate = useNavigate()
@@ -45,13 +46,13 @@ const LogIn = () => {
     return (
         <div className="modal fade" id="logInModal" tabIndex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg">
-                {/* <div className="w-50 mx-auto modal-dialog-centered"> */}
-                <div className="modal-content">
+                <div className="modal-content rounded-4 overflow-hidden">
                     <div className="row">
 
                         {/* row item 1 */}
-                        <div className="col-5 d-none d-xl-block">
-                            <img src={logInModalImg} alt="logIn-img" className="h-100 img-fluid" />
+                        <div className="modal-images col-5 d-none d-xl-block">
+                            <img src={logInModalImg} alt="logIn-img" className="modal-img-1 h-100 img-fluid" />
+                            <img src={appNameImg} alt="forgotPassword-img" className="modal-img-2" />
                         </div>
 
                         {/* row item 2 */}
@@ -82,7 +83,7 @@ const LogIn = () => {
                                     </div>
 
                                     {/* submit btn */}
-                                    <button type="submit" className="log-in-btn btn fw-bolder text-white py-3 w-100 rounded-4">
+                                    <button type="submit" className="log-in-btn btn bg-orange-hover fw-bolder text-white py-3 w-100 rounded-4">
                                         Prijavite se
                                     </button>
                                 </form>
@@ -100,7 +101,7 @@ const LogIn = () => {
                                 <p>
                                     Da li još uvek niste naš registrovani korisnik?
                                 </p>
-                                <button type="button" className="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                                <button type="button" className="text-orange-hover btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#signUpModal">
                                     Registrujte se
                                 </button>
                             </div>

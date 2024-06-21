@@ -208,7 +208,8 @@ p {
 
 /* Registration Modals - Sing Up, LogIn, Forgot Password */
 #signUpModal,
-#logInModal {
+#logInModal,
+#forgotPasswordModal {
   font-size: 0.88rem;
 }
 
@@ -218,34 +219,29 @@ p {
   padding: 12px 14px;
 }
 
-#signUpModal .modal-content .registration-btn,
-#logInModal .modal-content .log-in-btn,
-#forgotPasswordModal .modal-content .forgot-password-btn {
-  background-color: rgb(255, 169, 32);
-}
-
-#signUpModal .modal-content .registration-btn:hover,
-#logInModal .modal-content .log-in-btn:hover,
-#forgotPasswordModal .modal-content .forgot-password-btn:hover {
-  background-color: rgb(226, 151, 31);
-  transition: all 0.3s ease;
-}
-
 #signUpModal .modal-content .modal-footer .btn,
-#logInModal .modal-content .modal-footer .btn {
-  font-size: 14px;
-  color: rgb(255, 169, 32);
+#logInModal .modal-content .modal-footer .btn,
+#logInModal .modal-content .forgot-password-container .btn,
+#forgotPasswordModal .modal-content .modal-footer .btn {
+  font-size: 14px; 
 }
 
-#logInModal .modal-content .forgot-password-container .btn {
-  font-size: 14px;
+#logInModal .modal-content .forgot-password-container .btn:hover{
+  color: var(--dark-orange-color);
 }
 
-#signUpModal .modal-content .modal-footer .btn:hover,
-#logInModal .modal-content .modal-footer .btn:hover,
-#logInModal .modal-content .forgot-password-container .btn:hover {
-  color: rgb(226, 151, 31);
-  transition: all 0.3s ease;
+#signUpModal .modal-content .modal-images,
+#forgotPasswordModal .modal-content .col-5{
+  position: relative;
+}
+
+#signUpModal .modal-content .modal-images .modal-img-2,
+#logInModal .modal-content .modal-images .modal-img-2,
+#forgotPasswordModal .modal-content .modal-images .modal-img-2{
+  width: 200px;
+  position: absolute;
+  left: 60px;
+  bottom: 40px;
 }
 
 /* ---------- MAIN ---------- */
@@ -349,12 +345,6 @@ main {
   .hero-container .hero-heading {
     margin-bottom: 250px;
   }
-}
-
-/* Partners component */
-.partners-slider .partners-slider-wrapper {
-  -webkit-transition-timing-function: linear !important;
-  transition-timing-function: linear !important;
 }
 
 /* ExpertAdvices component */

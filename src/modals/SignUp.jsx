@@ -1,12 +1,13 @@
-import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
+import { useNavigate } from 'react-router-dom';
 // firebase/firestore funcs
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
 // utils func
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
-// app asset
-import { useNavigate } from 'react-router-dom';
+// asset
+import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
+import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -64,13 +65,13 @@ const SignUp = () => {
     return (
         <div className="modal fade" id="signUpModal" tabIndex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-lg">
-                {/* <div className="w-50 mx-auto modal-dialog-centered"> */}
-                <div className="modal-content">
+                <div className="modal-content rounded-4 overflow-hidden">
                     <div className="row">
 
                         {/* row item 1 */}
-                        <div className="col-5 d-none d-xl-block">
-                            <img src={registrationModalImg} alt="registration-img" className="h-100 img-fluid" />
+                        <div className="modal-images col-5 d-none d-xl-block">
+                            <img src={registrationModalImg} alt="registration-img" className="h-100 img-fluid modal-img-1" />
+                            <img src={appNameImg} alt="forgotPassword-img" className="modal-img-2" />
                         </div>
 
                         {/* row item 2 */}
@@ -110,7 +111,7 @@ const SignUp = () => {
                                         </label>
                                         <input type="password" className="form-control" id="userConfirmRegistrationPassword" placeholder="potvrda vaše lozinke" required />
                                     </div>
-                                    <button type="submit" className="registration-btn btn fw-bolder text-white py-3 w-100 rounded-4">
+                                    <button type="submit" className="registration-btn btn bg-orange-hover fw-bolder text-white py-3 w-100 rounded-4">
                                         Registrujte se
                                     </button>
                                 </form>
@@ -121,7 +122,7 @@ const SignUp = () => {
                                 <p>
                                     Već posedujete nalog na našem portalu?
                                 </p>
-                                <button type="button" className="btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#logInModal">
+                                <button type="button" className="text-orange-hover btn p-0 m-0" data-bs-toggle="modal" data-bs-target="#logInModal">
                                     Prijavite se
                                 </button>
                             </div>
