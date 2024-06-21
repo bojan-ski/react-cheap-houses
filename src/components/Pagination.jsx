@@ -97,7 +97,7 @@ const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
                 </p>
             </div>
 
-            <div className="btn-container text-end">
+            <div className="pagination-btn-container text-end">
                 <button className="btn px-3 me-3 btn-prev" onClick={() => paginationOption('minus')}>
                     <GrPrevious className="text-white" />
                 </button>

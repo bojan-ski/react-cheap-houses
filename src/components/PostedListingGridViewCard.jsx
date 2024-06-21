@@ -8,24 +8,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 
 const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) => {
-    // console.log(postedListing);
-    // console.log(postedListing.data);
-
     const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated } = postedListing.data
 
     return (
-        <div className="grid-card col-12 col-md-6 col-lg-4 p-1 text-center text-lg-start">
-
+        <div className="grid-card col-12 col-lg-4 p-1 text-center text-lg-start">
             <div className="grid-card-details">
 
-                <h4 className="text-orange text-center fw-bold mb-3">
+                <h4 className="text-orange text-center fw-bold mb-4">
                     {listingType === 'izdajem' ? "IZDAJE SE" : 'NA PRODAJU'}
                 </h4>
 
                 <div className="grid-card-details-images d-flex mb-3">
                     <Swiper
                         slidesPerView={1}
-                        // loop={true}
                         modules={[Pagination, Navigation]}
                         navigation={true}
                         pagination={{
@@ -52,15 +47,13 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                 </div>
 
                 <div className="grid-card-details-header">
-                    <h5 className="capitalize">
+                    <h5 className="capitalize fw-bold text-orange">
                         {propertyType}
                     </h5>
                     <h5 className="capitalize">
                         {propertyName}
                     </h5>
                 </div>
-
-                {/* grid-card-details-info row border-bottom pb-3 mb-3 */}
 
                 <div className={listingType === 'izdajem' ? 'grid-card-details-info row border-bottom pb-3 mb-3' : 'grid-card-details-info row border-bottom pb-4 mb-4 pb-lg-3 mb-lg-3' }>
                     <div className="col-6 col-lg-12">
@@ -77,7 +70,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                     <div className="col-6 col-lg-12">
                         {propertyType === 'plac' ? (
                             <>
-                                <p className="mb-0" >
+                                <p className="mb-0 d-flex align-items-center" >
                                     <MdConfirmationNumber className='me-2' />
                                     Broj parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
                                 </p>

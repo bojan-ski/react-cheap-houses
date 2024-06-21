@@ -1,14 +1,41 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
-import { getAuth, signOut } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
+// utils func
 import fetchAllListingsFromFirebase from "./utils/fetchAllListingsFromFirebase";
 
 const AppContext = createContext()
 
 export const AppProvider = ({ children }) => {
-    // log out user
     const auth = getAuth()
+
+    // user details
+    const [userData, setUserData] = useState({
+        userID: '',
+        userName: ''
+    })
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                auth.currentUser ? (
+                    setUserData({
+                        userID: user.uid,
+                        userName: user.displayName
+                    })
+                ) : (
+                    setUserData({
+                        userID: '',
+                        userName: ''
+                    })
+                )
+            }
+        })
+    }, [])
+
+
+    // log out user
     const navigate = useNavigate()
 
     const logOutUser = async () => {
@@ -16,6 +43,11 @@ export const AppProvider = ({ children }) => {
             try {
                 await signOut(auth)
                 console.log(auth.currentUser);
+
+                setUserData({
+                    userID: '',
+                    userName: ''
+                })
 
                 // success message
                 console.log('uspesno ste se odjavili');
@@ -56,6 +88,7 @@ export const AppProvider = ({ children }) => {
     })
 
     return <AppContext.Provider value={{
+        userData, //Profile, NavbarUserOnboarding
         logOutUser, // NavbarUserOnboarding, UserLoggedIn
         filterOptionsApplied, //PostedListingsFilterOptions
         setFilterOptionsApplied, // DashboardFilterOptions, PostedListingsFilterOptions

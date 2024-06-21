@@ -113,21 +113,24 @@ p {
 }
 
 /* PAGINATION */
-.btn-container button {
+.pagination .number-of-pages p{
+  font-size: 18px;
+}
+
+.pagination-btn-container button {
   border: 1px solid var(--orange-color);
   color: #000;
 }
 
-.btn-container button svg polyline {
+.pagination-btn-container button svg polyline {
   color: #000;
-  font-weight: 700;
 }
 
-.btn-container button:hover {
+.pagination-btn-container button:hover {
   background-color: var(--orange-color);
 }
 
-.btn-container button:hover svg polyline {
+.pagination-btn-container button:hover svg polyline {
   color: #fff;
 }
 

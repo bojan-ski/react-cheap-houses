@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom'
-// firebase/firestore funcs
-import { getAuth } from 'firebase/auth'
 // app context
 import { useGlobalContext } from '../../../context'
-// asset
-import headerLogo from '../../../assets/header-assets/jeftine_kuce_logo_text_header.png'
 // modals
 import SignUp from '../../../modals/SignUp'
 import LogIn from '../../../modals/LogIn'
 import ForgotPassword from '../../../modals/ForgotPassword'
+// asset
+import headerLogo from '../../../assets/header-assets/jeftine_kuce_logo_text_header.png'
 // React Icons
 import { BiSolidUserCheck } from 'react-icons/bi'
 import { IoLogIn } from 'react-icons/io5'
 
 
 const NavbarUserOnboarding = () => {
-    const auth = getAuth()
-    const { logOutUser } = useGlobalContext()
+    const { userData, logOutUser } = useGlobalContext()
 
     return (
         <>
@@ -26,12 +23,12 @@ const NavbarUserOnboarding = () => {
                 </Link>
 
                 <div className="header-btn-container d-flex align-items-center">
-                    {auth.currentUser ? (
+                    {userData.userName ? (
                         <>
                             <p className='mb-0 fw-bold text-muted me-3'>
                                 Dobrodošli
                                 <span className='ms-2 text-dark'>
-                                    {auth.currentUser.displayName}
+                                    {userData.userName}
                                 </span>
                             </p>
 
