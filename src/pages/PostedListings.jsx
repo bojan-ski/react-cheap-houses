@@ -1,13 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 // utils func
 import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase";
-// app context
-import { useGlobalContext } from "../context";
 // components
 import PageLocation from "../components/PageLocation"
 import NoPostedListingsMessage from "../components/postedListingsPage/NoPostedListingsMessage";
 import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
-
 
 // LOADER
 export const loader = async () => {
@@ -16,13 +13,12 @@ export const loader = async () => {
   return allPostedListings
 }
 
+
 const PostedListings = () => {
   const allPostedListings = useLoaderData()
 
-  // const {allPostedListingsData} = useGlobalContext()
-
   return (
-    <div className="offers-page">
+    <div className="posted-listings-page">
       {/* page location */}
       <PageLocation />
 
@@ -32,7 +28,7 @@ const PostedListings = () => {
         ) : (
           <>
             <section className="text-center mb-5">
-              <h1 className="fw-bold mb-2">
+              <h1 className="fw-bold mb-3">
                 Oglasi
               </h1>
               <h6 className="text-muted fw-bold">

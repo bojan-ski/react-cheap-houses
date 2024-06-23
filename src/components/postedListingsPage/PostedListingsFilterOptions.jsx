@@ -8,11 +8,10 @@ import propertyTypes from '../../data/propertyTypes'
 
 
 const PostedListingsFilterOptions = () => {
-    const {allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions, fetchAllListings} = useGlobalContext()
+    const { allPostedListingsData, setAllPostedListingsData, filterOptionsApplied, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions, fetchAllListings } = useGlobalContext()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
-
 
     // filter functions
     const handleSelectedFilterOption = e => {
@@ -24,8 +23,8 @@ const PostedListingsFilterOptions = () => {
 
     const handleSubmittedFilterOptions = (e) => {
         e.preventDefault();
-        const { selectedListingType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
+        const { selectedListingType, selectedPropertyType, selectedDistrict } = selectedFilterOptions
 
         if (selectedListingType == 'Svi oglasi' && selectedPropertyType == 'Svi tipovi imovine' && selectedDistrict == 'Svi okruzi') {
             fetchAllListings()
@@ -39,7 +38,6 @@ const PostedListingsFilterOptions = () => {
             setAllPostedListingsData(filteredListOfPostedListings)
         }
     }
-
 
     // reset function
     const handleResetFilterOptions = () => {
@@ -55,7 +53,7 @@ const PostedListingsFilterOptions = () => {
     return (
         <form onSubmit={handleSubmittedFilterOptions}>
             <div className="row">
-                
+
                 {/* row item 1 - display selected offer type */}
                 <div className="col-12 col-md-3 mb-3">
                     <select className="form-select" value={selectedFilterOptions.selectedListingType} id="selectedListingType" onChange={handleSelectedFilterOption} disabled={filterOptionsApplied}>

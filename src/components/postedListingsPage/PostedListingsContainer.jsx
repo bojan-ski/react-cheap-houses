@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useLoaderData } from 'react-router-dom'
 // app context
 import { useGlobalContext } from "../../context"
 // components
@@ -13,30 +12,14 @@ import { BsGrid3X3Gap } from "react-icons/bs"
 
 
 const PostedListingsContainer = () => {
-    // const allPostedListings = useLoaderData()
-    // console.log(allPostedListings);
-
-    // const [allPostedListingsData, setAllPostedListingsData] = useState(allPostedListings)
-
-    // const [displayAllPostedListings, setDisplayAllPostedListings] = useState(allPostedListings)
-    // const [displayedListingsList, setDisplayedListingsList] = useState({
-    //     totalListOfPostedListings: allPostedListingsData,
-    //     displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
-    // })
-
     const { allPostedListingsData, displayedListingsList, setDisplayedListingsList } = useGlobalContext()
-
+    
     const [layout, setLayout] = useState('grid')
 
-    // useEffect(() => {
-    //     setAllPostedListingsData(allPostedListings)
-    // }, [])
-
     useEffect(() => {
-        // setAllPostedListingsData(allPostedListings)
         setDisplayedListingsList({
             totalListOfPostedListings: allPostedListingsData,
-            displayedListOfPostedListings: allPostedListingsData.length >= 7 ? allPostedListingsData.slice(0, 6) : allPostedListingsData
+            displayedListOfPostedListings: allPostedListingsData.length >= 10 ? allPostedListingsData.slice(0, 9) : allPostedListingsData
         })
     }, [allPostedListingsData])
 
@@ -44,33 +27,21 @@ const PostedListingsContainer = () => {
     const handleSearch = e => {
         const searchTerm = e.target.value.toLowerCase()
 
-        // const searchResults = allPostedListingsData.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
-        // const searchResults = allPostedListings.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
-
-        // console.log(allPostedListingsData);
-
         const searchResults = allPostedListingsData.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
 
         setDisplayedListingsList({
             totalListOfPostedListings: searchResults,
-            displayedListOfPostedListings: searchResults.length >= 7 ? searchResults.slice(0, 6) : searchResults
+            displayedListOfPostedListings: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
         })
-
-        // console.log(searchResults);
-        // setAllPostedListingsData(searchResults)
-        // console.log(allPostedListingsData);
     }
-
-    // console.log(allPostedListingsData);
 
     return (
         <>
-            <section className="search-filter-posted-offers-container mb-5">
+            <section className="search-filter-options-container mb-5">
                 <div className="row">
 
                     {/* row item 1 - filter form */}
                     <div className="col-12 mb-4">
-                        {/* <PostedListingsFilterOptions allPostedListingsData={allPostedListingsData} setAllPostedListingsData={setAllPostedListingsData} /> */}
                         <PostedListingsFilterOptions  />
                     </div>
 
@@ -91,7 +62,7 @@ const PostedListingsContainer = () => {
                 </div>
             </section>
 
-            <section className="display-posted-offers-container mb-4">
+            <section className="display-posted-listings-container mb-4">
                 {layout === 'grid' ? (
                     <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
                 ) : (
@@ -101,12 +72,9 @@ const PostedListingsContainer = () => {
             </section>
 
             {/* Pagination */}
-            {(displayedListingsList.totalListOfPostedListings && displayedListingsList.totalListOfPostedListings.length >= 7) && (
+            {(displayedListingsList.totalListOfPostedListings && displayedListingsList.totalListOfPostedListings.length >= 10) && (
                 <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
             )}
-            {/* {allPostedListingsData.length >= 7 && (
-                <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
-            )} */}
         </>
     )
 }
