@@ -1,3 +1,6 @@
+//data
+import contactTopic from "../../data/contactTopic"
+// react icon
 import { FaRegPaperPlane } from "react-icons/fa"
 
 const ContactForm = () => {
@@ -8,6 +11,11 @@ const ContactForm = () => {
         console.log(e.target.elements[1].value);
         console.log(e.target.elements[2].value);
         console.log(e.target.elements[3].value);
+
+        e.target.elements[0].value = '';
+        e.target.elements[1].value = '';
+        e.target.elements[2].value = 'Odaberite';
+        e.target.elements[3].value = '';
     }
 
     return (
@@ -16,7 +24,7 @@ const ContactForm = () => {
 
                 <div className="form-area rounded-4 py-5 px-4 mx-lg-5">
                     <div className="heading-section text-center mb-4">
-                        <h3 className="fw-bolder">
+                        <h3 className="fw-bolder mb-3">
                             K O N T A K T
                         </h3>
                         <p className="fw-bold text-muted">
@@ -50,25 +58,23 @@ const ContactForm = () => {
                                 </label>
                                 <select id="topic" className="form-select px-3 py-2">
                                     <option>Odaberite</option>
-                                    <option value="Prodaja" className="option">Prodaja</option>
-                                    <option value="Kupovina" className="option">Kupovina</option>
-                                    <option value="Najam" className="option">Najam</option>
-                                    <option value="Renoviranje" className="option">Renoviranje</option>
-                                    <option value="Dekoracije" className="option">Dekoracije</option>
-                                    <option value="Majstori" className="option">Majstori</option>
-                                    <option value="Ostalo" className="option">Ostalo</option>
+                                    {contactTopic.map((topic, idx) => {
+                                        return <option key={idx} value={topic} className="option">
+                                            {topic}
+                                        </option>
+                                    })}
                                 </select>
                             </div>
 
                             {/* row item 4 */}
-                            <div className="col-12 mb-3">
+                            <div className="col-12 mb-4">
                                 <label htmlFor="userContactFormMessage" className="form-label fw-bold">
                                     Poruka
                                 </label>
                                 <textarea rows="5" className="form-control" id="userContactFormMessage" placeholder="tekst vaše poruke..." required />
                             </div>
                         </div>
-                        <button type="submit" className="contact-form-btn btn text-white d-flex align-items-center">
+                        <button type="submit" className="contact-form-btn bg-orange-hover btn text-white d-flex align-items-center">
                             <FaRegPaperPlane />
                             <span className="fw-bold">
                                 Pošaljite zahtev

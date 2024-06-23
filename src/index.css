@@ -86,6 +86,10 @@ p {
   transform: scale(0.98);
 }
 
+textarea {
+  resize: none;
+}
+
 /* ---------- APP (SHARED) COMPONENTS ---------- */
 /* SWIPER */
 .swiper-slide {
@@ -392,10 +396,10 @@ main {
 }
 
 .expert-advice .box-content .box-link a:hover svg {
-  animation: link-hover 0.4s ease;
+  animation: link-hover-left-right 0.4s ease;
 }
 
-@keyframes link-hover {
+@keyframes link-hover-left-right {
   0% {
     transform: translateX(0);
     opacity: 1;
@@ -598,18 +602,35 @@ main {
 .form-area .form-control,
 .form-area .form-select,
 .form-area .heading-section p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
-/* .form-area .form-control:focus,
-.form-area .form-select:focus {
-  border-color: var(--orange-color);
-  box-shadow: none;
-} */
-
 .form-area .contact-form-btn {
-  background-color: var(--orange-color);
   padding: 12px 25px;
+}
+
+
+.form-area .contact-form-btn:hover svg {
+  animation: link-hover-up-down 0.4s ease;
+}
+
+@keyframes link-hover-up-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  49% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .form-area .contact-form-btn span::before {

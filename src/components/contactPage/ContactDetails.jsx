@@ -1,4 +1,6 @@
+//asset
 import contactImg from '../../assets/contact-assets/jeftine_kuce_contact_person.png'
+// react icons
 import { FaEnvelopeOpen, FaMapMarkedAlt } from 'react-icons/fa'
 import { GiRotaryPhone } from 'react-icons/gi'
 
