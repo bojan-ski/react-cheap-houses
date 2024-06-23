@@ -3,14 +3,16 @@ import { useLoaderData } from "react-router-dom"
 import { Link } from "react-router-dom";
 // helper func
 import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase";
-// components
+// component
 import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
+// modal
 import SelectedImageModal from "../modals/SelectedImageModal";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 import { CiCalendarDate } from "react-icons/ci";
+import priceComma from "../utils/priceComma";
 
 
 export const loader = async ({ params }) => {
@@ -49,7 +51,7 @@ const SelectedListing = () => {
                             {propertyName}
                         </h3>
                         <h4 className="text-orange fw-bold">
-                            {askingPrice} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
+                            {priceComma(askingPrice)} EUR {listingType === 'izdajem' ? 'mesečno' : ''}
                         </h4>
                     </section>
 
