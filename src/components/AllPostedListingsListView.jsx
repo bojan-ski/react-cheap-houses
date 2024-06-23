@@ -1,7 +1,6 @@
 import PostedListingListViewCard from "./PostedListingListViewCard"
 
 const AllPostedListingsListView = ({ userDisplayedPostedListings }) => {
-
   return (
     <div className='row'>
       {userDisplayedPostedListings?.map(postedListing => {

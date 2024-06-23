@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+//utils func 
+import priceComma from '../utils/priceComma'
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 
-const PostedListingListViewCard = (postedListing) => {
+const PostedListingListViewCard = ( postedListing ) => {
     const { listingType, propertyType, numRooms, numBathrooms, lotNumber, squareFootage, propertyLocation, imageUrls, askingPrice } = postedListing.data
 
     return (
@@ -26,7 +28,7 @@ const PostedListingListViewCard = (postedListing) => {
 
             <div className="list-card-info-3">
                 <h6 className="fw-bold text-orange">
-                    {askingPrice} EUR {listingType === 'izdajem' ? 'mes.' : ''}
+                    {priceComma(askingPrice)} EUR {listingType === 'izdajem' ? 'mes.' : ''}
                 </h6>
                 <h6 className='capitalize fw-bold'>
                     {propertyType}

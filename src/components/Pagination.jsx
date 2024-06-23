@@ -6,7 +6,6 @@ let pointB = 9
 let currentPageNumber = 1
 
 const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
-
     const paginationOption = (term) => {
         if (term === 'plus') {
             pointA += 9
