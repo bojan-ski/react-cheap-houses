@@ -5,9 +5,15 @@ import RightsFooter from "./RightsFooter"
 const Footer = () => {
   return (
     <footer id="footer">
-        <MainFooterContent/>
-        <NavAndSocialFooterLinks/>    
-        <RightsFooter/>
+
+      {/* MainFooterContent component */}
+      <MainFooterContent />
+
+      {/* NavAndSocialFooterLinks component */}
+      <NavAndSocialFooterLinks />
+
+      {/* RightsFooter component */}
+      <RightsFooter />
     </footer>
   )
 }

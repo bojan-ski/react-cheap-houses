@@ -423,7 +423,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 id='contactFullName'
                                                 value={contactFullName}
                                                 onChange={onMutate}
-                                                maxLength='20'
+                                                maxLength='25'
                                                 required
                                             />
                                         </div>

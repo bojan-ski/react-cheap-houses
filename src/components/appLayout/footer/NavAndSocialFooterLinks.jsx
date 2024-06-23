@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
+//asset
 import footerLogo from '../../../assets/footer-assets/jeftine_kuce_logo_text_footer.png'
+//data
 import appNavigationLinks from '../../../data/appNavigationLinks'
+// react icons
 import { FaFacebookF, FaLinkedin } from "react-icons/fa"
 import { BsInstagram, BsTwitter, BsYoutube } from "react-icons/bs"
 
@@ -12,15 +15,15 @@ const NavAndSocialFooterLinks = () => {
                     {/* row item 1 */}
                     <div className="col-6 col-md-2 mb-4 mb-md-0">
                         <Link to='/'>
-                            <img src={footerLogo} alt="logo" className="img-fluid" />
+                            <img src={footerLogo} alt="footer-logo" className="img-fluid" />
                         </Link>
                     </div>
 
                     {/* row item 2 */}
                     <div className="col-12 col-md-7 mb-5 mb-md-0">
                         <ul className="footer-nav-links list-unstyled mb-0 d-flex justify-content-around align-items-center">
-                            {appNavigationLinks.map(link => {
-                                return <li className="footer-nav-link" key={link.label}>
+                            {appNavigationLinks.map((link, idx) => {
+                                return <li className="footer-nav-link" key={idx}>
                                     <Link to={link.href} className="fw-bold">
                                         {link.label}
                                     </Link>
@@ -31,7 +34,7 @@ const NavAndSocialFooterLinks = () => {
 
                     {/* row item 3 */}
                     <div className="col-12 col-md-3">
-                        <ul className="footer-social-links list-unstyled mb-0 d-flex justify-content-center align-items-center">
+                        <ul className="footer-social-links list-unstyled mb-2 d-flex justify-content-center align-items-center">
                             <li className="footer-social-link me-2">
                                 <Link to='https://www.facebook.com/groups/282177199514267/?ref=share_group_link' className="text-white fw-bold p-2" target="_blank">
                                     <FaFacebookF size={20} />

@@ -91,7 +91,7 @@ const SignUp = () => {
                                         <label htmlFor="userRegistrationName" className="col-form-label fw-bolder mb-1">
                                             Korisničko ime
                                         </label>
-                                        <input type="text" className="form-control" id="userRegistrationName" placeholder="vaše korisničko ime" required />
+                                        <input type="text" className="form-control" id="userRegistrationName" placeholder="vaše korisničko ime" maxLength='25' required />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="userRegistrationEmail" className="col-form-label fw-bolder mb-1">

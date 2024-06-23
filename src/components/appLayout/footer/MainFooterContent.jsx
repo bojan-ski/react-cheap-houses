@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
 // assets
 import footerIcon1 from '../../../assets/footer-assets/jeftine_kuce_footer_1.png'
@@ -8,12 +7,11 @@ import propertyTypes from "../../../data/propertyTypes"
 
 
 const MainFooterContent = () => {
-    const [submittedEmail, setSubmittedEmail] = useState()
-
     const handleNewsletterEmailSummation = (e) => {
         e.preventDefault()
 
-        setSubmittedEmail(e.target.elements[0].value);
+        console.log(e.target.elements[0].value);
+
         e.target.elements[0].value = ""
     }
 
@@ -24,51 +22,48 @@ const MainFooterContent = () => {
 
                     {/* row item 1 */}
                     <div className="col-12 col-lg-6 mb-5">
-                        <div className="group-icon">
-                            <div className="box-icons d-flex rounded-3">
-                                <div className="images me-3">
-                                    <img src={footerIcon1} alt="img-footer-1" />
-                                </div>
-
-                                <div className="content">
-                                    <h3 className="mb-3 fw-bold">
-                                        Tražite nekretninu
-                                    </h3>
-                                    <p>
-                                        Ukoliko tražite bilo kakvu vrstu nekretnine (kupovina ili najam), tu smo za vas, od bogate ponude, preko stručnih saveta, pa do pomoći naših iskusnih menadžera iz ovih oblasti.
-                                    </p>
-                                </div>
+                        <div className="contact-info-box d-flex rounded-3">
+                            <div className="box-icon me-3">
+                                <img src={footerIcon1} alt="img-footer-1" />
                             </div>
-                            <div className="button-footer text-center">
-                                <Link to='/kontakt' className="cs-button text-white px-5 py-3 rounded-3">
-                                    Kontakt
-                                </Link>
+
+                            <div className="box-content">
+                                <h3 className="mb-3 fw-bold">
+                                    Tražite nekretninu
+                                </h3>
+                                <p>
+                                    Ukoliko tražite bilo kakvu vrstu nekretnine (kupovina ili najam), tu smo za vas, od bogate ponude, preko stručnih saveta, pa do pomoći naših iskusnih menadžera iz ovih oblasti.
+                                </p>
                             </div>
                         </div>
+                        <div className="box-footer text-center">
+                            <Link to='/kontakt' className="bg-orange-hover text-white px-5 py-3 rounded-3">
+                                Kontakt
+                            </Link>
+                        </div>
+
                     </div>
 
                     {/* row item 2 */}
                     <div className="col-12 col-lg-6 mb-5">
-                        <div className="group-icon">
-                            <div className="box-icons d-flex rounded-3">
-                                <div className="images me-3">
-                                    <img src={footerIcon2} alt="img-footer-2" />
-                                </div>
+                        <div className="contact-info-box d-flex rounded-3">
+                            <div className="box-icon me-3">
+                                <img src={footerIcon2} alt="img-footer-2" />
+                            </div>
 
-                                <div className="content">
-                                    <h3 className="mb-3 fw-bold">
-                                        Prodajete / Izdajete
-                                    </h3>
-                                    <p>
-                                        Ukoliko prodajete ili možda iznajmljujete bilo kakvu vrstu nepokretnosti, onda se nalazite na pravom mestu. Možete postaviti oglas, zatražiti savet ili dobiti ličnog menadžera.
-                                    </p>
-                                </div>
+                            <div className="box-content">
+                                <h3 className="mb-3 fw-bold">
+                                    Prodajete / Izdajete
+                                </h3>
+                                <p>
+                                    Ukoliko prodajete ili možda iznajmljujete bilo kakvu vrstu nepokretnosti, onda se nalazite na pravom mestu. Možete postaviti oglas, zatražiti savet ili dobiti ličnog menadžera.
+                                </p>
                             </div>
-                            <div className="button-footer text-center">
-                                <Link to='/kontakt' className="cs-button text-white px-5 py-3 rounded-3">
-                                    Kontakt
-                                </Link>
-                            </div>
+                        </div>
+                        <div className="box-footer text-center">
+                            <Link to='/kontakt' className="bg-orange-hover text-white px-5 py-3 rounded-3">
+                                Kontakt
+                            </Link>
                         </div>
                     </div>
 
@@ -81,7 +76,7 @@ const MainFooterContent = () => {
                             <p className="sub-title mb-1">
                                 Info Centar:
                             </p>
-                            <p className="mb-3 fw-bolder">
+                            <p className="mb-3 fw-bold">
                                 Tabačka Čaršija BB, 12000 Požarevac
                             </p>
                             <p className="sub-title mb-1">
@@ -128,7 +123,7 @@ const MainFooterContent = () => {
                                         Menadžer:
                                     </p>
                                     <p className="fw-bolder mb-1">
-                                        Nenad
+                                        Nenad Stefanović
                                     </p>
                                     <p className="sub-title mb-1">
                                         Telefon:
@@ -161,31 +156,6 @@ const MainFooterContent = () => {
                                         </Link>
                                     </li>
                                 })}
-                                {/* <li className="footer-category-link mb-2">
-                                    <Link to='/oglasi'>
-                                        Kuće
-                                    </Link>
-                                </li>
-                                <li className="footer-category-link mb-2">
-                                    <Link to='/oglasi'>
-                                        Stanovi
-                                    </Link>
-                                </li>
-                                <li className="footer-category-link mb-2">
-                                    <Link to='/oglasi'>
-                                        Vikendice
-                                    </Link>
-                                </li>
-                                <li className="footer-category-link mb-2">
-                                    <Link to='/oglasi'>
-                                        Lokali
-                                    </Link>
-                                </li>
-                                <li className="footer-category-link mb-2">
-                                    <Link to='/oglasi'>
-                                        Placevi
-                                    </Link>
-                                </li> */}
                             </ul>
                         </div>
                     </div>

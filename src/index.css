@@ -9,10 +9,16 @@
 
 /* GENERAL */
 :root {
+  /* colors */
   --orange-color: rgb(255, 169, 32);
   --dark-orange-color: rgb(226, 151, 31);
   --dark-color: rgb(18, 10, 33);
-  --gray-color: rgb(229, 229, 234);
+  --light-gray-color: rgb(229, 229, 234);
+  --gray-color: rgb(142, 142, 147);
+  --dark-gray-color: rgba(255, 255, 255, 0.1);
+
+  /* transition */
+  --transition-ease: all 0.3s ease;
 }
 
 * {
@@ -51,19 +57,23 @@ p {
 .text-orange,
 .text-orange-hover {
   color: var(--orange-color);
+  transition: var(--transition-ease);
 }
 
 .text-orange-hover:hover {
   color: var(--dark-orange-color);
+  transition: var(--transition-ease);
 }
 
 .bg-orange,
 .bg-orange-hover {
   background-color: var(--orange-color);
+  transition: var(--transition-ease);
 }
 
 .bg-orange-hover:hover {
   background-color: var(--dark-orange-color);
+  transition: var(--transition-ease);
 }
 
 .form-control:focus,
@@ -421,7 +431,7 @@ main {
 /* LISTINGS PAGE */
 /* PostedListingsContainer component */
 .layout-btn {
-  border: 1px solid var(--gray-color);
+  border: 1px solid var(--light-gray-color);
 }
 
 .layout-btn:hover,
@@ -443,7 +453,7 @@ main {
   box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
   margin: 5px;
   padding: 25px;
-  border: 1px solid var(--gray-color);
+  border: 1px solid var(--light-gray-color);
   border-radius: 25px;
 }
 
@@ -634,28 +644,20 @@ main {
 }
 
 /* MainFooterContent component */
-#footer .main-footer-content .group-icon .box-icons {
+#footer .main-footer-content .contact-info-box {
   background-color: rgb(255, 245, 224);
   padding: 30px 31px 45px;
 }
 
-#footer .main-footer-content .group-icon .box-icons .images img {
+#footer .main-footer-content .contact-info-box .box-icon img {
   transition: transform 0.4s ease-in;
 }
 
-#footer .main-footer-content .group-icon .box-icons .images img:hover {
+#footer .main-footer-content .contact-info-box .box-icon img:hover {
   transform: scaleX(-1);
 }
 
-#footer .main-footer-content .group-icon .button-footer .cs-button {
-  background-color: rgb(255, 169, 32);
-}
-
-#footer .main-footer-content .group-icon .button-footer .cs-button:hover {
-  background-color: rgb(226, 151, 31);
-}
-
-#footer .main-footer-content .group-icon .button-footer {
+#footer .main-footer-content .contact-info-box .box-footer {
   margin-top: -10px;
 }
 
@@ -670,7 +672,7 @@ main {
   .footer-category-links
   .footer-category-link
   a {
-  color: #8e8e93;
+  color: var(--gray-color)
 }
 
 #footer
@@ -680,7 +682,7 @@ main {
   .footer-category-link
   a:hover {
   color: rgb(226, 151, 31);
-  transition: all 0.3s ease;
+  transition: var(--transition-ease);
 }
 
 .footer-category-links .footer-category-link:hover a::before {
@@ -693,7 +695,7 @@ main {
   content: ">";
   color: var(--orange-color);
   margin-right: 10px;
-  transition: all 0.3s ease;
+  transition: var(--transition-ease);
 }
 
 #footer .main-footer-content .widget-info form input,
@@ -707,28 +709,28 @@ main {
 }
 
 #footer .main-footer-content .widget-info form .form-check-input {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--dark-gray-color);
   border: none;
   font-size: 14px;
 }
 
 #footer .main-footer-content .widget-info form .form-check-input:checked {
-  background-color: rgb(226, 151, 31);
+  background-color: var(--orange-color);
 }
 
 #footer .main-footer-content .widget-info form .footer-form-btn {
   padding: 12px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--dark-gray-color);
 }
 
 #footer .main-footer-content .widget-info form .footer-form-btn:hover {
-  background-color: rgb(226, 151, 31);
+  background-color: var(--orange-color);
 }
 
 /* NavAndSocialFooterLinks component */
 #footer .footer-links {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--dark-gray-color);
+  border-bottom: 1px solid var(--dark-gray-color);
 }
 
 #footer .footer-links .footer-nav-links .footer-nav-link a {
@@ -736,7 +738,7 @@ main {
 }
 
 #footer .footer-links .footer-nav-links .footer-nav-link a:hover {
-  color: rgb(226, 151, 31);
+  color: var(--orange-color);
   transition: all 0.3s ease;
 }
 
@@ -747,13 +749,8 @@ main {
 }
 
 #footer .footer-links .footer-social-links .footer-social-link a:hover {
-  background-color: rgb(226, 151, 31);
-  transition: all 0.3s ease;
+  background-color: var(--orange-color);
+  transition: var(--transition-ease);
 }
 
-#footer .rights-footer a {
-  color: rgb(255, 169, 32);
-}
-#footer .rights-footer a:hover {
-  color: rgb(226, 151, 31);
-}
+

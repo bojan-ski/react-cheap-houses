@@ -4,8 +4,9 @@ import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 // utils func
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
 // app asset
-import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
+import forgotPasswordModalImg from '../assets/header-assets/forgot_password.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
+
 
 const ForgotPassword = () => {
     const navigate = useNavigate()
@@ -46,7 +47,7 @@ const ForgotPassword = () => {
 
                         {/* row item 1 */}
                         <div className="modal-images col-5 d-none d-xl-block">
-                            <img src={logInModalImg} alt="forgotPassword-img" className="modal-img-1 h-100 img-fluid slika-1" />
+                            <img src={forgotPasswordModalImg} alt="forgotPassword-img" className="modal-img-1 h-100 img-fluid slika-1" />
                             <img src={appNameImg} alt="forgotPassword-img" className="modal-img-2" />
                         </div>
 
