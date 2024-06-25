@@ -6,7 +6,7 @@ const storeUploadedImage = async (uploadedImage) => {
     return new Promise((resolve, reject) => {
         const storage = getStorage();
 
-        const uploadedImageName = `${uploadedImage.name}-${uuidv4()}`;
+        const uploadedImageName = `${uuidv4()}-${uploadedImage.name}`;
 
         const storageRef = ref(storage, `images/${uploadedImageName}`);
 

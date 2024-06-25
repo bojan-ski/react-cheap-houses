@@ -1,12 +1,11 @@
 import { useState } from "react";
-// firebase/firestore funcs
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { db } from "../firebase.config";
 // utils funcs
 import storeUploadedImage from "../utils/storeUploadedImage";
-import getCurrentTimeAndDate from "../utils/getCurrentTimeAndDate";
+import postNewListing from "../utils/PostNewListing";
 // data
 import districts from "../data/districts";
+// toastify
+import { toast } from "react-toastify";
 // components
 import Spinner from "../components/Spinner";
 
@@ -52,49 +51,56 @@ const PostNewListingModal = ({ userID }) => {
         }
     }
 
-    const handleCreateNewOfferSubmit = async (e) => {
+    const handleCreateNewListingSubmit = async (e) => {
         e.preventDefault()
 
         // spinner
         setIsLoading(true)
 
-        // console.log(formData.propertyImages.length);
-        if (formData.propertyImages.length > 8) {
+        if (formData.propertyImages.length >= 8) {
             // spinner
             setIsLoading(false)
 
-            // error message
-            console.log('Preko 7 slika');
+            // error message in case the user tries to upload more then 7 pictures
+            toast.error('Ograničenje za otpremanje je 7 slika, molimo Vas pobajte ponovo ')
             return
         }
 
-        const imageUrls = await Promise.all(
-            [...propertyImages].map(uploadedImage => storeUploadedImage(uploadedImage))
-        ).catch(() => {
-            setIsLoading(false)
-            console.log('greska prilikom upload images');
-            return
+        const correctImageSize = Array.from(formData.propertyImages).every(image => {
+            if (image.size >= 2000000) {
+                return false;
+            }
+            return true;
         })
 
-        const formDataCopy = {
-            ...formData,
-            imageUrls,
-            timestamp: serverTimestamp(),
-            listingCreated: getCurrentTimeAndDate()
+
+        if (correctImageSize) {
+            let imageUrls = await Promise.all(
+                [...propertyImages].map(uploadedImage => storeUploadedImage(uploadedImage))
+            ).catch(() => {
+                // spinner
+                setIsLoading(false)
+
+                // error message in case there is a problem with uploading images
+                toast.error('Greška prilikom otpremanja slika, molimo Vas probajte ponovo')
+
+                return
+            })
+
+            // post new listing
+            await postNewListing(formData, imageUrls)
+
+            // spinner
+            setIsLoading(false)
+        } else {
+            // spinner
+            setIsLoading(false)
+
+            // error message if one or more images are over 2MB
+            toast.error('Ograničenje za otpremanje slike je do 2MB, molimo Vas probajte ponovo')
+
+            return
         }
-
-        delete formDataCopy.propertyImages
-
-        await addDoc(collection(db, 'listings'), formDataCopy)
-
-        // spinner
-        setIsLoading(false)
-
-        // success message
-        console.log('uspesno ste postavili/objavili novi oglas');
-
-        // after the user has posted a new listing, the user is redirected to the Listings page
-        window.location.href ='/oglasi'
     }
 
     if (isLoading) return <Spinner />
@@ -116,7 +122,7 @@ const PostNewListingModal = ({ userID }) => {
 
                     {/* modal-body */}
                     <div className="modal-body">
-                        <form className="p-4 rounded-5" onSubmit={handleCreateNewOfferSubmit}>
+                        <form className="p-4 rounded-5" onSubmit={handleCreateNewListingSubmit}>
                             <div className="row">
 
                                 {/* row item 1 */}
