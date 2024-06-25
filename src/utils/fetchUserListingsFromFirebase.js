@@ -3,16 +3,11 @@ import { collection, getDocs, query, where, orderBy } from "firebase/firestore"
 import { db } from "../firebase.config";
 
 const fetchUserListingsFromFirebase = async () => {
-    const auth = getAuth()
-    // console.log(auth);
-    // console.log(auth.currentUser.displayName);
+    const auth = getAuth()    
 
     if (!auth.currentUser) return null
-    // console.log(auth);
 
     try {
-        // const auth = getAuth()
-        // if (!auth.currentUser) return null
         const q = query(collection(db, 'listings'),
             where('userRef', '==', auth.currentUser.uid),
             orderBy('timestamp', 'desc'))
@@ -27,7 +22,6 @@ const fetchUserListingsFromFirebase = async () => {
                 data: listing.data()
             })
         })
-        // console.log(allUserPostedListings);
 
         return allUserPostedListings
     } catch (error) {

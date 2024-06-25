@@ -71,7 +71,6 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         fetchAllListings()
     }, [])
-    // console.log(allPostedListingsData);
 
     // filter option
     const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
@@ -88,7 +87,7 @@ export const AppProvider = ({ children }) => {
     })
 
     return <AppContext.Provider value={{
-        userData, //Profile, NavbarUserOnboarding
+        userData, //Profile, NavbarUserOnboarding, UserLoggedIn
         logOutUser, // NavbarUserOnboarding, UserLoggedIn
         filterOptionsApplied, //PostedListingsFilterOptions
         setFilterOptionsApplied, // DashboardFilterOptions, PostedListingsFilterOptions

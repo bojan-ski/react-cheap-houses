@@ -11,21 +11,8 @@ import UserPostedListingsContainer from "../components/profilePage/UserPostedLis
 // LOADER
 export const loader = async () => {
     const allUserPostedListings = await fetchUserListingsFromFirebase()
-    // console.log(allUserPostedListings);
 
     return allUserPostedListings
-
-    // const auth = getAuth()
-
-    // if (auth.currentUser) {
-    //     const allUserPostedListings = await fetchUserListingsFromFirebase()
-
-    //     console.log(allUserPostedListings)
-    //     return { allUserPostedListings, auth }
-    // } else {
-    //     console.log('user nije prijavljen');
-    //     return null
-    // }
 }
 
 const Profile = () => {
@@ -42,7 +29,7 @@ const Profile = () => {
                 ) : (
                     <>
                         {/* user logged in component */}
-                        <UserLoggedIn userData={userData} />
+                        <UserLoggedIn />
 
                         {/* user posted offers component */}
                         <UserPostedListingsContainer />

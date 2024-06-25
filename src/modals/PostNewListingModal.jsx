@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 // utils funcs
 import storeUploadedImage from "../utils/storeUploadedImage";
 import getCurrentTimeAndDate from "../utils/getCurrentTimeAndDate";
-import closeModalOnSubmit from "../utils/closeModalOnSubmit";
 // data
 import districts from "../data/districts";
 // components
@@ -14,8 +12,6 @@ import Spinner from "../components/Spinner";
 
 
 const PostNewListingModal = ({ userID }) => {
-    // console.log(userID);
-    const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         userRef: userID,
@@ -59,6 +55,7 @@ const PostNewListingModal = ({ userID }) => {
     const handleCreateNewOfferSubmit = async (e) => {
         e.preventDefault()
 
+        // spinner
         setIsLoading(true)
 
         // console.log(formData.propertyImages.length);
@@ -89,16 +86,14 @@ const PostNewListingModal = ({ userID }) => {
 
         const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
 
+        // spinner
         setIsLoading(false)
 
         // success message
         console.log('uspesno ste postavili/objavili novi oglas');
 
         // after the user has posted a new listing, the user is redirected to the Listings page
-        navigate(`/oglasi`)
-
-        // close Modal on Submit
-        closeModalOnSubmit('#postNewModal')
+        window.location.href ='/oglasi'
     }
 
     if (isLoading) return <Spinner />
@@ -218,7 +213,6 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyName'
                                             value={propertyName}
                                             onChange={onMutate}
-                                            minLength='10'
                                             maxLength='25'
                                             placeholder="Porodična kuća, jednoiposoban stan ..."
                                             required
@@ -239,7 +233,6 @@ const PostNewListingModal = ({ userID }) => {
                                                     value={lotNumber}
                                                     onChange={onMutate}
                                                     maxLength='10'
-                                                    minLength='6'
                                                     placeholder="112233, 1122/3"
                                                     required
                                                 />
@@ -257,6 +250,8 @@ const PostNewListingModal = ({ userID }) => {
                                                     value={squareFootage}
                                                     onChange={onMutate}
                                                     placeholder="Površina"
+                                                    min='1'
+                                                    max='999'
                                                     required
                                                 />
                                             </div>
@@ -276,7 +271,7 @@ const PostNewListingModal = ({ userID }) => {
                                                     onChange={onMutate}
                                                     min='1'
                                                     max='15'
-                                                    placeholder="0"
+                                                    placeholder="1, 2, 3 ..."
                                                     required
                                                 />
                                             </div>
@@ -294,7 +289,7 @@ const PostNewListingModal = ({ userID }) => {
                                                     onChange={onMutate}
                                                     min='1'
                                                     max='5'
-                                                    placeholder="0"
+                                                    placeholder="1, 2 ..."
                                                     required
                                                 />
                                             </div>
@@ -311,6 +306,8 @@ const PostNewListingModal = ({ userID }) => {
                                                     value={squareFootage}
                                                     onChange={onMutate}
                                                     placeholder="Površina"
+                                                    min='1'
+                                                    max='999'
                                                     required
                                                 />
                                             </div>
@@ -328,7 +325,6 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyAddress'
                                             value={propertyAddress}
                                             onChange={onMutate}
-                                            minLength='10'
                                             maxLength='30'
                                             placeholder="Adreasa na kojoj se nalazi imovina"
                                             required
@@ -346,7 +342,6 @@ const PostNewListingModal = ({ userID }) => {
                                             id='propertyLocation'
                                             value={propertyLocation}
                                             onChange={onMutate}
-                                            minLength='10'
                                             maxLength='20'
                                             placeholder="Naziv grada, sela..."
                                             required
@@ -424,6 +419,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 value={contactFullName}
                                                 onChange={onMutate}
                                                 maxLength='25'
+                                                placeholder="Petar Petrović"
                                                 required
                                             />
                                         </div>
@@ -442,6 +438,7 @@ const PostNewListingModal = ({ userID }) => {
                                                     aria-describedby="phone-number"
                                                     value={contactPhoneNumber}
                                                     onChange={onMutate}
+                                                    placeholder="601112222, 11222333"
                                                     required
                                                 />
                                             </div>
@@ -459,6 +456,7 @@ const PostNewListingModal = ({ userID }) => {
                                                 value={contactEmailAddress}
                                                 onChange={onMutate}
                                                 maxLength='30'
+                                                placeholder="email@gmail.com"
                                                 required
                                             />
                                         </div>

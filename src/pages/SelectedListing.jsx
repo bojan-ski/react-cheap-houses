@@ -116,7 +116,7 @@ const SelectedListing = () => {
                                     Email:<span className='ms-1 text-dark'>{contactEmailAddress}</span>
                                 </p>
                                 <p className='mb-0 fw-bold text-muted'>
-                                    Telefon:<span className='ms-1 text-dark'>{contactPhoneNumber}</span>
+                                    Telefon:<span className='ms-1 text-dark'>+381 {contactPhoneNumber}</span>
                                 </p>
                             </div>
 

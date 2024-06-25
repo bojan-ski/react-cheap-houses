@@ -50,9 +50,9 @@ p {
   text-transform: capitalize;
 }
 
-/* textarea {
+textarea {
   resize: none;
-} */
+}
 
 .text-orange,
 .text-orange-hover {
@@ -84,10 +84,6 @@ p {
 
 .btn:active {
   transform: scale(0.98);
-}
-
-textarea {
-  resize: none;
 }
 
 /* ---------- APP (SHARED) COMPONENTS ---------- */
@@ -462,8 +458,21 @@ main {
 }
 
 .grid-card .grid-card-details-images {
+  position: relative;
   height: 300px;
 }
+
+/* .grid-card .grid-card-details-images .images-overlay{
+  position: absolute; 
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.grid-card .grid-card-details-images:hover .images-overlay{
+  height: 100%;
+  width: 100%;
+} */
 
 /* PostedListingListViewCard component */
 .list-card {
@@ -500,15 +509,7 @@ main {
 }
 
 /* PROFILE PAGE */
-/* PostNewListing component */
-.create-new-listing {
-  display: block;
-}
-
-.create-new-listing.hide {
-  display: none;
-}
-
+/* PostNewListing component (Modal) */
 .form-btn,
 .form-btn-active {
   padding: 5px 10px;
@@ -525,12 +526,6 @@ main {
   background-color: var(--dark-orange-color);
   border: 1px solid transparent;
   color: #fff;
-}
-
-.create-new-listing form {
-  background-color: #fff;
-  box-shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.0784313725);
-  /* border: 1px solid var(--dark-orange-color); */
 }
 
 /* CONTRACT PAGE */
@@ -587,7 +582,6 @@ main {
 .form-area .contact-form-btn {
   padding: 12px 25px;
 }
-
 
 .form-area .contact-form-btn:hover svg {
   animation: link-hover-up-down 0.4s ease;

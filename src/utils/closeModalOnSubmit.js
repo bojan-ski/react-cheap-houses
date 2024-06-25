@@ -1,7 +1,9 @@
 const closeModalOnSubmit = (modalID) => {
     // console.log(modalID);
+    const bodyEl = document.body;
     
-    document.body.classList.remove('modal-open')
+    bodyEl.style.overflow = ''
+    bodyEl.classList.remove('modal-open')
     document.querySelector('.modal-backdrop').remove()
 
     if(document.querySelector(modalID)){

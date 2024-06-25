@@ -30,23 +30,15 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                             dynamicBullets: true,
                         }}
                     >
-                        {imageUrls?.map((image, idx) => {
+                        {imageUrls.slice(0,3)?.map((image, idx) => {
                             return (
                                 <SwiperSlide key={idx} className="text-center grid-card-details-image">
                                     <img src={image} alt="slike-imovine" className="rounded-4" />
-                                    {/* <div
-                                    style={{
-                                        background: `url(${imageUrls[idx]}) center no-repeat`,
-                                        backgroundSize: 'cover',
-                                        
-                                    }}
-                                    className='grid-card-details-image rounded-4'
-                                >
-                                </div> */}
                                 </SwiperSlide>
                             )
                         })}
                     </Swiper>
+                    <div className="images-overlay"></div>
                 </div>
 
                 <div className="grid-card-details-header">

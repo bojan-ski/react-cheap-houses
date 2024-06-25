@@ -1,10 +1,11 @@
+// app context
 import { useGlobalContext } from "../../context"
+// modal
 import PostNewListingModal from "../../modals/PostNewListingModal"
 
-const UserLoggedIn = ({ userData }) => {
-    // console.log(userData);
+const UserLoggedIn = () => {
+    const { userData, logOutUser } = useGlobalContext()
     const { userID, userName } = userData
-    const { logOutUser } = useGlobalContext()
 
     return (
         <>
@@ -22,7 +23,7 @@ const UserLoggedIn = ({ userData }) => {
                     {/* row item 1 */}
                     <div className="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 className="text-muted mb-3">
-                            Ako zelite objaviti Vaš oglas:
+                            Ako zelite da objavite Vaš oglas:
                         </h5>
 
                         {/* post new listing modal btn */}
@@ -34,7 +35,7 @@ const UserLoggedIn = ({ userData }) => {
                     {/* row item 2 */}
                     <div className="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 className="text-muted mb-3">
-                            Ako zelite da se odjavite (log out):
+                            Ako zelite da se odjavite:
                         </h5>
                         <button type="button" className="btn btn-danger fw-bold" onClick={logOutUser}>
                             Odjavi se
