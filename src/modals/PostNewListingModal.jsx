@@ -60,6 +60,7 @@ const PostNewListingModal = ({ userID }) => {
 
         // console.log(formData.propertyImages.length);
         if (formData.propertyImages.length > 8) {
+            // spinner
             setIsLoading(false)
 
             // error message
@@ -84,7 +85,7 @@ const PostNewListingModal = ({ userID }) => {
 
         delete formDataCopy.propertyImages
 
-        const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
+        await addDoc(collection(db, 'listings'), formDataCopy)
 
         // spinner
         setIsLoading(false)

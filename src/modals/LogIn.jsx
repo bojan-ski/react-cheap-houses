@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 // utils func
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
+// toastify
+import { toast } from 'react-toastify'
 // app asset
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
@@ -31,15 +33,13 @@ const LogIn = () => {
             await signInWithEmailAndPassword(auth, enteredEmail, enteredPassword)
 
             // success message
-            console.log('Prijavili ste se');
+            toast.success('Uspešno ste se prijavili na portal "Jeftine kuće"')
 
             // after the user has logged in, the user is redirected to the Profile page
             navigate('/nalog')
         } catch (error) {
-            console.log(error);
-
-            // user does not exist (error) message
-            console.log('Kredencijale koje ste uneli ne postoje, molimo Vas probajte ponovo');
+            // error message
+            toast.error('Kredencijale koje ste uneli nisu validni, molimo Vas probajte ponovo')
         }
     }
 

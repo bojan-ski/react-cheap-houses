@@ -25,7 +25,7 @@ const NavbarUserOnboarding = () => {
                 <div className="header-btn-container d-flex align-items-center">
                     {userData.userName ? (
                         <>
-                            <p className='mb-0 fw-bold text-muted me-3'>
+                            <p className='d-none d-md-block mb-0 fw-bold text-muted me-3'>
                                 Dobrodošli
                                 <span className='ms-2 text-dark'>
                                     {userData.userName}

@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 // utils func
 import fetchAllListingsFromFirebase from "./utils/fetchAllListingsFromFirebase";
+// toastify
+import { toast } from 'react-toastify'
+
 
 const AppContext = createContext()
 
@@ -42,7 +45,6 @@ export const AppProvider = ({ children }) => {
         if (window.confirm('Da li ste sigurni da želite da se odjavite?')) {
             try {
                 await signOut(auth)
-                console.log(auth.currentUser);
 
                 setUserData({
                     userID: '',
@@ -50,12 +52,13 @@ export const AppProvider = ({ children }) => {
                 })
 
                 // success message
-                console.log('uspesno ste se odjavili');
+                toast.success('Odjavili ste se')
 
                 // after the user has logged out, the user is redirected to the Dashboard page
                 navigate('/')
             } catch (error) {
-                console.log('greska prilikom odjave');
+                //error message
+                toast.error('Greška prilikom odjave')
             }
         }
     }

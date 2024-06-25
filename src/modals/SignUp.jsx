@@ -1,22 +1,22 @@
-import { useNavigate } from 'react-router-dom';
 // firebase/firestore funcs
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
 // utils func
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
+// toastify
+import { toast } from 'react-toastify'
 // asset
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
 const SignUp = () => {
-    const navigate = useNavigate()
-
     const handleRegistrationSubmit = (e) => {
         e.preventDefault()
 
         if (e.target.elements[2].value !== e.target.elements[3].value) {
-            alert('both passwords need to match')
+            //error message if both passwords are not the same
+            toast.error('Unete šifre nisu istu, molimo Vas probajte ponovo')
         } else {
             const enteredUsername = e.target.elements[0].value.trim()
             const enteredEmail = e.target.elements[1].value.trim()
@@ -27,6 +27,7 @@ const SignUp = () => {
             e.target.elements[0].value = ''
             e.target.elements[1].value = ''
             e.target.elements[2].value = ''
+            e.target.elements[3].value = ''
 
             // close Modal on Submit
             closeModalOnSubmit('#signUpModal')
@@ -53,12 +54,13 @@ const SignUp = () => {
             await setDoc(doc(db, 'users', newUser.uid), userCredentialsCopy)
 
             // success message
-            console.log('Vas nalog je napravljen');
+            toast.success('Uspešno ste se napravili nalog na portal "Jeftine kuće". Dobro nam došli')
 
             // after the user has created an account, the user is redirected to the Profile page
-            navigate('/nalog')
+            window.location.href ='/nalog'
         } catch (error) {
-            console.log(error);
+            // error message if entered email address is in use
+            toast.error('Email adresu koju ste uneli je u upotrebi, molimo Vas probajte drugu email adresu.')
         }
     }
 
@@ -103,13 +105,13 @@ const SignUp = () => {
                                         <label htmlFor="userRegistrationPassword" className="col-form-label fw-bolder mb-1">
                                             Lozinka (min 6 karaktera)
                                         </label>
-                                        <input type="password" className="form-control" id="userRegistrationPassword" placeholder="vaše lozinka" required />
+                                        <input type="password" className="form-control" id="userRegistrationPassword" minLength={6} placeholder="vaše lozinka" required />
                                     </div>
                                     <div className="mb-4">
                                         <label htmlFor="userConfirmRegistrationPassword" className="col-form-label fw-bolder mb-1">
                                             Potvrda lozinke (min 6 karaktera)
                                         </label>
-                                        <input type="password" className="form-control" id="userConfirmRegistrationPassword" placeholder="potvrda vaše lozinke" required />
+                                        <input type="password" className="form-control" id="userConfirmRegistrationPassword" minLength={6} placeholder="potvrda vaše lozinke" required />
                                     </div>
                                     <button type="submit" className="registration-btn btn bg-orange-hover fw-bolder text-white py-3 w-100 rounded-4">
                                         Registrujte se

@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 // bootstrap css
 import "/node_modules/bootstrap/dist/js/bootstrap.bundle.js";
+// toastify css
+import '/node_modules/react-toastify/dist/ReactToastify.css';
 // swiper css
 import 'swiper/css';
 import 'swiper/css/pagination';

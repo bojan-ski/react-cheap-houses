@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 // utils func
 import closeModalOnSubmit from '../utils/closeModalOnSubmit'
+// toastify
+import { toast } from 'react-toastify'
 // app asset
 import forgotPasswordModalImg from '../assets/header-assets/forgot_password.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
@@ -30,12 +32,13 @@ const ForgotPassword = () => {
             await sendPasswordResetEmail(auth, enteredEmail)
 
             // success message
-            console.log('Proverite svoj email radi promere sifre');
+            toast.success('Proverite vaš email radi promere šifre');
 
             // after the user has submitted for a new password, the user is redirected to the Profile page
             navigate('/nalog')
         } catch (error) {
-            console.log(error);
+            // error message
+            toast.error('Email adresu koju ste uneli nije validna, molimo Vas probajte ponovo')
         }
     }
 
