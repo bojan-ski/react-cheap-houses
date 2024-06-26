@@ -6,6 +6,7 @@ import getCurrentTimeAndDate from "./getCurrentTimeAndDate";
 // toastify
 import { toast } from "react-toastify";
 
+
 const postNewListing = async (formData, imageUrls) => {
     try {
         const formDataCopy = {
@@ -25,7 +26,7 @@ const postNewListing = async (formData, imageUrls) => {
         // after the user has posted a new listing, the user is redirected to the Listings page
         window.location.href = '/oglasi'
     } catch (error) {
-        // success message
+        // error message
         toast.error('Greška prilikom objavljivanja Vašeg oglasa, molimo Vas probajte ponovo')
 
         return

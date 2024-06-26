@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+// utils func 
+import subscribeToNewsletter from "../../../utils/subscribeToNewsletter"
 // assets
 import footerIcon1 from '../../../assets/footer-assets/jeftine_kuce_footer_1.png'
 import footerIcon2 from '../../../assets/footer-assets/jeftine_kuce_footer_2.png'
@@ -7,10 +9,10 @@ import propertyTypes from "../../../data/propertyTypes"
 
 
 const MainFooterContent = () => {
-    const handleNewsletterEmailSubmit = (e) => {
+    const handleNewsletterEmailSubmit = async (e) => {
         e.preventDefault()
 
-        console.log(e.target.elements[0].value);
+        await subscribeToNewsletter(e.target.elements[0].value)
 
         e.target.elements[0].value = ""
     }
