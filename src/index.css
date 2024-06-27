@@ -97,18 +97,19 @@ textarea {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  transition: var(--transition-ease);
 }
 
 .swiper-button-prev,
 .swiper-button-next {
   color: #fff !important;
-  z-index: 0 !important;
-  transition: all 0.5s ease;
+  opacity: 0 !important;
+  transition: var(--transition-ease);
 }
 
 .swiper-pagination {
-  z-index: 0 !important;
-  transition: all 0.5s ease;
+  opacity: 0 !important;
+  transition: var(--transition-ease);
 }
 
 .swiper-pagination-bullet.swiper-pagination-bullet-active.swiper-pagination-bullet-active-main {
@@ -118,8 +119,18 @@ textarea {
 .swiper:hover .swiper-button-prev,
 .swiper:hover .swiper-button-next,
 .swiper:hover .swiper-pagination {
-  z-index: 10 !important;
-  transition: all 0.5s ease;
+  opacity: 1 !important;
+  transition: var(--transition-ease);
+}
+
+.swiper:hover .swiper-button-prev.swiper-button-disabled, 
+.swiper:hover .swiper-button-next.swiper-button-disabled{
+  opacity: 0.35 !important;
+}
+
+.swiper:hover .swiper-slide img {
+  filter: brightness(85%);
+  transition: var(--transition-ease);
 }
 
 /* PAGINATION */
@@ -609,18 +620,6 @@ main {
   position: relative;
   height: 300px;
 }
-
-/* .grid-card .grid-card-details-images .images-overlay{
-  position: absolute; 
-  border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}
-
-.grid-card .grid-card-details-images:hover .images-overlay{
-  height: 100%;
-  width: 100%;
-} */
 
 /* PostedListingListViewCard component */
 .list-card {
