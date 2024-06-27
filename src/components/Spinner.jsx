@@ -1,9 +1,9 @@
-import spinner from '../assets/spinner.gif'
+import spinner from '../assets/Hourglass.gif'
 
 const Spinner = () => {
   return (
     <div className='spinner d-flex justify-content-center align-items-center mb-5'>
-      <img src={spinner} alt="spinner"/>
+      <img src={spinner} alt="spinner" />
     </div>
   )
 }

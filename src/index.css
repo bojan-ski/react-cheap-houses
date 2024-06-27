@@ -123,7 +123,7 @@ textarea {
 }
 
 /* PAGINATION */
-.pagination .number-of-pages p{
+.pagination .number-of-pages p {
   font-size: 18px;
 }
 
@@ -233,21 +233,21 @@ textarea {
 #logInModal .modal-content .modal-footer .btn,
 #logInModal .modal-content .forgot-password-container .btn,
 #forgotPasswordModal .modal-content .modal-footer .btn {
-  font-size: 14px; 
+  font-size: 14px;
 }
 
-#logInModal .modal-content .forgot-password-container .btn:hover{
+#logInModal .modal-content .forgot-password-container .btn:hover {
   color: var(--dark-orange-color);
 }
 
 #signUpModal .modal-content .modal-images,
-#forgotPasswordModal .modal-content .col-5{
+#forgotPasswordModal .modal-content .col-5 {
   position: relative;
 }
 
 #signUpModal .modal-content .modal-images .modal-img-2,
 #logInModal .modal-content .modal-images .modal-img-2,
-#forgotPasswordModal .modal-content .modal-images .modal-img-2{
+#forgotPasswordModal .modal-content .modal-images .modal-img-2 {
   width: 200px;
   position: absolute;
   left: 60px;
@@ -279,9 +279,157 @@ main {
   font-weight: 500;
 }
 
-/* LOADER - LOADING PAGE */
-.loading {
-  height: 100vh;
+/* LOADER (PRELOAD) - LOADING PAGE */
+.preload {
+  overflow: hidden;
+}
+
+.preload-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 99999999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.boxes {
+  --size: 32px;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  margin-top: calc(var(--size) * 1.5 * -1);
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.boxes .box:nth-child(1) {
+  transform: translate(100%, 0);
+  animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(2) {
+  transform: translate(0, 100%);
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+  transform: translate(100%, 100%);
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+  transform: translate(200%, 0);
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+  --background: rgb(255, 169, 32);
+  --top: auto;
+  --right: auto;
+  --bottom: auto;
+  --left: auto;
+  --translateZ: calc(var(--size) / 2);
+  --rotateY: 0deg;
+  --rotateX: 0deg;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: var(--top);
+  right: var(--right);
+  bottom: var(--bottom);
+  left: var(--left);
+  transform: rotateY(var(--rotateY)) rotateX(var(--rotateX))
+    translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+  --top: 0;
+  --left: 0;
+}
+
+.boxes .box > div:nth-child(2) {
+  --background: rgb(211, 129, 0);
+  --right: 0;
+  --rotateY: 90deg;
+}
+
+.boxes .box > div:nth-child(3) {
+  --background: rgb(255, 159, 7);
+  --rotateX: -90deg;
+}
+
+.boxes .box > div:nth-child(4) {
+  --background: #dbe3f4;
+  --top: 0;
+  --left: 0;
+  --translateZ: calc(var(--size) * 3 * -1);
+}
+
+@keyframes box1 {
+  0%,
+  50% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+@keyframes box3 {
+  0%,
+  50% {
+    transform: translate(100%, 100%);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+  50% {
+    transform: translate(200%, 100%);
+  }
+  100% {
+    transform: translate(100%, 100%);
+  }
 }
 
 /* DASHBOARD PAGE */
@@ -483,7 +631,7 @@ main {
 .list-card .list-card-info-1,
 .list-card .list-card-info-2,
 .list-card .list-card-info-3,
-.list-card .list-card-info-4{
+.list-card .list-card-info-4 {
   width: 165px;
 }
 
@@ -666,7 +814,7 @@ main {
   .footer-category-links
   .footer-category-link
   a {
-  color: var(--gray-color)
+  color: var(--gray-color);
 }
 
 #footer
@@ -746,5 +894,3 @@ main {
   background-color: var(--orange-color);
   transition: var(--transition-ease);
 }
-
-

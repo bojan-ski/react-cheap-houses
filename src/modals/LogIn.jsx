@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
+
 const LogIn = () => {
     const navigate = useNavigate()
 

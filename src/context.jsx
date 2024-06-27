@@ -59,6 +59,8 @@ export const AppProvider = ({ children }) => {
             } catch (error) {
                 //error message
                 toast.error('Greška prilikom odjave')
+
+                return
             }
         }
     }

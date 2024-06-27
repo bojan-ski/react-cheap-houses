@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const PageLocation = () => {
     const currentPage = window.location.pathname.slice(1)
-    // console.log(currentPage);
 
     return (
         <div className="page-location">

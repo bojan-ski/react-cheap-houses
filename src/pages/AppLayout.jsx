@@ -12,9 +12,6 @@ const AppLayout = () => {
     const navigation = useNavigation()
     const isPageLoading = navigation.state === 'loading'
 
-    // console.log(navigation);
-    // console.log(isPageLoading);
-
     return (
         <AppProvider>
             <>

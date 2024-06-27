@@ -12,7 +12,7 @@ const Blog = () => {
             Hvala Vam što ste pokazali interesovanje za našu Blog stranicu
           </h1>
           <h2 className="text-muted mb-3">
-            Nažalost stranica je i dalje u fazi izrade. 
+            Stranica je i dalje u fazi izrade. 
           </h2>
           <h2 className="text-muted mb-3">
             Molimo Vas dođite nam kasnije

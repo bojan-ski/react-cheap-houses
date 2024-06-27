@@ -1,4 +1,4 @@
-// dashboard asset 
+// asset 
 import heroImg from '../../assets/dashboard-assets/jeftine_kuce_hero.png'
 // components
 import DashboardFilterOptions from './DashboardFilterOptions';

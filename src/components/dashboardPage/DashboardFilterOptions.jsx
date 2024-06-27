@@ -50,7 +50,7 @@ const DashboardFilterOptions = () => {
 
             setAllPostedListingsData(filteredListOfPostedListings)
 
-            // after submitting selected filter options, redirect user to the oglasi page
+            // after submitting selected filter options, redirect user to the Listings (Oglasi) page
             navigate('/oglasi')
         }
     }

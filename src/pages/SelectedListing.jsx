@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom"
-import { Link } from "react-router-dom";
-// helper func
+import { useLoaderData, Link } from "react-router-dom"
+// utils funcs
 import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase";
+import priceComma from "../utils/priceComma";
 // component
 import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
 // modal
@@ -12,7 +12,6 @@ import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
 import { PiBathtubLight } from 'react-icons/pi'
 import { CiCalendarDate } from "react-icons/ci";
-import priceComma from "../utils/priceComma";
 
 
 export const loader = async ({ params }) => {
@@ -25,6 +24,7 @@ const SelectedListing = () => {
     const selectedListingDetails = useLoaderData() 
 
     const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated, contactFullName, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
+    
     const [imageSrc, setImageSrc] = useState('')
 
     const urlBackPath = window.location.pathname.split('/').includes('oglasi')
@@ -75,9 +75,11 @@ const SelectedListing = () => {
                             <div className="col-12 col-lg-6 mb-4">
                                 {propertyType === 'plac' ? (
                                     <>
-                                        <p className="mb-0 fw-bold text-muted" >
+                                        <p className="mb-0 fw-bold text-muted d-flex align-items-center" >
                                             <MdConfirmationNumber className='me-2' />
-                                            Broj parcele:<span className="ms-1 fw-bold text-dark">{lotNumber}</span>
+                                            Broj parcele:<span className="ms-1 fw-bold text-dark">
+                                                {lotNumber}
+                                            </span>
                                         </p>
                                     </>
                                 ) : (

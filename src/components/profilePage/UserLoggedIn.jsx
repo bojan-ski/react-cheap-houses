@@ -20,6 +20,7 @@ const UserLoggedIn = () => {
                 </div>
 
                 <div className="row text-center my-5">
+                    
                     {/* row item 1 */}
                     <div className="col-12 col-md-6 mb-3 mb-md-0">
                         <h5 className="text-muted mb-3">
