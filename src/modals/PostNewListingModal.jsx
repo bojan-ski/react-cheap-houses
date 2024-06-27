@@ -7,7 +7,7 @@ import districts from "../data/districts";
 // toastify
 import { toast } from "react-toastify";
 // components
-import Spinner from "../components/Spinner";
+import Loading from '../components/Loading'
 
 
 const PostNewListingModal = ({ userID }) => {
@@ -103,7 +103,7 @@ const PostNewListingModal = ({ userID }) => {
         }
     }
 
-    if (isLoading) return <Spinner />
+    if (isLoading) return <Loading />
 
     return (
         <div className="modal fade" id="postNewModal" tabIndex="-1" aria-labelledby="postNewModalLabel" aria-hidden="true">
