@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom"
 // utils func 
 import subscribeToNewsletter from "../../../utils/subscribeToNewsletter"
+// data
+import propertyTypes from "../../../data/propertyTypes"
 // assets
 import footerIcon1 from '../../../assets/footer-assets/jeftine_kuce_footer_1.png'
 import footerIcon2 from '../../../assets/footer-assets/jeftine_kuce_footer_2.png'
-// data
-import propertyTypes from "../../../data/propertyTypes"
 
 
 const MainFooterContent = () => {
