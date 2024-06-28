@@ -5,6 +5,8 @@ import { doc, deleteDoc } from "firebase/firestore"
 import { db } from "../../firebase.config"
 // app context
 import { useGlobalContext } from "../../context"
+// utils func 
+import deleteUploadedImageFromDB from "../../utils/deleteUploadedImageFromDB"
 // components
 import AllPostedListingsGridView from "../AllPostedListingsGridView"
 import Pagination from "../Pagination"
@@ -29,6 +31,12 @@ const UserPostedListingsContainer = () => {
     const deleteUserPostedListing = async (userPostedListingID) => {
         if (window.confirm('Are you sure you want to delete?')) {
             try {
+                const selectedListing = userPostedListings.filter(listing => listing.id == userPostedListingID)
+
+                Array.from(selectedListing[0].data.imageUrls).forEach(imageUrl => {
+                    deleteUploadedImageFromDB(imageUrl)
+                })
+
                 await deleteDoc(doc(db, 'listings', userPostedListingID))
 
                 const updatedListOfUserPostedListings = userPostedListings.filter(listing => listing.id !== userPostedListingID)
@@ -39,7 +47,7 @@ const UserPostedListingsContainer = () => {
                 toast.success('Uspešno ste obrisali Vaš oglas');
             } catch (error) {
                 //error message
-                toast.error('Greška prilikom uklanjanja Vaš oglas, molimo Vas probajte ponovo')
+                toast.error('Greška prilikom uklanjanja Vašeg oglasa, molimo Vas probajte ponovo')
 
                 return
             }
