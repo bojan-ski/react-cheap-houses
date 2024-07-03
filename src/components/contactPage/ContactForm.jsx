@@ -27,8 +27,6 @@ const ContactForm = () => {
 
         try {
             const response = await axios.post(`${import.meta.env.VITE_EMAILJS_URL}`, data)
-            console.log(response);
-            console.log(response.data);
 
             // success message
             toast.success('Vaša poruka je poslata');
