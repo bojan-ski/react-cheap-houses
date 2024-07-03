@@ -1,21 +1,46 @@
 //data
 import contactTopic from "../../data/contactTopic"
+// axios
+import axios from "axios"
+// toastify
+import { toast } from 'react-toastify'
 // react icon
 import { FaRegPaperPlane } from "react-icons/fa"
 
 const ContactForm = () => {
-    const handleContactFormSubmit = e => {
+    const handleContactFormSubmit = async e => {
         e.preventDefault()
 
-        console.log(e.target.elements[0].value);
-        console.log(e.target.elements[1].value);
-        console.log(e.target.elements[2].value);
-        console.log(e.target.elements[3].value);
+        const emailContent = {
+            from_name: e.target.elements[0].value,
+            from_email: e.target.elements[1].value,
+            email_topic: e.target.elements[2].value,
+            message: e.target.elements[3].value
+        }
 
-        e.target.elements[0].value = '';
-        e.target.elements[1].value = '';
-        e.target.elements[2].value = 'Odaberite';
-        e.target.elements[3].value = '';
+        const data = {
+            service_id: `${import.meta.env.VITE_EMAILJS_SERVICE_ID}`,
+            template_id: `${import.meta.env.VITE_EMAILJS_TEMPLATE_ID}`,
+            user_id: `${import.meta.env.VITE_EMAILJS_API_KEY}`,
+            template_params: emailContent
+        };        
+
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_EMAILJS_URL}`, data)
+            console.log(response);
+            console.log(response.data);
+
+            // success message
+            toast.success('Vaša poruka je poslata');
+
+            e.target.elements[0].value = '';
+            e.target.elements[1].value = '';
+            e.target.elements[2].value = 'Odaberite';
+            e.target.elements[3].value = '';
+        } catch (error) {
+            // error message
+            toast.error('Došlo je do greške prilikom slanja vaše poruke, molimo Vas probajte ponovo')
+        }
     }
 
     return (
