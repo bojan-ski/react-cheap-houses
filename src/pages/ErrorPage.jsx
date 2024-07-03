@@ -1,6 +1,5 @@
 import { useRouteError } from "react-router-dom"
 // components
-import Error404 from "../components/errorPage/Error404"
 import Error from "../components/errorPage/Error"
 
 const ErrorPage = () => {
@@ -8,7 +7,7 @@ const ErrorPage = () => {
 
     return <div className="error">
         {error.status == 404 ? (
-            <Error404 textOne="Stranicu koju tražite ne postoji" textTwo="Molimo Vas da se vratite na početnu stranicu" />
+            <Error textOne="Stranicu koju tražite ne postoji" textTwo="Molimo Vas da se vratite na početnu stranicu" />
         ) : (
             <Error textOne="Pojavio se problem" textTwo="Molimo Vas da se vratite na početnu stranicu" />
         )}

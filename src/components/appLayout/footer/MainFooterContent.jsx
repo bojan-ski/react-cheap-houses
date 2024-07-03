@@ -131,7 +131,7 @@ const MainFooterContent = () => {
                                         Telefon:
                                     </p>
                                     <p className="mb-1">
-                                        +381 66 60 70 222
+                                        +381 63 31 27 62
                                     </p>
                                     <p className="sub-title mb-1">
                                         Elektronska pošta:
