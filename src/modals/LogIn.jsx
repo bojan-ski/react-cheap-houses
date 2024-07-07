@@ -1,8 +1,5 @@
-import { useNavigate } from 'react-router-dom'
 // firebase/firestore funcs
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-// utils func
-import closeModalOnSubmit from '../utils/closeModalOnSubmit'
 // toastify
 import { toast } from 'react-toastify'
 // app asset
@@ -11,8 +8,6 @@ import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_smal
 
 
 const LogIn = () => {
-    const navigate = useNavigate()
-
     const handleLogInSubmit = e => {
         e.preventDefault()
 
@@ -23,9 +18,6 @@ const LogIn = () => {
 
         e.target.elements[0].value = ''
         e.target.elements[1].value = ''
-
-        // close Modal on Submit
-        closeModalOnSubmit('#logInModal')
     }
 
     const logInUser = async (enteredEmail, enteredPassword) => {
@@ -37,7 +29,7 @@ const LogIn = () => {
             toast.success('Uspešno ste se prijavili na portal "Jeftine kuće"')
 
             // after the user has logged in, the user is redirected to the Profile page
-            navigate('/nalog')
+            window.location.href ='/nalog'
         } catch (error) {
             // error message
             toast.error('Kredencijale koje ste uneli nisu validni, molimo Vas probajte ponovo')

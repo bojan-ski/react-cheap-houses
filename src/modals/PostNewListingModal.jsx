@@ -1,7 +1,7 @@
 import { useState } from "react";
 // utils funcs
 import storeUploadedImage from "../utils/storeUploadedImage";
-import postNewListing from "../utils/PostNewListing";
+import postNewListing from "../utils/postNewListing";
 // data
 import districts from "../data/districts";
 // toastify
@@ -10,10 +10,11 @@ import { toast } from "react-toastify";
 import Loading from '../components/Loading'
 
 
-const PostNewListingModal = ({ userID }) => {
+const PostNewListingModal = ({ userID, userName }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         userRef: userID,
+        listingCreatedBy: userName,
         listingType: 'prodajem',
         propertyType: 'kuca',
         propertyName: '',
@@ -72,7 +73,6 @@ const PostNewListingModal = ({ userID }) => {
             }
             return true;
         })
-
 
         if (correctImageSize) {
             let imageUrls = await Promise.all(

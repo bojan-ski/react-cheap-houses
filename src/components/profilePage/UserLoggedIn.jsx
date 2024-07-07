@@ -47,7 +47,7 @@ const UserLoggedIn = () => {
             </section>
 
             {/*post new listing modal */}
-            <PostNewListingModal userID={userID} />
+            <PostNewListingModal userID={userID} userName={userName}/>
         </>
     )
 }
