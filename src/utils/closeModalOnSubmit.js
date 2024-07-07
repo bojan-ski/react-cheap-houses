@@ -3,6 +3,7 @@ const closeModalOnSubmit = (modalID) => {
     const bodyEl = document.body;
     
     bodyEl.style.overflow = ''
+    bodyEl.style.paddingRight = ''
     bodyEl.classList.remove('modal-open')
     document.querySelector('.modal-backdrop').remove()
 

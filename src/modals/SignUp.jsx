@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
 
+
 const SignUp = () => {
     const handleRegistrationSubmit = (e) => {
         e.preventDefault()
