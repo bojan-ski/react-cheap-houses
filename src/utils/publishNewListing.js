@@ -6,8 +6,7 @@ import getCurrentTimeAndDate from "./getCurrentTimeAndDate";
 // toastify
 import { toast } from "react-toastify";
 
-
-const postNewListing = async (formData, imageUrls) => {
+const publishNewListing = async (formData, imageUrls) => {
     try {
         const formDataCopy = {
             ...formData,
@@ -33,4 +32,4 @@ const postNewListing = async (formData, imageUrls) => {
     }
 }
 
-export default postNewListing
+export default publishNewListing

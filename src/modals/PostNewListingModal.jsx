@@ -1,7 +1,7 @@
 import { useState } from "react";
 // utils funcs
 import storeUploadedImage from "../utils/storeUploadedImage";
-import postNewListing from "../utils/postNewListing";
+import publishNewListing from "../utils/publishNewListing";
 // data
 import districts from "../data/districts";
 // toastify
@@ -88,7 +88,7 @@ const PostNewListingModal = ({ userID, userName }) => {
             })
 
             // post new listing
-            await postNewListing(formData, imageUrls)
+            await publishNewListing(formData, imageUrls)
 
             // spinner
             setIsLoading(false)
