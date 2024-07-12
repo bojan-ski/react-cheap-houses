@@ -1,5 +1,4 @@
 const closeModalOnSubmit = (modalID) => {
-    // console.log(modalID);
     const bodyEl = document.body;
     
     bodyEl.style.overflow = ''
@@ -9,6 +8,7 @@ const closeModalOnSubmit = (modalID) => {
 
     if(document.querySelector(modalID)){
         document.querySelector(modalID).classList.remove('show')
+        document.querySelector(modalID).style.display = 'none'
     }
 }
 

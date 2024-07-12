@@ -1,3 +1,4 @@
+// components
 import MainFooterContent from "./MainFooterContent"
 import NavAndSocialFooterLinks from "./NavAndSocialFooterLinks"
 import RightsFooter from "./RightsFooter"

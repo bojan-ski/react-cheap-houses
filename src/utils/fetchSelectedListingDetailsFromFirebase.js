@@ -1,5 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
+// toastify
+import { toast } from "react-toastify"
 
 const fetchSelectedListingDetailsFromFirebase = async (id) => {
     try {
@@ -9,8 +11,10 @@ const fetchSelectedListingDetailsFromFirebase = async (id) => {
         // console.log(docSnap.data());
         return docSnap.data()       
     } catch (error) {
-        console.log(error);
-        console.log('can not fetch selected offer data');
+        // error message
+        toast.error('Greška prilikom prikazivanja izabranog oglasa, molimo Vas probajte ponovo')
+
+        return
     }
 }
 

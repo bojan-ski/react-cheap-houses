@@ -16,9 +16,8 @@ const subscribeToNewsletter = async (userEmail) => {
         // success message
         toast.success('Uspešno ste prosledili Vašu email adresu')
     } catch (error) {
-        console.log(error);
         // error message
-        toast.error('Greška prilikom prosleđivanja Vašu email adrese, molimo Vas probajte ponovo')
+        toast.error('Greška prilikom prosleđivanja Vaše email adrese, molimo Vas probajte ponovo')
 
         return
     }

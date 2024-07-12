@@ -14,7 +14,7 @@ const deleteUploadedImageFromDB = async (imageUrl) => {
         await deleteObject(storageRef);
     } catch (error) {
         //error message
-        toast.error('Greška prilikom uklanjanja Vaš oglas, molimo Vas probajte ponovo')
+        toast.error('Greška prilikom uklanjanja Vašeg oglas, molimo Vas probajte ponovo')
 
         return
     }

@@ -1,6 +1,8 @@
 import { getAuth } from "firebase/auth";
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore"
 import { db } from "../firebase.config";
+// toastify
+import { toast } from "react-toastify"
 
 const fetchUserListingsFromFirebase = async () => {
     const auth = getAuth()    
@@ -25,8 +27,10 @@ const fetchUserListingsFromFirebase = async () => {
 
         return allUserPostedListings
     } catch (error) {
-        console.log(error)
-        console.log('Could not fetch user data')
+        // error message
+        toast.error('Greška prilikom prikazivanja Vaših oglasa, molimo Vas probajte ponovo')
+
+        return 
     }
 }
 
