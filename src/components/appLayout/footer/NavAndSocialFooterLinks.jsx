@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
+// utils func 
+import scrollToTop from "../../../utils/scrollToTop.js"
 //data
-import appNavigationLinks from '../../../data/appNavigationLinks'
+import appNavigationLinks from '../../../data/appNavigationLinks.js'
 //asset
 import footerLogo from '../../../assets/footer-assets/jeftine_kuce_logo_text_footer.png'
 // react icons
@@ -25,7 +27,7 @@ const NavAndSocialFooterLinks = () => {
                         <ul className="footer-nav-links list-unstyled mb-0 d-flex justify-content-around align-items-center">
                             {appNavigationLinks.map((link, idx) => {
                                 return <li className="footer-nav-link" key={idx}>
-                                    <Link to={link.href} className="fw-bold">
+                                    <Link to={link.href} className="fw-bold" onClick={() => scrollToTop()}>
                                         {link.label}
                                     </Link>
                                 </li>

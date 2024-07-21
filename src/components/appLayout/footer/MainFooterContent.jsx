@@ -101,11 +101,8 @@ const MainFooterContent = () => {
                             </h5>
                             <div className="row">
                                 <div className="col-6 director-info mb-2">
-                                    <p className="sub-title mb-1">
+                                    <p className=" mb-1">
                                         Generalni Direktor:
-                                    </p>
-                                    <p className="fw-bolder mb-1">
-                                        Dejan Stošić
                                     </p>
                                     <p className="sub-title mb-1">
                                         Telefon:
@@ -121,11 +118,8 @@ const MainFooterContent = () => {
                                     </p>
                                 </div>
                                 <div className="col-6 director-info mb-2">
-                                    <p className="sub-title mb-1">
+                                    <p className="mb-1">
                                         Menadžer:
-                                    </p>
-                                    <p className="fw-bolder mb-1">
-                                        Nenad Stefanović
                                     </p>
                                     <p className="sub-title mb-1">
                                         Telefon:
