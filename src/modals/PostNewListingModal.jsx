@@ -1,13 +1,13 @@
 import { useState } from "react";
 // utils funcs
-import storeUploadedImage from "../utils/storeUploadedImage";
-import publishNewListing from "../utils/publishNewListing";
+import storeUploadedImage from "../utils/storeUploadedImage.js";
+import publishNewListing from "../utils/publishNewListing.js";
 // data
-import districts from "../data/districts";
+import districts from "../data/districts.js";
 // toastify
 import { toast } from "react-toastify";
 // components
-import Loading from '../components/Loading'
+import Loading from '../components/Loading.jsx'
 
 
 const PostNewListingModal = ({ userID, userName }) => {

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 // utils func 
-import subscribeToNewsletter from "../../../utils/subscribeToNewsletter"
+import subscribeToNewsletter from "../../../utils/subscribeToNewsletter.js"
+import scrollToTop from "../../../utils/scrollToTop.js"
 // data
 import propertyTypes from "../../../data/propertyTypes"
 // assets
@@ -147,7 +148,7 @@ const MainFooterContent = () => {
                             <ul className="footer-category-links list-unstyled">
                                 {propertyTypes.map((propertyType, idx) => {
                                     return <li key={idx} className="footer-category-link capitalize mb-2">
-                                        <Link to='/oglasi'>
+                                        <Link to='/oglasi' onClick={() => scrollToTop()}>
                                             {propertyType == 'kuca' ? "kuća" : propertyType}
                                         </Link>
                                     </li>

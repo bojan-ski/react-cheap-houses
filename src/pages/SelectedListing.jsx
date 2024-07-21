@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLoaderData, Link } from "react-router-dom"
 // utils funcs
-import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase";
-import priceComma from "../utils/priceComma";
+import fetchSelectedListingDetailsFromFirebase from "../utils/fetchSelectedListingDetailsFromFirebase.js";
+import priceComma from "../utils/priceComma.js";
+import scrollToTop from "../utils/scrollToTop.js";
 // component
-import ImagesGallery from "../components/selectedListingPage/ImagesGallery";
+import ImagesGallery from "../components/selectedListingPage/ImagesGallery.jsx";
 // modal
-import SelectedImageModal from "../modals/SelectedImageModal";
+import SelectedImageModal from "../modals/SelectedImageModal.jsx";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
@@ -22,6 +23,10 @@ export const loader = async ({ params }) => {
 
 const SelectedListing = () => {
     const selectedListingDetails = useLoaderData() 
+
+    useEffect(()=>{
+        scrollToTop()
+    },[])
 
     const { listingType, propertyType, propertyName, numRooms, numBathrooms, lotNumber, squareFootage, propertyAddress, propertyLocation, propertyDistrict, imageUrls, askingPrice, listingCreated, contactFullName, contactPhoneNumber, contactEmailAddress } = selectedListingDetails
     

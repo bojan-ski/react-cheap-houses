@@ -1,12 +1,12 @@
 // utils func
-import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase"
+import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase.js"
 // app context
-import { useGlobalContext } from "../context"
+import { useGlobalContext } from "../context.jsx"
 // components
-import PageLocation from "../components/PageLocation"
-import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn"
-import UserLoggedIn from "../components/profilePage/UserLoggedIn"
-import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer"
+import PageLocation from "../components/PageLocation.jsx"
+import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn.jsx"
+import UserLoggedIn from "../components/profilePage/UserLoggedIn.jsx"
+import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer.jsx"
 
 // LOADER
 export const loader = async () => {
