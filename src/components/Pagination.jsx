@@ -1,5 +1,8 @@
+// utils func 
+import scrollToTop from "../utils/scrollToTop.js"
 // React Icons
 import { GrNext, GrPrevious } from "react-icons/gr"
+
 
 let pointA = 0
 let pointB = 9
@@ -48,6 +51,8 @@ const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
                 displayedListOfPostedListings: currData.totalListOfPostedListings.slice(pointA, pointB)
             }))
         }
+
+        scrollToTop()
     }
 
     return (
