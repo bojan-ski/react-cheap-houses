@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage"
 import { loader as allPostedListingsLoader } from "./pages/PostedListings"
 import { loader as selectedListingLoader } from "./pages/SelectedListing"
 import { loader as userPostedListingsLoader } from "./pages/Profile"
+import { loader as allBlogPostsLoader } from "./pages/Blog"
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'blog',
-        element: <Blog />
+        element: <Blog />,
+        loader: allBlogPostsLoader
       },
       {
         path: 'kontakt',

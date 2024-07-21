@@ -1,4 +1,17 @@
-import PageLocation from "../components/PageLocation"
+import { useLoaderData } from "react-router-dom";
+// utils func
+import fetchAllBlogPostsFromFirebase from "../utils/fetchAllBlogPostsFromFirebase.js";
+// components
+import PageLocation from "../components/PageLocation.jsx"
+
+
+// LOADER
+export const loader = async () => {
+  const allBlogPosts = await fetchAllBlogPostsFromFirebase()
+
+  console.log(allBlogPosts);
+  return allBlogPosts
+}
 
 const Blog = () => {
   return (
