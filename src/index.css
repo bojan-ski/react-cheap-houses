@@ -17,6 +17,9 @@
   --gray-color: rgb(142, 142, 147);
   --dark-gray-color: rgba(255, 255, 255, 0.1);
 
+  /* shadow */
+  --shadow: 0px 4px 26px 0px rgba(66, 71, 76, 0.07);
+
   /* transition */
   --transition-ease: all 0.3s ease;
 }
@@ -771,8 +774,13 @@ main {
 }
 
 /* BLOG PAGE */
-.blog-content {
+.blog-page {
   background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
+}
+
+.blog-page .blog-post-card{
+  background-color: #fff;
+  box-shadow: var(--shadow);
 }
 
 /* ERROR PAGE */
