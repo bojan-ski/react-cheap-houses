@@ -3,7 +3,10 @@ import { useLoaderData } from "react-router-dom";
 import fetchAllBlogPostsFromFirebase from "../utils/fetchAllBlogPostsFromFirebase.js";
 // components
 import PageLocation from "../components/PageLocation.jsx"
+import NoDataAvailableMessage from "../components/NoDataAvailableMessage.jsx";
+
 import BlogPostsCard from "../components/blogPage/BlogPostsCard.jsx";
+
 
 
 // LOADER
@@ -15,29 +18,34 @@ export const loader = async () => {
 
 const Blog = () => {
   const allBlogPosts = useLoaderData()
-  // console.log(allBlogPosts);
 
   return (
     <div className="blog-page">
       {/* page location */}
       <PageLocation />
 
-
       <div className="container">
 
-        <section className="text-center mb-5">
-          <h1 className="fw-bold mb-3">
-            Blog
-          </h1>
-        </section>
+        {allBlogPosts || allBlogPosts.length == 0 ? (
+          <NoDataAvailableMessage text='Blog post-ova' />
+          // <NoPostedBlogPostsMessage />
+        ) : (
+          <>
+            <section className="text-center mb-5">
+              <h1 className="fw-bold">
+                Blog
+              </h1>
+            </section>
 
-        <section>
-          <div className="row">
-            {allBlogPosts.map(blogPost => {
-              return <BlogPostsCard key={blogPost.id} blogPost={blogPost}/>              
-            })}
-          </div>
-        </section>
+            <section className="pb-5">
+              <div className="row">
+                {allBlogPosts.map(blogPost => {
+                  return <BlogPostsCard key={blogPost.id} blogPost={blogPost} />
+                })}
+              </div>
+            </section>
+          </>
+        )}
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase";
 // components
 import PageLocation from "../components/PageLocation"
-import NoPostedListingsMessage from "../components/postedListingsPage/NoPostedListingsMessage";
+import NoDataAvailableMessage from "../components/NoDataAvailableMessage";
 import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
 
 
@@ -25,7 +25,8 @@ const PostedListings = () => {
 
       <div className="container">
         {!allPostedListings || allPostedListings.length == 0 ? (
-          <NoPostedListingsMessage />
+          // <NoPostedListingsMessage />
+          <NoDataAvailableMessage text='oglasa'/>
         ) : (
           <>
             <section className="text-center mb-5">
