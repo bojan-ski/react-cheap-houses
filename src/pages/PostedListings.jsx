@@ -6,6 +6,7 @@ import PageLocation from "../components/PageLocation"
 import NoPostedListingsMessage from "../components/postedListingsPage/NoPostedListingsMessage";
 import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
 
+
 // LOADER
 export const loader = async () => {
   const allPostedListings = await fetchAllListingsFromFirebase()

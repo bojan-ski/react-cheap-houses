@@ -773,14 +773,19 @@ main {
   background-color: var(--dark-orange-color);
 }
 
-/* BLOG PAGE */
-.blog-page {
+/* BLOG PAGE and SELECTED BLOG POST */
+.blog-page, 
+.selected-blog-post-page {
   background-image: url(../src/assets/dashboard-assets/jeftine_kuce_slider_bg.png);
 }
 
-.blog-page .blog-post-card{
-  background-color: #fff;
+.blog-page .blog-post-card,
+.selected-blog-post-page .container{
   box-shadow: var(--shadow);
+}
+
+.selected-blog-post-page p{
+  text-align: justify;
 }
 
 /* ERROR PAGE */

@@ -15,6 +15,7 @@ import { PiBathtubLight } from 'react-icons/pi'
 import { CiCalendarDate } from "react-icons/ci";
 
 
+// LOADER
 export const loader = async ({ params }) => {
     const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
 
