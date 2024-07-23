@@ -14,7 +14,6 @@ export const loader = async () => {
   return allPostedListings
 }
 
-
 const PostedListings = () => {
   const allPostedListings = useLoaderData()
 

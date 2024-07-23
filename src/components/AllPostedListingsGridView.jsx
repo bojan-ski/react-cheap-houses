@@ -3,7 +3,7 @@ import PostedListingGridViewCard from "./PostedListingGridViewCard"
 const AllPostedListingsGridView = ({ userDisplayedPostedListings, deleteUserPostedListing }) => {
     return (
         <div className='row'>
-            {userDisplayedPostedListings !== null && userDisplayedPostedListings.length > 0 && (
+            {(userDisplayedPostedListings !== null && userDisplayedPostedListings.length > 0) && (
                 userDisplayedPostedListings?.map(postedListing => {
                     return <PostedListingGridViewCard key={postedListing.id} postedListing={postedListing} deleteUserPostedListing={deleteUserPostedListing} />
                 })

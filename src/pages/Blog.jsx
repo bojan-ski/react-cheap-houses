@@ -4,9 +4,7 @@ import fetchAllBlogPostsFromFirebase from "../utils/fetchAllBlogPostsFromFirebas
 // components
 import PageLocation from "../components/PageLocation.jsx"
 import NoDataAvailableMessage from "../components/NoDataAvailableMessage.jsx";
-
-import BlogPostsCard from "../components/blogPage/BlogPostsCard.jsx";
-
+import BlogPostsContainer from "../components/blogPage/BlogPostsContainer.jsx";
 
 
 // LOADER
@@ -26,25 +24,10 @@ const Blog = () => {
 
       <div className="container">
 
-        {allBlogPosts || allBlogPosts.length == 0 ? (
+        {!allBlogPosts || allBlogPosts.length == 0 ? (
           <NoDataAvailableMessage text='Blog post-ova' />
-          // <NoPostedBlogPostsMessage />
         ) : (
-          <>
-            <section className="text-center mb-5">
-              <h1 className="fw-bold">
-                Blog
-              </h1>
-            </section>
-
-            <section className="pb-5">
-              <div className="row">
-                {allBlogPosts.map(blogPost => {
-                  return <BlogPostsCard key={blogPost.id} blogPost={blogPost} />
-                })}
-              </div>
-            </section>
-          </>
+          <BlogPostsContainer />
         )}
       </div>
     </div>

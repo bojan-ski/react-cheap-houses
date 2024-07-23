@@ -35,6 +35,8 @@ const PostedListingsContainer = () => {
         })
     }
 
+    // console.log(displayedListingsList);
+
     return (
         <>
             <section className="search-filter-options-container mb-5">

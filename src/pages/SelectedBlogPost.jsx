@@ -10,17 +10,21 @@ export const loader = async ({ params }) => {
 
 const SelectedBlogPost = () => {
     const selectedBlogPost = useLoaderData()
-    const { blogTitle, blogContent } = selectedBlogPost
+    const { blogTitle, blogContent, blogCreated } = selectedBlogPost
 
     return (
         <div className="selected-blog-post-page py-5">
             <div className="container py-3 px-5 rounded-4 bg-white">
 
                 <div className="blog-post-details">
-                    <section className="mt-5 mb-4">
+                    <section className="d-flex align-items-center justify-content-between mt-5 mb-4">
                         <Link to='/blog' className="btn bg-orange-hover text-white fw-bold px-4">
                             Nazad
                         </Link>
+                        <p className="fw-bold mb-0">
+                            <span className="text-muted me-2">Blog objavljen:</span>
+                            {blogCreated}
+                        </p>
                     </section>
 
                     <section>

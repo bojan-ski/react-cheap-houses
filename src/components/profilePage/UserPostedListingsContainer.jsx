@@ -54,6 +54,8 @@ const UserPostedListingsContainer = () => {
         }
     }
 
+    // console.log(displayedListingsList);
+
     return (
         <>
             <section className="user-posted-listings mb-4">
