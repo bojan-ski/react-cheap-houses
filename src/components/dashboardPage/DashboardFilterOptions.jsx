@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // app context
-import { useGlobalContext } from '../../context';
+import { useGlobalContext } from '../../context.jsx';
 // data
-import propertyTypes from '../../data/propertyTypes';
-import districts from '../../data/districts';
+import propertyTypes from '../../data/propertyTypes.js';
+import districts from '../../data/districts.js';
 // utils func
-import applySelectedFilterOptions from '../../utils/applySelectedFilterOptions';
+import applySelectedFilterOptions from '../../utils/applySelectedFilterOptions.js';
 // react icons
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 

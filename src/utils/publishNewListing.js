@@ -2,7 +2,7 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 // utils funcs
-import getCurrentTimeAndDate from "./getCurrentTimeAndDate";
+import getCurrentTimeAndDate from "./getCurrentTimeAndDate.js";
 // toastify
 import { toast } from "react-toastify";
 
@@ -27,8 +27,6 @@ const publishNewListing = async (formData, imageUrls) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom objavljivanja Vašeg oglasa, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

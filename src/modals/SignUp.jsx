@@ -3,12 +3,12 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
 // utils func
-import closeModalOnSubmit from '../utils/closeModalOnSubmit'
-// toastify
-import { toast } from 'react-toastify'
+import closeModalOnSubmit from '../utils/closeModalOnSubmit.js'
 // asset
 import registrationModalImg from '../assets/header-assets/jeftine_kuce_register_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
+// toastify
+import { toast } from 'react-toastify'
 
 
 const SignUp = () => {

@@ -1,5 +1,5 @@
 // component
-import ExpertAdviceCard from "./ExpertAdviceCard"
+import ExpertAdviceCard from "./ExpertAdviceCard.jsx"
 // assets
 import houseImgOne from "../../assets/dashboard-assets/jeftine_kuce_blog_1.jpg"
 import houseImgTwo from "../../assets/dashboard-assets/jeftine_kuce_blog_2.jpg"

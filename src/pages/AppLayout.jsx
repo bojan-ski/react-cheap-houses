@@ -1,12 +1,12 @@
 import { Outlet, useNavigation } from "react-router-dom"
 // app context - provider
-import { AppProvider } from "../context"
+import { AppProvider } from "../context.jsx"
+// components
+import Loading from "../components/Loading.jsx"
+import Footer from "../components/appLayout/footer/Footer.jsx"
+import Navbar from "../components/appLayout/navbar/Navbar.jsx"
 // toastify
 import { ToastContainer } from 'react-toastify';
-// components
-import Loading from "../components/Loading"
-import Footer from "../components/appLayout/footer/Footer"
-import Navbar from "../components/appLayout/navbar/Navbar"
 
 const AppLayout = () => {
     const navigation = useNavigation()

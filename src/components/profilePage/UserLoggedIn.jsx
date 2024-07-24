@@ -1,7 +1,7 @@
 // app context
-import { useGlobalContext } from "../../context"
+import { useGlobalContext } from "../../context.jsx"
 // modal
-import PostNewListingModal from "../../modals/PostNewListingModal"
+import PostNewListingModal from "../../modals/PostNewListingModal.jsx"
 
 const UserLoggedIn = () => {
     const { userData, logOutUser } = useGlobalContext()

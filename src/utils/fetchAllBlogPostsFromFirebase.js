@@ -22,8 +22,6 @@ const fetchAllBlogPostsFromFirebase = async () => {
     } catch (error) {
         //error message
         toast.error('Greška prilikom prikazivanja svi objavljenih blog postova, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

@@ -1,11 +1,11 @@
-//data
-import contactTopic from "../../data/contactTopic"
 // axios
 import axios from "axios"
-// toastify
-import { toast } from 'react-toastify'
+//data
+import contactTopic from "../../data/contactTopic.js"
 // react icon
 import { FaRegPaperPlane } from "react-icons/fa"
+// toastify
+import { toast } from 'react-toastify'
 
 const ContactForm = () => {
     const handleContactFormSubmit = async e => {

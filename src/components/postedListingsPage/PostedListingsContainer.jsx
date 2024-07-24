@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react"
 // app context
-import { useGlobalContext } from "../../context"
+import { useGlobalContext } from "../../context.jsx"
 // components
-import PostedListingsFilterOptions from "./PostedListingsFilterOptions"
-import AllPostedListingsGridView from "../AllPostedListingsGridView"
-import AllPostedListingsListView from "../AllPostedListingsListView"
-import Pagination from "../Pagination"
+import PostedListingsFilterOptions from "./PostedListingsFilterOptions.jsx"
+import AllPostedListingsGridView from "../AllPostedListingsGridView.jsx"
+import AllPostedListingsListView from "../AllPostedListingsListView.jsx"
+import Pagination from "../Pagination.jsx"
 // React Icons
 import { FaListUl } from "react-icons/fa"
 import { BsGrid3X3Gap } from "react-icons/bs"
 
 
 const PostedListingsContainer = () => {
-    const { allPostedListingsData, displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+    const { allPostedListingsData, displayedListingsList, setDisplayedListingsList, setCurrentPageNumber } = useGlobalContext()
     
     const [layout, setLayout] = useState('grid')
 
     useEffect(() => {
         setDisplayedListingsList({
-            totalListOfPostedListings: allPostedListingsData,
-            displayedListOfPostedListings: allPostedListingsData.length >= 10 ? allPostedListingsData.slice(0, 9) : allPostedListingsData
+            totalDataList: allPostedListingsData,
+            displayedDataList: allPostedListingsData.length >= 10 ? allPostedListingsData.slice(0, 9) : allPostedListingsData
         })
+        setCurrentPageNumber(1)
     }, [allPostedListingsData])
 
     // Search function
@@ -30,12 +31,11 @@ const PostedListingsContainer = () => {
         const searchResults = allPostedListingsData.filter(listing => listing.data.propertyLocation.toLowerCase().includes(searchTerm))
 
         setDisplayedListingsList({
-            totalListOfPostedListings: searchResults,
-            displayedListOfPostedListings: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
+            totalDataList: searchResults,
+            displayedDataList: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
         })
+        setCurrentPageNumber(1)
     }
-
-    // console.log(displayedListingsList);
 
     return (
         <>
@@ -66,16 +66,16 @@ const PostedListingsContainer = () => {
 
             <section className="display-posted-listings-container mb-4">
                 {layout === 'grid' ? (
-                    <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
+                    <AllPostedListingsGridView displayedListingsList={displayedListingsList.displayedDataList} />
                 ) : (
-                    <AllPostedListingsListView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} />
+                    <AllPostedListingsListView displayedListingsList={displayedListingsList.displayedDataList} />
                 )}
 
             </section>
 
             {/* Pagination */}
-            {(displayedListingsList.totalListOfPostedListings && displayedListingsList.totalListOfPostedListings.length >= 10) && (
-                <Pagination allPostedListingsData={allPostedListingsData} setDisplayedListingsList={setDisplayedListingsList} />
+            {(displayedListingsList.totalDataList && displayedListingsList.totalDataList.length >= 10) && (
+                <Pagination dataLength={allPostedListingsData} setDisplayedContent={setDisplayedListingsList} />
             )}
         </>
     )

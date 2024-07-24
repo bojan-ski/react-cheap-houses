@@ -1,3 +1,6 @@
+import { useEffect } from "react"
+// context
+import { useGlobalContext } from "../context.jsx"
 // utils func 
 import scrollToTop from "../utils/scrollToTop.js"
 // React Icons
@@ -6,49 +9,55 @@ import { GrNext, GrPrevious } from "react-icons/gr"
 
 let pointA = 0
 let pointB = 9
-let currentPageNumber = 1
 
-const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
+const Pagination = ({ dataLength, setDisplayedContent }) => {
+    const {currentPageNumber, setCurrentPageNumber} = useGlobalContext()
+
+    useEffect(()=>{
+        pointA = 0
+        pointB = 9
+    },[])
+
     const paginationOption = (term) => {
         if (term === 'plus') {
             pointA += 9
             pointB += 9
-            currentPageNumber += 1
+            setCurrentPageNumber(curPageNum => curPageNum + 1)
         }
 
         if (term === 'minus') {
             pointA -= 9
             pointB -= 9
-            currentPageNumber -= 1
+            setCurrentPageNumber(curPageNum => curPageNum - 1)
         }
 
         if (pointB == 0) {
-            setDisplayedListingsList(currData => ({
+            setDisplayedContent(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 9)
+                displayedDataList: currData.totalDataList.slice(0, 9)
             }))
             pointA = 0
             pointB = 9
-            currentPageNumber = 1
-        } else if (pointB > allPostedListingsData.length && pointA >= allPostedListingsData.length) {
-            setDisplayedListingsList(currData => ({
+            setCurrentPageNumber(1)
+        } else if (pointB > dataLength.length && pointA >= dataLength.length) {
+            setDisplayedContent(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(0, 9)
+                displayedDataList: currData.totalDataList.slice(0, 9)
             }))
             pointA = 0
             pointB = 9
-            currentPageNumber = 1
-        } else if (pointB > allPostedListingsData.length) {
-            const lastPostedListings = allPostedListingsData.length - pointA
-            setDisplayedListingsList(currData => ({
+            setCurrentPageNumber(1)
+        } else if (pointB > dataLength.length) {
+            const lastPostedListings = dataLength.length - pointA
+            setDisplayedContent(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(-lastPostedListings)
+                displayedDataList: currData.totalDataList.slice(-lastPostedListings)
             }))
-            currentPageNumber = Math.ceil(allPostedListingsData.length / 9)
+            setCurrentPageNumber(Math.ceil(dataLength.length / 9))
         } else {
-            setDisplayedListingsList(currData => ({
+            setDisplayedContent(currData => ({
                 ...currData,
-                displayedListOfPostedListings: currData.totalListOfPostedListings.slice(pointA, pointB)
+                displayedDataList: currData.totalDataList.slice(pointA, pointB)
             }))
         }
 
@@ -65,7 +74,7 @@ const Pagination = ({ allPostedListingsData, setDisplayedListingsList }) => {
                     </span>
                     /
                     <span className="ms-1 text-dark">
-                        {Math.ceil(allPostedListingsData.length / 9)}
+                        {Math.ceil(dataLength.length / 9)}
                     </span>
                 </p>
             </div>

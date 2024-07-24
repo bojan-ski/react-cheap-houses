@@ -21,6 +21,7 @@ const ContactDetails = () => {
                                 Jedini portal koji pre svega ima za cilj da Vam ponudi nekretnine i sve u vezi nekretnina po isključivo najboljim cenama na tržištu.
                             </h6>
                         </div>
+
                         {/* contact-info */}
                         <div className="contact-info">
                             {/* contact info box 1 */}
@@ -40,6 +41,7 @@ const ContactDetails = () => {
                                     </p>
                                 </div>
                             </div>
+
                             {/* contact info box 2 */}
                             <div className="box-info mb-4 d-flex align-items-center">
                                 <div className="icon-info me-3 d-flex align-items-center">
@@ -56,6 +58,7 @@ const ContactDetails = () => {
                                     </a>
                                 </div>
                             </div>
+                            
                             {/* contact info box 3 */}
                             <div className="box-info mb-4 d-flex align-items-center">
                                 <div className="icon-info me-3 d-flex align-items-center">

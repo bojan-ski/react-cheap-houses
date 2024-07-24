@@ -7,7 +7,7 @@ const SelectedImageModal = ({ imageSrc }) => {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body text-center">
-                        <img src={imageSrc} alt="" className="img-fluid"/>
+                        <img src={imageSrc} alt="" className="img-fluid" />
                     </div>
                 </div>
             </div>

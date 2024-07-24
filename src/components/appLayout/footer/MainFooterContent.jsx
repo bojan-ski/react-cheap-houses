@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import subscribeToNewsletter from "../../../utils/subscribeToNewsletter.js"
 import scrollToTop from "../../../utils/scrollToTop.js"
 // data
-import propertyTypes from "../../../data/propertyTypes"
+import propertyTypes from "../../../data/propertyTypes.js"
 // assets
 import footerIcon1 from '../../../assets/footer-assets/jeftine_kuce_footer_1.png'
 import footerIcon2 from '../../../assets/footer-assets/jeftine_kuce_footer_2.png'

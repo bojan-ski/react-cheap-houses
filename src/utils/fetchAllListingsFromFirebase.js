@@ -22,8 +22,6 @@ const fetchAllListingsFromFirebase = async () => {
     } catch (error) {
         //error message
         toast.error('Greška prilikom prikazivanja svi objavljenih oglasa, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

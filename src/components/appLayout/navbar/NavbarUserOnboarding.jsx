@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 // app context
-import { useGlobalContext } from '../../../context'
+import { useGlobalContext } from '../../../context.jsx'
 // modals
-import SignUp from '../../../modals/SignUp'
-import LogIn from '../../../modals/LogIn'
-import ForgotPassword from '../../../modals/ForgotPassword'
+import SignUp from '../../../modals/SignUp.jsx'
+import LogIn from '../../../modals/LogIn.jsx'
+import ForgotPassword from '../../../modals/ForgotPassword.jsx'
 // asset
 import headerLogo from '../../../assets/header-assets/jeftine_kuce_logo_text_header.png'
 // React Icons

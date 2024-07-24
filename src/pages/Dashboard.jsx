@@ -1,7 +1,7 @@
 // components
-import ExpertAdvices from "../components/dashboardPage/ExpertAdvices"
-import Hero from "../components/dashboardPage/Hero"
-import Testimonials from "../components/dashboardPage/Testimonials"
+import Hero from "../components/dashboardPage/Hero.jsx"
+import ExpertAdvices from "../components/dashboardPage/ExpertAdvices.jsx"
+import Testimonials from "../components/dashboardPage/Testimonials.jsx"
 
 const Dashboard = () => {
   return (

@@ -1,5 +1,5 @@
 // data
-import testimonials from '../../data/testimonials';
+import testimonials from '../../data/testimonials.js';
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper/modules";
@@ -10,6 +10,7 @@ const Testimonials = () => {
     return (
         <section className='testimonials py-5'>
             <div className="container">
+                
                 <div className="section-header text-center mb-5">
                     <h2 className="fs-1 fw-bold mb-3">
                         Šta su o nama rekli naši klijenti

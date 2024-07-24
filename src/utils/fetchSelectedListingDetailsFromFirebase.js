@@ -12,8 +12,6 @@ const fetchSelectedListingDetailsFromFirebase = async (id) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom prikazivanja izabranog oglasa, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

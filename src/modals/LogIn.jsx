@@ -2,12 +2,12 @@ import { useNavigate } from 'react-router-dom'
 // firebase/firestore funcs
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 // utils func
-import closeModalOnSubmit from '../utils/closeModalOnSubmit'
-// toastify
-import { toast } from 'react-toastify'
+import closeModalOnSubmit from '../utils/closeModalOnSubmit.js'
 // app asset
 import logInModalImg from '../assets/header-assets/jeftine_kuce_login_bg.jpg'
 import appNameImg from '../assets/header-assets/jeftine_kuce_logo_text_whit_small.png'
+// toastify
+import { toast } from 'react-toastify'
 
 
 const LogIn = () => {

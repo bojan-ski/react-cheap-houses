@@ -1,9 +1,9 @@
-import PostedListingListViewCard from "./PostedListingListViewCard"
+import PostedListingListViewCard from "./PostedListingListViewCard.jsx"
 
-const AllPostedListingsListView = ({ userDisplayedPostedListings }) => {
+const AllPostedListingsListView = ({ displayedListingsList }) => {
   return (
     <div className='row'>
-      {userDisplayedPostedListings?.map(postedListing => {
+      {displayedListingsList?.map(postedListing => {
         return <PostedListingListViewCard key={postedListing.id} {...postedListing} />
       })}
     </div>

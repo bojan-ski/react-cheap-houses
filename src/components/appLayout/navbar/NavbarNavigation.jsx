@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom"
 // data
-import appNavigationLinks from "../../../data/appNavigationLinks"
+import appNavigationLinks from "../../../data/appNavigationLinks.js"
 // React Icons
 import { BsHouseHeart } from "react-icons/bs"
 import { IoReorderThreeOutline } from "react-icons/io5"

@@ -18,8 +18,6 @@ const subscribeToNewsletter = async (userEmail) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom prosleđivanja Vaše email adrese, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

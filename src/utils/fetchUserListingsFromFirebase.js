@@ -5,7 +5,7 @@ import { db } from "../firebase.config";
 import { toast } from "react-toastify"
 
 const fetchUserListingsFromFirebase = async () => {
-    const auth = getAuth()    
+    const auth = getAuth()
 
     if (!auth.currentUser) return null
 
@@ -29,8 +29,6 @@ const fetchUserListingsFromFirebase = async () => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom prikazivanja Vaših oglasa, molimo Vas probajte ponovo')
-
-        return 
     }
 }
 

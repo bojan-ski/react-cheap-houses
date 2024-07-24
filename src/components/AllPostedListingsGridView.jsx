@@ -1,10 +1,10 @@
-import PostedListingGridViewCard from "./PostedListingGridViewCard"
+import PostedListingGridViewCard from "./PostedListingGridViewCard.jsx"
 
-const AllPostedListingsGridView = ({ userDisplayedPostedListings, deleteUserPostedListing }) => {
+const AllPostedListingsGridView = ({ displayedListingsList, deleteUserPostedListing }) => {
     return (
         <div className='row'>
-            {(userDisplayedPostedListings !== null && userDisplayedPostedListings.length > 0) && (
-                userDisplayedPostedListings?.map(postedListing => {
+            {(displayedListingsList !== null && displayedListingsList.length > 0) && (
+                displayedListingsList?.map(postedListing => {
                     return <PostedListingGridViewCard key={postedListing.id} postedListing={postedListing} deleteUserPostedListing={deleteUserPostedListing} />
                 })
             )}

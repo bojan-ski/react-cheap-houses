@@ -1,6 +1,6 @@
 // components
-import NavbarNavigation from "./NavbarNavigation"
-import NavbarUserOnboarding from "./NavbarUserOnboarding"
+import NavbarNavigation from "./NavbarNavigation.jsx"
+import NavbarUserOnboarding from "./NavbarUserOnboarding.jsx"
 
 const Navbar = () => {
   return (

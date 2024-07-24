@@ -1,4 +1,4 @@
-const NoDataAvailableMessage = ({text}) => {
+const NoDataAvailableMessage = ({ text }) => {
     return (
         <div className="text-center py-5">
             <h1 className="fw-bold">

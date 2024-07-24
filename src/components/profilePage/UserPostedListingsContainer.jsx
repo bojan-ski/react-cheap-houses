@@ -4,12 +4,12 @@ import { useLoaderData } from "react-router-dom"
 import { doc, deleteDoc } from "firebase/firestore"
 import { db } from "../../firebase.config"
 // app context
-import { useGlobalContext } from "../../context"
+import { useGlobalContext } from "../../context.jsx"
 // utils func 
-import deleteUploadedImageFromDB from "../../utils/deleteUploadedImageFromDB"
+import deleteUploadedImageFromDB from "../../utils/deleteUploadedImageFromDB.js"
 // components
-import AllPostedListingsGridView from "../AllPostedListingsGridView"
-import Pagination from "../Pagination"
+import AllPostedListingsGridView from "../AllPostedListingsGridView.jsx"
+import Pagination from "../Pagination.jsx"
 // toastify
 import { toast } from "react-toastify"
 
@@ -19,13 +19,14 @@ const UserPostedListingsContainer = () => {
 
     const [userPostedListings, setUserPostedListings] = useState(allUserPostedListings)
 
-    const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+    const { displayedListingsList, setDisplayedListingsList, setCurrentPageNumber } = useGlobalContext()
 
     useEffect(() => {
         setDisplayedListingsList({
-            totalListOfPostedListings: userPostedListings,
-            displayedListOfPostedListings: userPostedListings?.length >= 10 ? userPostedListings.slice(0, 9) : userPostedListings
+            totalDataList: userPostedListings,
+            displayedDataList: userPostedListings?.length >= 10 ? userPostedListings.slice(0, 9) : userPostedListings
         })
+        setCurrentPageNumber(1)
     }, [userPostedListings])
 
     const deleteUserPostedListing = async (userPostedListingID) => {
@@ -48,13 +49,9 @@ const UserPostedListingsContainer = () => {
             } catch (error) {
                 //error message
                 toast.error('Greška prilikom uklanjanja Vašeg oglasa, molimo Vas probajte ponovo')
-
-                return
             }
         }
     }
-
-    // console.log(displayedListingsList);
 
     return (
         <>
@@ -70,14 +67,14 @@ const UserPostedListingsContainer = () => {
                         </h2>
 
                         {/* AllPostedListingsGridView component */}
-                        <AllPostedListingsGridView userDisplayedPostedListings={displayedListingsList.displayedListOfPostedListings} deleteUserPostedListing={deleteUserPostedListing} />
+                        <AllPostedListingsGridView displayedListingsList={displayedListingsList.displayedDataList} deleteUserPostedListing={deleteUserPostedListing} />
                     </>
                 )}
             </section>
 
             {/* Pagination */}
             {(userPostedListings && userPostedListings?.length >= 10) && (
-                <Pagination allPostedListingsData={userPostedListings} setDisplayedListingsList={setDisplayedListingsList} />
+                <Pagination dataLength={userPostedListings} setDisplayedContent={setDisplayedListingsList} />
             )}
         </>
     )

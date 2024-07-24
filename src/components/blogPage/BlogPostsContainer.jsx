@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom"
 // context
 import { useGlobalContext } from "../../context.jsx"
 // component
-import BlogPostsCard from "./BlogPostsCard.jsx"
 import Pagination from "../Pagination.jsx"
 import AllBlogPostsList from "./AllBlogPostsList.jsx"
 
@@ -11,32 +10,19 @@ import AllBlogPostsList from "./AllBlogPostsList.jsx"
 const BlogPostsContainer = () => {
     const allBlogPosts = useLoaderData()
 
-    // const [blogPostsList, setBlogPostsList] = useState(allBlogPosts)
-
-    // const { displayedListingsList, setDisplayedListingsList } = useGlobalContext()
+    const { setCurrentPageNumber } = useGlobalContext()
 
     const [blogPostsList, setBlogPostsList] = useState({
-        totalListOfPostedListings: null,
-        displayedListOfPostedListings: null
+        totalDataList: null,
+        displayedDataList: null
     })
-
-    // useEffect(() => {
-    //     setBlogPostsList({
-    //         totalListOfBlogPosts: allBlogPosts,
-    //         displayedListOfBlogPosts: allBlogPosts.length >= 10 ? allBlogPosts.slice(0, 9) : allBlogPosts
-    //     })
-
-    //     setDisplayedListingsList({
-    //         totalListOfPostedListings: blogPostsList,
-    //         displayedListOfPostedListings: blogPostsList.length >= 10 ? blogPostsList.slice(0, 9) : blogPostsList
-    //     })
-    // }, [])
 
     useEffect(() => {
         setBlogPostsList({
-            totalListOfPostedListings: allBlogPosts,
-            displayedListOfPostedListings: allBlogPosts?.length >= 10 ? allBlogPosts.slice(0, 9) : allBlogPosts
+            totalDataList: allBlogPosts,
+            displayedDataList: allBlogPosts?.length >= 10 ? allBlogPosts.slice(0, 9) : allBlogPosts
         })
+        setCurrentPageNumber(1)
     }, [])
 
     // Search function
@@ -46,18 +32,11 @@ const BlogPostsContainer = () => {
         const searchResults = allBlogPosts.filter(blogPost => blogPost.data.blogTitle.toLowerCase().includes(searchTerm))
 
         setBlogPostsList({
-            totalListOfBlogPosts: searchResults,
-            displayedListOfBlogPosts: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
+            totalDataList: searchResults,
+            displayedDataList: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
         })
-
-        // setDisplayedListingsList({
-        //     totalListOfPostedListings: searchResults,
-        //     displayedListOfPostedListings: searchResults.length >= 10 ? searchResults.slice(0, 9) : searchResults
-        // })
+        setCurrentPageNumber(1)
     }
-
-    // console.log(blogPostsList.displayedListOfBlogPosts);
-    // console.log(displayedListingsList);
 
     return (
         <>
@@ -72,24 +51,12 @@ const BlogPostsContainer = () => {
                     <input type="text" className="form-control" onChange={handleSearch} placeholder="Unesite naziv Blog-a" />
                 </div>
 
-                <AllBlogPostsList listOfBlogPosts={blogPostsList.displayedListOfPostedListings}/>
-
-                {/* <div className="row">
-                    {displayedListingsList.displayedListOfPostedListings?.map(blogPost => {
-                        return <BlogPostsCard key={blogPost.id} blogPost={blogPost} />
-                    })}
-
-                    {blogPostsList.displayedListOfBlogPosts !== null && (
-                        blogPostsList?.displayedListOfBlogPosts?.map(blogPost => {
-                            return <BlogPostsCard key={blogPost.id} blogPost={blogPost} />
-                        })
-                    )}
-                </div> */}
+                <AllBlogPostsList displayedBlogPostsList={blogPostsList.displayedDataList}/>
             </section>
 
             {/* Pagination */}
-            {(blogPostsList.totalListOfPostedListings && blogPostsList.totalListOfPostedListings.length >= 10) && (
-                <Pagination allPostedListingsData={allBlogPosts} setDisplayedListingsList={setBlogPostsList} />
+            {(blogPostsList.totalDataList && blogPostsList.totalDataList.length >= 10) && (
+                <Pagination dataLength={allBlogPosts} setDisplayedContent={setBlogPostsList} />
             )}
         </>
     )

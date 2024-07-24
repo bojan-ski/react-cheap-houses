@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 // firebase/firestore funcs
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'
 // utils func
-import fetchAllListingsFromFirebase from "./utils/fetchAllListingsFromFirebase";
+import fetchAllListingsFromFirebase from "./utils/fetchAllListingsFromFirebase.js";
 // toastify
 import { toast } from 'react-toastify'
 
@@ -59,8 +59,6 @@ export const AppProvider = ({ children }) => {
             } catch (error) {
                 //error message
                 toast.error('Greška prilikom odjave')
-
-                return
             }
         }
     }
@@ -86,9 +84,10 @@ export const AppProvider = ({ children }) => {
     })
 
     // pagination
+    const [currentPageNumber, setCurrentPageNumber] = useState(1)
     const [displayedListingsList, setDisplayedListingsList] = useState({
-        totalListOfPostedListings: null,
-        displayedListOfPostedListings: null
+        totalDataList: null,
+        displayedDataList: null
     })
 
     return <AppContext.Provider value={{
@@ -100,6 +99,8 @@ export const AppProvider = ({ children }) => {
         setAllPostedListingsData, // DashboardFilterOptions, PostedListingsFilterOptions
         selectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
         setSelectedFilterOptions, // DashboardFilterOptions, PostedListingsFilterOptions
+        currentPageNumber, // Pagination
+        setCurrentPageNumber, // Pagination, PostedListingsContainer, UserPostedListingsContainer BlogPostsContainer
         displayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
         setDisplayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
         fetchAllListings, // PostedListingsFilterOptions

@@ -12,8 +12,6 @@ const fetchSelectedBlogPostFromFirebase = async (id) => {
     } catch (error) {
         // error message
         toast.error('Greška prilikom prikazivanja izabranog post-a, molimo Vas probajte ponovo')
-
-        return
     }
 }
 

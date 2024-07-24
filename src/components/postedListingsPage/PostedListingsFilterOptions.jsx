@@ -1,10 +1,10 @@
 // app context
-import { useGlobalContext } from "../../context";
+import { useGlobalContext } from "../../context.jsx";
 // utils func
-import applySelectedFilterOptions from "../../utils/applySelectedFilterOptions";
+import applySelectedFilterOptions from "../../utils/applySelectedFilterOptions.js";
 // imported data
-import districts from "../../data/districts";
-import propertyTypes from '../../data/propertyTypes'
+import districts from "../../data/districts.js";
+import propertyTypes from '../../data/propertyTypes.js'
 
 
 const PostedListingsFilterOptions = () => {

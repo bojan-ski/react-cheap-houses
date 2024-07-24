@@ -1,10 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 // utils func
-import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase";
+import fetchAllListingsFromFirebase from "../utils/fetchAllListingsFromFirebase.js";
 // components
-import PageLocation from "../components/PageLocation"
-import NoDataAvailableMessage from "../components/NoDataAvailableMessage";
-import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer";
+import PageLocation from "../components/PageLocation.jsx"
+import NoDataAvailableMessage from "../components/NoDataAvailableMessage.jsx";
+import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer.jsx";
 
 
 // LOADER

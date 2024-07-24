@@ -4,10 +4,10 @@ import storeUploadedImage from "../utils/storeUploadedImage.js";
 import publishNewListing from "../utils/publishNewListing.js";
 // data
 import districts from "../data/districts.js";
-// toastify
-import { toast } from "react-toastify";
 // components
 import Loading from '../components/Loading.jsx'
+// toastify
+import { toast } from "react-toastify";
 
 
 const PostNewListingModal = ({ userID, userName }) => {

@@ -1,7 +1,7 @@
 // components
-import MainFooterContent from "./MainFooterContent"
-import NavAndSocialFooterLinks from "./NavAndSocialFooterLinks"
-import RightsFooter from "./RightsFooter"
+import MainFooterContent from "./MainFooterContent.jsx"
+import NavAndSocialFooterLinks from "./NavAndSocialFooterLinks.jsx"
+import RightsFooter from "./RightsFooter.jsx"
 
 const Footer = () => {
   return (

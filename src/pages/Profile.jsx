@@ -1,6 +1,6 @@
 // utils func
 import fetchUserListingsFromFirebase from "../utils/fetchUserListingsFromFirebase.js"
-// app context
+// context
 import { useGlobalContext } from "../context.jsx"
 // components
 import PageLocation from "../components/PageLocation.jsx"

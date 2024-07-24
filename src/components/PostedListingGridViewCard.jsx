@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 // utils func
-import priceComma from "../utils/priceComma";
+import priceComma from "../utils/priceComma.js";
 // React Icons
 import { LiaTapeSolid } from 'react-icons/lia'
 import { MdConfirmationNumber, MdOutlineBedroomChild } from 'react-icons/md'
@@ -116,9 +116,7 @@ const PostedListingGridViewCard = ({ postedListing, deleteUserPostedListing }) =
                         </>
                     )}
                 </div>
-
             </div>
-
         </div>
     )
 }
