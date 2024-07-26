@@ -16,7 +16,8 @@ export const AppProvider = ({ children }) => {
     // user details
     const [userData, setUserData] = useState({
         userID: '',
-        userName: ''
+        userName: '',
+        userVerified: false
     })
 
     useEffect(() => {
@@ -25,18 +26,19 @@ export const AppProvider = ({ children }) => {
                 auth.currentUser ? (
                     setUserData({
                         userID: user.uid,
-                        userName: user.displayName
+                        userName: user.displayName,
+                        userVerified: user.emailVerified
                     })
                 ) : (
                     setUserData({
                         userID: '',
-                        userName: ''
+                        userName: '',
+                        userVerified: false
                     })
                 )
             }
         })
     }, [])
-
 
     // log out user
     const navigate = useNavigate()
@@ -91,7 +93,7 @@ export const AppProvider = ({ children }) => {
     })
 
     return <AppContext.Provider value={{
-        userData, //Profile, NavbarUserOnboarding, UserLoggedIn
+        userData, //Profile, NavbarUserOnboarding, UserLoggedIn, PostNewListingModal
         logOutUser, // NavbarUserOnboarding, UserLoggedIn
         filterOptionsApplied, //PostedListingsFilterOptions
         setFilterOptionsApplied, // DashboardFilterOptions, PostedListingsFilterOptions

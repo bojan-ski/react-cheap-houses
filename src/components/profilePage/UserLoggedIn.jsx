@@ -5,7 +5,6 @@ import PostNewListingModal from "../../modals/PostNewListingModal.jsx"
 
 const UserLoggedIn = () => {
     const { userData, logOutUser } = useGlobalContext()
-    const { userID, userName } = userData
 
     return (
         <>
@@ -15,7 +14,7 @@ const UserLoggedIn = () => {
                         Dobrodošli
                     </h2>
                     <h2 className="text-center fw-bold">
-                        {userName.toUpperCase()}
+                        {userData.userName.toUpperCase()}
                     </h2>
                 </div>
 
@@ -47,7 +46,7 @@ const UserLoggedIn = () => {
             </section>
 
             {/*post new listing modal */}
-            <PostNewListingModal userID={userID} userName={userName}/>
+            <PostNewListingModal />
         </>
     )
 }

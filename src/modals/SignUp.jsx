@@ -1,5 +1,5 @@
 // firebase/firestore funcs
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from '../firebase.config';
 // utils func
@@ -46,6 +46,8 @@ const SignUp = () => {
                 displayName: username
             })
 
+            await sendEmailVerification(newUser)
+
             const userCredentialsCopy = {
                 username,
                 email,
@@ -55,10 +57,12 @@ const SignUp = () => {
             await setDoc(doc(db, 'users', newUser.uid), userCredentialsCopy)
 
             // success message
-            toast.success('Uspešno ste se napravili nalog na portal "Jeftine kuće". Dobro nam došli')
+            toast.success('Vaš nalog na portal "Jeftine kuće" je napravljen. Molimo Vas proverite Vašu elektronsku poštu radi verifikacije Vašeg naloga')
 
             // after the user has created an account, the user is redirected to the Profile page
-            window.location.href ='/nalog'
+            setTimeout(()=>{
+                window.location.href ='/nalog'
+            },2500)
         } catch (error) {
             // error message if entered email address is in use
             toast.error('Email adresu koju ste uneli je u upotrebi, molimo Vas probajte drugu email adresu.')

@@ -25,7 +25,7 @@ const AppLayout = () => {
             </>
             <ToastContainer
                 position="top-center"
-                autoClose={1500}
+                autoClose={2500}
                 pauseOnFocusLoss={false}
             />
         </AppProvider>

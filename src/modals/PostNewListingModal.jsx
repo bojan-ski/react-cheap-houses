@@ -4,13 +4,17 @@ import storeUploadedImage from "../utils/storeUploadedImage.js";
 import publishNewListing from "../utils/publishNewListing.js";
 // data
 import districts from "../data/districts.js";
+// context
+import { useGlobalContext } from "../context.jsx";
 // components
 import Loading from '../components/Loading.jsx'
 // toastify
 import { toast } from "react-toastify";
 
 
-const PostNewListingModal = ({ userID, userName }) => {
+const PostNewListingModal = () => {
+    const { userData } = useGlobalContext()
+    const { userID, userName, userVerified } = userData
     const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         userRef: userID,
@@ -58,15 +62,27 @@ const PostNewListingModal = ({ userID, userName }) => {
         // spinner
         setIsLoading(true)
 
+        // if user verified
+        if (userVerified == false) {
+            // spinner
+            setIsLoading(false)
+
+            // error message in case the user is not verified
+            toast.error('Vaš nalog nije verifikovan. Molimo Vas proverite Vašu elektronsku poštu radi verifikacije Vašeg naloga')
+            return
+        }
+
+        // if image number is under 7
         if (formData.propertyImages.length >= 8) {
             // spinner
             setIsLoading(false)
 
             // error message in case the user tries to upload more then 7 pictures
-            toast.error('Ograničenje za otpremanje je 7 slika, molimo Vas pobajte ponovo ')
+            toast.error('Ograničenje za otpremanje je 7 slika, molimo Vas pobajte ponovo')
             return
         }
 
+        // if image/images are less then 2MB
         const correctImageSize = Array.from(formData.propertyImages).every(image => {
             if (image.size >= 2000000) {
                 return false;
