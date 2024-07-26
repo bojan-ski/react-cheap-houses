@@ -28,37 +28,37 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'oglasi',
+        path: '/oglasi',
         element: <PostedListings />,
         loader: allPostedListingsLoader
       },
       {
-        path: 'oglasi/:id',
+        path: '/oglasi/:id',
         element: <SelectedListing />,
         loader: selectedListingLoader
       },
       {
-        path: 'nalog',
+        path: '/nalog',
         element: <Profile/>,
         loader: userPostedListingsLoader
       },
       {
-        path: 'nalog/:id',
+        path: '/nalog/:id',
         element: <SelectedListing />,
         loader: selectedListingLoader
       },
       {
-        path: 'blog',
+        path: '/blog',
         element: <Blog />,
         loader: allBlogPostsLoader
       },
       {
-        path: 'blog/:id',
+        path: '/blog/:id',
         element: <SelectedBlogPost />,
         loader: selectedBlogPostLoader
       },
       {
-        path: 'kontakt',
+        path: '/kontakt',
         element: <Contact />
       }
     ]
