@@ -36,32 +36,32 @@ const router = createBrowserRouter([
       {
         path: '/oglasi',
         element: <PostedListings />,
-        loader: allPostedListingsLoader
+        loader: allPostedListingsLoader(queryClient)
       },
       {
         path: '/oglasi/:id',
         element: <SelectedListing />,
-        loader: selectedListingLoader
+        loader: selectedListingLoader(queryClient)
       },
       {
         path: '/nalog',
         element: <Profile/>,
-        loader: userPostedListingsLoader
+        loader: userPostedListingsLoader(queryClient)
       },
       {
         path: '/nalog/:id',
         element: <SelectedListing />,
-        loader: selectedListingLoader
+        loader: selectedListingLoader(queryClient)
       },
       {
         path: '/blog',
         element: <Blog />,
-        loader: allBlogPostsLoader
+        loader: allBlogPostsLoader(queryClient)
       },
       {
         path: '/blog/:id',
         element: <SelectedBlogPost />,
-        loader: selectedBlogPostLoader
+        loader: selectedBlogPostLoader(queryClient)
       },
       {
         path: '/kontakt',

@@ -2,11 +2,26 @@ import { useLoaderData, Link } from "react-router-dom";
 // utils func
 import fetchSelectedBlogPostFromFirebase from "../utils/fetchSelectedBlogPostFromFirebase.js";
 
-export const loader = async ({ params }) => {
-    const selectedBlogPost = await fetchSelectedBlogPostFromFirebase(params.id)
+
+// REACT QUERY
+const fetchSelectedBlogPostFromFirebaseQuery = (id) => {
+    return {
+        queryKey: ['selectedBlogPost', id], 
+        queryFn: () => fetchSelectedBlogPostFromFirebase(id)
+      }
+}
+
+// LOADER
+export const loader = (queryClient) => async ({ params }) => {
+    const selectedBlogPost = await queryClient.ensureQueryData(fetchSelectedBlogPostFromFirebaseQuery(params.id))
 
     return selectedBlogPost
 }
+// export const loader = async ({ params }) => {
+//     const selectedBlogPost = await fetchSelectedBlogPostFromFirebase(params.id)
+
+//     return selectedBlogPost
+// }
 
 const SelectedBlogPost = () => {
     const selectedBlogPost = useLoaderData()

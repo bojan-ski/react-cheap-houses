@@ -7,12 +7,24 @@ import NoDataAvailableMessage from "../components/NoDataAvailableMessage.jsx";
 import PostedListingsContainer from "../components/postedListingsPage/PostedListingsContainer.jsx";
 
 
+// REACT QUERY
+const fetchAllListingsFromFirebaseQuery = {
+  queryKey: ['allPostedListings'],
+  queryFn: () => fetchAllListingsFromFirebase()
+}
+
 // LOADER
-export const loader = async () => {
-  const allPostedListings = await fetchAllListingsFromFirebase()
+export const loader = (queryClient) => async () => {
+  const allPostedListings = await queryClient.ensureQueryData(fetchAllListingsFromFirebaseQuery)
 
   return allPostedListings
 }
+
+// export const loader = async () => {
+//   const allPostedListings = await fetchAllListingsFromFirebase()
+
+//   return allPostedListings
+// }
 
 const PostedListings = () => {
   const allPostedListings = useLoaderData()

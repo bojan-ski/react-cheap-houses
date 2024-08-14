@@ -8,12 +8,24 @@ import UserNotLoggedIn from "../components/profilePage/UserNotLoggedIn.jsx"
 import UserLoggedIn from "../components/profilePage/UserLoggedIn.jsx"
 import UserPostedListingsContainer from "../components/profilePage/UserPostedListingsContainer.jsx"
 
+
+// REACT QUERY
+const fetchUserListingsFromFirebaseQuery = {
+    queryKey: ['allUserPostedListings'],
+    queryFn: () => fetchUserListingsFromFirebase()
+  }
+
 // LOADER
-export const loader = async () => {
-    const allUserPostedListings = await fetchUserListingsFromFirebase()
+export const loader = (queryClient) => async () => {
+    const allUserPostedListings = await queryClient.ensureQueryData(fetchUserListingsFromFirebaseQuery)
 
     return allUserPostedListings
 }
+// export const loader = async () => {
+//     const allUserPostedListings = await fetchUserListingsFromFirebase()
+
+//     return allUserPostedListings
+// }
 
 const Profile = () => {
     const { userData } = useGlobalContext()

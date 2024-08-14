@@ -15,12 +15,26 @@ import { PiBathtubLight } from 'react-icons/pi'
 import { CiCalendarDate } from "react-icons/ci";
 
 
+// REACT QUERY
+const fetchSelectedListingDetailsFromFirebaseQuery = (id) => {
+    return {
+        queryKey: ['selectedListingDetails', id], 
+        queryFn: () => fetchSelectedListingDetailsFromFirebase(id)
+      }
+}
+
 // LOADER
-export const loader = async ({ params }) => {
-    const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
+export const loader = (queryClient) => async ({ params }) => {
+    const selectedListingDetails = await queryClient.ensureQueryData(fetchSelectedListingDetailsFromFirebaseQuery(params.id))
 
     return selectedListingDetails
 }
+
+// export const loader = async ({ params }) => {
+//     const selectedListingDetails = await fetchSelectedListingDetailsFromFirebase(params.id)
+
+//     return selectedListingDetails
+// }
 
 const SelectedListing = () => {
     const selectedListingDetails = useLoaderData() 

@@ -6,13 +6,24 @@ import PageLocation from "../components/PageLocation.jsx"
 import NoDataAvailableMessage from "../components/NoDataAvailableMessage.jsx";
 import BlogPostsContainer from "../components/blogPage/BlogPostsContainer.jsx";
 
+// REACT QUERY
+const fetchAllBlogPostsFromFirebaseQuery = {
+  queryKey: ['allBlogPosts'],
+  queryFn: () => fetchAllBlogPostsFromFirebase()
+}
 
 // LOADER
-export const loader = async () => {
-  const allBlogPosts = await fetchAllBlogPostsFromFirebase()
+export const loader = (queryClient) => async () => {
+  const allBlogPosts = await queryClient.ensureQueryData(fetchAllBlogPostsFromFirebaseQuery)
 
   return allBlogPosts
 }
+
+// export const loader = async () => {
+//   const allBlogPosts = await fetchAllBlogPostsFromFirebase()
+
+//   return allBlogPosts
+// }
 
 const Blog = () => {
   const allBlogPosts = useLoaderData()
