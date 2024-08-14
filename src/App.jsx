@@ -1,4 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
+// react-query
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+
 // PAGES
 import AppLayout from "./pages/AppLayout.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
@@ -9,6 +12,7 @@ import Blog from "./pages/Blog.jsx"
 import SelectedBlogPost from "./pages/SelectedBlogPost.jsx"
 import Contact from "./pages/Contact.jsx"
 import ErrorPage from "./pages/ErrorPage.jsx"
+
 // LOADERS
 import { loader as allPostedListingsLoader } from "./pages/PostedListings.jsx"
 import { loader as selectedListingLoader } from "./pages/SelectedListing.jsx"
@@ -16,6 +20,8 @@ import { loader as userPostedListingsLoader } from "./pages/Profile.jsx"
 import { loader as allBlogPostsLoader } from "./pages/Blog.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
 
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -67,7 +73,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <RouterProvider router={router}></RouterProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router}></RouterProvider>
+    </QueryClientProvider>
   )
 }
 
