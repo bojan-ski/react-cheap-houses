@@ -21,13 +21,14 @@ import { loader as allBlogPostsLoader } from "./pages/Blog.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
 
 
+
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/nalog',
-        element: <Profile/>,
+        element: <Profile />,
         loader: userPostedListingsLoader(queryClient)
       },
       {
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}></RouterProvider>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   )
 }
