@@ -31,8 +31,6 @@ const PostedListingsFilterOptions = () => {
         } else {
             setFilterOptionsApplied(true)
 
-            setFilterOptionsApplied(true)
-
             let filteredListOfPostedListings = applySelectedFilterOptions(selectedFilterOptions, allPostedListingsData)
 
             setAllPostedListingsData(filteredListOfPostedListings)

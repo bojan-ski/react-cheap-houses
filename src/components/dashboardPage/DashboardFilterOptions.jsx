@@ -12,14 +12,15 @@ import { FaMagnifyingGlass } from 'react-icons/fa6';
 
 
 const DashboardFilterOptions = () => {
-    const { allPostedListingsData, setAllPostedListingsData, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions } = useGlobalContext()
+    const { allPostedListingsData, setAllPostedListingsData, setFilterOptionsApplied, selectedFilterOptions, setSelectedFilterOptions, fetchAllListings } = useGlobalContext()
 
     const navigate = useNavigate()
 
     const propertyTypesList = ['Svi tipovi imovine', ...propertyTypes]
     const districtsList = ['Svi okruzi', ...districts]
 
-    useEffect(() => {
+    useEffect(() => {       
+        fetchAllListings()
         setFilterOptionsApplied(false)
         setSelectedFilterOptions({
             selectedListingType: 'Svi oglasi',

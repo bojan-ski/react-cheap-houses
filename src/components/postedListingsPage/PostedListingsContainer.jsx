@@ -16,7 +16,7 @@ const PostedListingsContainer = () => {
     
     const [layout, setLayout] = useState('grid')
 
-    useEffect(() => {
+    useEffect(() => {        
         setDisplayedListingsList({
             totalDataList: allPostedListingsData,
             displayedDataList: allPostedListingsData.length >= 10 ? allPostedListingsData.slice(0, 9) : allPostedListingsData
@@ -70,7 +70,6 @@ const PostedListingsContainer = () => {
                 ) : (
                     <AllPostedListingsListView displayedListingsList={displayedListingsList.displayedDataList} />
                 )}
-
             </section>
 
             {/* Pagination */}

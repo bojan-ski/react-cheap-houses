@@ -73,10 +73,6 @@ export const AppProvider = ({ children }) => {
         setAllPostedListingsData(allPostedListings)
     }
 
-    useEffect(() => {
-        fetchAllListings()
-    }, [])
-
     // filter option
     const [filterOptionsApplied, setFilterOptionsApplied] = useState(false)
     const [selectedFilterOptions, setSelectedFilterOptions] = useState({
@@ -105,7 +101,7 @@ export const AppProvider = ({ children }) => {
         setCurrentPageNumber, // Pagination, PostedListingsContainer, UserPostedListingsContainer BlogPostsContainer
         displayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
         setDisplayedListingsList, // PostedListingsContainer, UserPostedListingsContainer
-        fetchAllListings, // PostedListingsFilterOptions
+        fetchAllListings, // PostedListingsFilterOptions, DashboardFilterOptions
     }}>
         {children}
     </AppContext.Provider>

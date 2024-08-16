@@ -20,7 +20,9 @@ import { loader as userPostedListingsLoader } from "./pages/Profile.jsx"
 import { loader as allBlogPostsLoader } from "./pages/Blog.jsx"
 import { loader as selectedBlogPostLoader } from "./pages/SelectedBlogPost.jsx"
 
-
+// BRISI !!!!!!!!!!!
+import Proba from "./pages/Proba.jsx"
+// BRISI !!!!!!!!!!!
 
 const queryClient = new QueryClient()
 
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: '/kontakt',
         element: <Contact />
+      },
+      {
+        path: '/proba',
+        element: <Proba />
       }
     ]
   }

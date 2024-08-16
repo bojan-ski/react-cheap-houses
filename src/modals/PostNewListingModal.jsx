@@ -51,7 +51,7 @@ const PostNewListingModal = () => {
         if (!e.target.files) {
             setFormData(prevState => ({
                 ...prevState,
-                [e.target.id]: e.target.value
+                [e.target.id]: e.target.value.toLowerCase()
             }))
         }
     }
